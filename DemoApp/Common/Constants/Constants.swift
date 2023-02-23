@@ -3,15 +3,12 @@
 //  DemoApp
 //
 //  Created by rohith on 20/01/16.
+//  Copyright © 2016 CodeCraft Technologies. All rights reserved.
 //
 
 import Foundation
 
 public typealias completionBlock = () -> Void
-
-// TODO: Update this BaseURL when you need to call your app backend
-public let AppBackendBaseURL = "https://gcp2dev-sdk-sample-app-backend.test.lava.ai"
-
 
 enum ProfileMode: Int {
     case edit = 0

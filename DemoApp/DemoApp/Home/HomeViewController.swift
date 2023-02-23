@@ -3,6 +3,7 @@
 //  DemoApp
 //
 //  Created by sharath on 19/02/16.
+//  Copyright © 2016 CodeCraft Technologies. All rights reserved.
 //
 
 import UIKit
@@ -131,12 +132,9 @@ class HomeViewController: UIViewController {
             debugInfoVC.debugInfo = Lava.shared.getDebugInfo()
             showController(controller: debugInfoVC)
         case .logOut:
-            view.showLoading(.center)
             Lava.shared.setEmail(email: nil) { [weak self] in
-                self?.view.hideLoading()
                 self?.navigationController?.popToRootViewController(animated: true)
             } onError: {  [weak self] err in
-                self?.view.hideLoading()
                 self?.showAlert(title: "Error", message: err.localizedDescription)
             }
 

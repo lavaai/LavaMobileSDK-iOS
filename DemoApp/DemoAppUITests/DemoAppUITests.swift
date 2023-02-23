@@ -3,6 +3,7 @@
 //  DemoAppUITests
 //
 //  Created by Praveen Castelino on 20/01/16.
+//  Copyright © 2016 CodeCraft Technologies. All rights reserved.
 //
 
 import XCTest

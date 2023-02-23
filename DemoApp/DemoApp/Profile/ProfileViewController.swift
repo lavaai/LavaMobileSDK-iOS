@@ -3,6 +3,7 @@
 //  DemoApp
 //
 //  Created by rohith on 22/01/16.
+//  Copyright © 2016 CodeCraft Technologies. All rights reserved.
 //
 
 import UIKit
@@ -39,6 +40,16 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getProfile()
+    }
+    
+    deinit{
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        view.layoutIfNeeded()
         
         singleTap = UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.handleTap))
         
@@ -53,15 +64,6 @@ class ProfileViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(ProfileViewController.keyboardDidShow(notification:)), name: UIResponder.keyboardDidShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ProfileViewController.keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ProfileViewController.menuPressed), name: NSNotification.Name(rawValue: "menuPressed"), object: nil)
-    }
-    
-    deinit{
-        NotificationCenter.default.removeObserver(self)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        getProfile()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -113,7 +115,6 @@ class ProfileViewController: UIViewController {
             self?.data = self?.buildUserInfoDict(userProfile: userProfile)
             self?.profileTableView.reloadData()
         } onError: { [weak self] error in
-            print(error)
             // TODO: Handle error
             self?.view.hideLoading()
         }
@@ -264,6 +265,7 @@ extension ProfileViewController : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = self.profileTableView.dequeueReusableCell(withIdentifier: "ProfileTextFieldCell", for: indexPath) as! ProfileTextFieldCell
         let item = fields[indexPath.row]
         cell.value = data?[item] ?? "--"

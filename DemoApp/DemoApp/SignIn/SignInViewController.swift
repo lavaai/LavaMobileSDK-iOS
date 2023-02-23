@@ -3,6 +3,7 @@
 //  DemoApp1
 //
 //  Created by rohith on 21/01/16.
+//  Copyright © 2016 codecraft. All rights reserved.
 //
 
 import UIKit
@@ -10,9 +11,9 @@ import LavaSDK
 
 class SignInViewController: EditableViewController {
     
+    
     @IBOutlet weak var vLoginForm: UIView!
     @IBOutlet weak var tfEmail: UITextField!
-    @IBOutlet weak var tfPassword: UITextField!
     @IBOutlet weak var btnSignIn: UIButton!
     
     override func viewDidLoad() {
@@ -66,60 +67,15 @@ class SignInViewController: EditableViewController {
         view.endEditing(true)
 
         // Perform login
-        login(email: tfEmail.text, password: tfPassword.text)
+        login(email: tfEmail.text)
     }
     
-    func login(email: String?, password: String?) {
-        if AppSession.current.lavaConfig.enableSecureMemberToken {
-            loginWithAppBackend(email: email, password: password)
-        } else {
-            loginWithSdk(email: email)
-        }
-    }
-    
-    func loginWithAppBackend(email: String?, password: String?) {
-        guard let email = email, let password = password else {
-            return
-        }
+    func login(email: String?) {
         
         view.showLoading(ToastPosition.center)
         
-        RESTClient.shared.login(username: email, password: password, successCallback: { authResponse in
-                    
-            Lava.shared.setEmail(email: email) { [weak self] in
-                let event = TrackEvent(
-                    category: "DEBUG",
-                    path: "Successfully login",
-                    trackerType: "log"
-                )
-                
-                Lava.shared.track(event: event)
-                
-                AppSession.current.email = email
-                
-                self?.view.hideLoading()
-                self?.goToHome()
-                
-                
-                guard let memberToken = authResponse.memberToken else {
-                    fatalError("Empty auth token")
-                }
-                
-                AppSession.current.secureMemberToken = memberToken
-                Lava.shared.setSecureMemberToken(memberToken)
-            } onError: { [weak self] error in
-                self?.view.hideLoading()
-                self?.showAlert(title: "Error", message: "\(error)")
-            }
-        }, errorCallback: { [weak self] error in
-            self?.view.hideLoading()
-            self?.showAlert(title: "Error", message: "\(error)")
-        })
-    }
-    
-    func loginWithSdk(email: String?) {
-        Lava.shared.setSecureMemberToken(nil)
         Lava.shared.setEmail(email: email) { [weak self] in
+            
             let event = TrackEvent(
                 category: "DEBUG",
                 path: "Successfully login",
@@ -128,14 +84,13 @@ class SignInViewController: EditableViewController {
             
             Lava.shared.track(event: event)
             
-            AppSession.current.email = email
-            
             self?.view.hideLoading()
             self?.goToHome()
         } onError: { [weak self] error in
             self?.view.hideLoading()
-            self?.showAlert(title: "Error", message: "\(error)")
+            self?.showAlert(title: "Error", message: (error as! APIError).description)
         }
+        
     }
 
     

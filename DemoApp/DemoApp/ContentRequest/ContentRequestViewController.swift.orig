@@ -10,13 +10,12 @@ import UIKit
 import LavaSDK
 import AVFoundation
 import AVKit
-import WebKit
 
 
 class ContentRequestViewController: UIViewController {
     
     @IBOutlet weak var frameIdTextField: UITextField!
-    @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var requestButton: UIButton!
     @IBOutlet weak var contentImageView: UIImageView!
@@ -56,10 +55,9 @@ class ContentRequestViewController: UIViewController {
     func getPersonalizedContent() {
         
         var requestParameters = [String: String]()
-        if frameIdTextField.text?.count ?? 0 > 0 {
+        if frameIdTextField.text?.characters.count ?? 0 > 0 {
             requestParameters["path"] = frameIdTextField.text
         }
-        /**
         Lava.getPersonalizedContent(parameters: requestParameters, completion: { [weak self](result, error) in
             guard let weakSelf = self else {
                 return
@@ -70,9 +68,13 @@ class ContentRequestViewController: UIViewController {
                 loadString = theError.localizedDescription
             } else if let responseDict = result {
                 
+<<<<<<< HEAD
                 _ = Lava.handleNotification(userInfo: responseDict)
+=======
+                //Lava.handleNotification(responseDict)
                 
-                Lava.tracker.trackEvent(category: "ContentRequest", action: LavaTrackingAction.click, parameters: responseDict)
+                Lava.tracker.trackEvent("ContentRequest", action: "GetPersonalizedContent", parameters: responseDict)
+>>>>>>> 41258133e9715351511b3ecb8a27610f6cdf8cb8
                 
                 if let url = responseDict[ContentRequest.url] as? String {
                     if let type = responseDict[ContentRequest.contentType] as? String {
@@ -100,8 +102,6 @@ class ContentRequestViewController: UIViewController {
                 weakSelf.webView.loadHTMLString(theLoadString, baseURL: nil)
             }
             })
- 
-         */
     }
     
     // MARK: - Action
@@ -144,7 +144,7 @@ class ContentRequestViewController: UIViewController {
         }
     }
     
-    @objc func menuPressed() {
+    func menuPressed() {
         view.endEditing(true)
     }
     
@@ -152,7 +152,7 @@ class ContentRequestViewController: UIViewController {
        changeUserInterfaceToMode(.contentRequestWebResult)
         if let theUrl = URL(string: url) {
             let request = URLRequest(url: theUrl)
-            webView.load(request)
+            webView.loadRequest(request)
         } else {
             let errorString = "Not a valid URL"
             webView.loadHTMLString(errorString, baseURL: nil)

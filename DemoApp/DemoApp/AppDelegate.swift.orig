@@ -1,0 +1,191 @@
+//  AppDelegate.swift
+//  DemoApp
+//
+//  Created by Praveen Castelino on 20/01/16.
+//  Copyright © 2016 CodeCraft Technologies. All rights reserved.
+//
+
+import UIKit
+import LavaSDK
+import Fabric
+import Crashlytics
+import AWSMobileAnalytics
+import AWSCore
+import UserNotifications
+
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+
+    var window: UIWindow?
+    var analytics : AWSMobileAnalytics?
+    
+    //MARK:- Application callbacks
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        //initialise LavaSDK.
+        guard let sdkKeys = AppSettingsProvider.getLavaSDKKeys() else {
+            print("SDK Keys not found!!!")
+            return true
+        }
+        Lava.initialize(sdkKeys, launchOptions: launchOptions)
+        
+        if let facebookAppId = AppSettingsProvider.facebookAppId {
+            Lava.enableFacebookLoginWithAppId(facebookAppId)
+        }
+        Lava.debuggingEnabled = true
+        Lava.areaMonitoringEnabled = true
+        
+        navigationWithcheckForExistingUser()
+        Fabric.with([Crashlytics.self])
+        
+        registerForPushNotifications()
+        
+        if let gimbalAPIKey = AppSettingsProvider.gimbalAPIKey {
+            AreaManager.sharedManager.initializeGimbal(gimbalAPIKey: gimbalAPIKey)
+        }
+        
+        //aws analytics
+<<<<<<< HEAD
+        analytics = AWSMobileAnalytics(forAppId: MobileAnalyticsAppId, identityPoolId: CognitoIdentityPoolId)
+        AWSLogger.default().logLevel = .verbose
+=======
+        configureAWSMobileAnalytics()
+>>>>>>> 41258133e9715351511b3ecb8a27610f6cdf8cb8
+        
+        return true
+    }
+
+    func applicationWillResignActive(_ application: UIApplication) {
+        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
+        // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    }
+
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    }
+
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+        UIApplication.shared.applicationIconBadgeNumber = 0
+    }
+
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    }
+
+    func applicationWillTerminate(_ application: UIApplication) {
+        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+
+    fileprivate func navigationWithcheckForExistingUser() {
+        if Lava.isLoggedIn() {
+            if let navCtr = self.window?.rootViewController as? UINavigationController {
+                let profilePageViewCntrl:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController")
+                navCtr.pushViewController(profilePageViewCntrl, animated: false)
+            }
+        }
+    }
+
+<<<<<<< HEAD
+
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        Lava.setDeviceTokenFromData(tokenData: deviceToken)
+=======
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        Lava.setDeviceTokenFromData(deviceToken)
+>>>>>>> 41258133e9715351511b3ecb8a27610f6cdf8cb8
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Couldn't register: \(error)")
+    }
+    
+<<<<<<< HEAD
+//    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+//            Lava.handleNotification(userInfo)
+//    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        let handled = Lava.handleNotification(userInfo: userInfo)
+=======
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        let handled = Lava.handleNotification(userInfo)
+>>>>>>> 41258133e9715351511b3ecb8a27610f6cdf8cb8
+        if handled == false {
+            //handle other notifications.
+        }
+    }
+    
+    //MARK:- helper methods
+    
+    func registerForPushNotifications() {
+        let application = UIApplication.shared
+        application.applicationIconBadgeNumber = 0
+        NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.lavaUserTokenExpiredNotification), name: NSNotification.Name(rawValue: "lavaUserTokenExpiredNotification"), object: nil)
+        if #available(iOS 10.0, *){
+            UNUserNotificationCenter.current().delegate = self
+            UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .sound, .alert], completionHandler: {(granted, error) in
+                if (granted)
+                {
+                    application.registerForRemoteNotifications()
+                }
+                else{
+                    //Do stuff if unsuccessful...
+                }
+            })
+        } else {
+            let allNotificationTypes: UIUserNotificationType = ([.sound, .alert, .badge])
+            let settings = UIUserNotificationSettings(types: allNotificationTypes, categories: nil)
+            application.registerUserNotificationSettings(settings)
+            application.registerForRemoteNotifications()
+        }
+    }
+    
+    
+    func configureAWSMobileAnalytics() {
+        let credentialsProvider = AWSCognitoCredentialsProvider(regionType: .USEast1, identityPoolId: AWS.cognitoIdentityPoolId)
+        let serviceConfiguration = AWSServiceConfiguration(region: .USEast1, credentialsProvider: credentialsProvider)
+        let analyticsConfiguration = AWSMobileAnalyticsConfiguration()
+        analyticsConfiguration.serviceConfiguration = serviceConfiguration
+        analytics = AWSMobileAnalytics(forAppId: AWS.mobileAnalyticsAppId, configuration: analyticsConfiguration)
+        AWSLogger.defaultLogger().logLevel = .Verbose
+    }
+    
+    //MARK:- Notifications
+    
+    func lavaUserTokenExpiredNotification(){
+        if let navCtr = self.window?.rootViewController as? UINavigationController {
+            navCtr.popToRootViewController(animated: false)
+            Utility.displayAlertWith(navCtr, title: "Session expired", message: "You have been logged out.", leftTitle: "OK", rightTitle: nil, completionHandler: nil)
+        }
+    }
+    
+    @available(iOS 10.0, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let userInfo = response.notification.request.content.userInfo
+        let handled = Lava.handleNotification(userInfo: userInfo)
+        if handled == false {
+            //handle other notifications.
+        }
+    }
+    
+    @available(iOS 10.0, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .badge, .sound])
+        let userInfo = notification.request.content.userInfo
+        let handled = Lava.handleNotification(userInfo: userInfo)
+        if handled == false {
+            //handle other notifications.
+        }
+
+    }
+<<<<<<< HEAD
+
+    
+=======
+>>>>>>> 41258133e9715351511b3ecb8a27610f6cdf8cb8
+}
+
+

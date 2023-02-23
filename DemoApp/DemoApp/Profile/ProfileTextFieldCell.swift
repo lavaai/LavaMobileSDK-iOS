@@ -3,6 +3,7 @@
 //  DemoApp
 //
 //  Created by Thuong Nguyen on 22/11/2021.
+//  Copyright © 2021 CodeCraft Technologies. All rights reserved.
 //
 
 import UIKit
@@ -15,7 +16,6 @@ class ProfileTextFieldCell: UITableViewCell {
     
     var delegate: ProfileCellDelegate?
     var value: String?
-    private var readOnly: Bool = false
     
     var cellMode: ProfileMode? {
         didSet {
@@ -23,7 +23,6 @@ class ProfileTextFieldCell: UITableViewCell {
             
             switch mode {
             case .edit :
-                guard !readOnly else { return }
                 tfValue.isUserInteractionEnabled = true
                 tfValue.textColor = UIColor.black
                 tfValue.textAlignment = .right
@@ -38,9 +37,10 @@ class ProfileTextFieldCell: UITableViewCell {
     var cellType : ProfileItem? {
         didSet {
             guard let cellType = cellType else { return }
+            
             lbTitle.text = cellType.rawValue
+            
             tfValue.text = value
-            readOnly = cellType == .email
         }
     }
     

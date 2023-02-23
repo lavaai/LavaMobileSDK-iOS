@@ -3,6 +3,7 @@
 //  DemoApp
 //
 //  Created by Muhameed Shabeer on 01/08/18.
+//  Copyright © 2018 CodeCraft Technologies. All rights reserved.
 //
 
 import UIKit

@@ -1,0 +1,129 @@
+//
+//  DebugInfoTableViewController.swift
+//  DemoApp
+//
+//  Created by srinath on 22/02/16.
+//  Copyright © 2016 CodeCraft Technologies. All rights reserved.
+//
+
+import UIKit
+import LavaSDK
+
+class DebugInfoTableViewController: UITableViewController {
+//    var debugInfoDictionary = Dictionary<String,String>()
+    
+    var debugInfoDictionary:Dictionary<String, String> = Dictionary()
+    struct DebugInfo {
+        var title : String!
+        var subtitle : String!
+    }
+    var debugObjectArray = [DebugInfo]()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(DebugInfoTableViewController.refreshData), name: UIApplicationWillEnterForegroundNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(DebugInfoTableViewController.refreshData), name: lavaLocationUpdatedNotification, object: nil)
+
+        Lava.tracker.trackScreen("DebugScreen")
+        self.refreshData()
+        
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    // MARK: - Table view data source
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return debugObjectArray.count
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return 1
+        
+    }
+
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return debugObjectArray[section].title
+    }
+    
+<<<<<<< HEAD
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "debugInfoCellIdentifier", for: indexPath) as UITableViewCell
+=======
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("debugInfoCellIdentifier", forIndexPath: indexPath) as UITableViewCell
+>>>>>>> 41258133e9715351511b3ecb8a27610f6cdf8cb8
+        cell.textLabel?.text = debugObjectArray[indexPath.section].subtitle
+        return cell
+    }
+
+<<<<<<< HEAD
+    /*
+    // Override to support conditional editing of the table view.
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
+        return true
+    }
+    */
+
+    /*
+    // Override to support editing the table view.
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            // Delete the row from the data source
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        } else if editingStyle == .Insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }    
+    }
+    */
+
+    /*
+    // Override to support rearranging the table view.
+    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+
+    }
+    */
+
+    /*
+    // Override to support conditional rearranging of the table view.
+    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        // Return false if you do not want the item to be re-orderable.
+        return true
+    }
+    */
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+=======
+    func refreshData() {
+        debugInfoDictionary = Lava.getDebugInfo()
+        debugInfoDictionary.keys
+        debugObjectArray.removeAll()
+        for (key, value) in debugInfoDictionary {
+            print("\(key) -> \(value)")
+            debugObjectArray.append(DebugInfo(title: key, subtitle: value))
+        }
+        self.tableView.reloadData()
+>>>>>>> 41258133e9715351511b3ecb8a27610f6cdf8cb8
+    }
+}

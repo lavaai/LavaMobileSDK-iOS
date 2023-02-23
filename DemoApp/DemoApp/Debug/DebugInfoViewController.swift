@@ -3,6 +3,7 @@
 //  LavaSDK
 //
 //  Created by Shabeer on 2/7/19.
+//  Copyright © 2019 CodeCraft Technologies. All rights reserved.
 //
 
 import UIKit

@@ -2,6 +2,7 @@
 //  DemoApp
 //
 //  Created by Praveen Castelino on 20/01/16.
+//  Copyright © 2016 CodeCraft Technologies. All rights reserved.
 //
 
 import UIKit
@@ -12,23 +13,16 @@ import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
-    
-    static var shared: AppDelegate? = nil
 
     var window: UIWindow?
     
-    func initLavaSdk() {
+    //MARK:- Application callbacks
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        guard let lavaConfig = ConfigLoader.loadConfig() else {
-            fatalError("Error loading lava-services.json")
-        }
-        
-        // Initialise LavaSDK.
         Lava.initialize(
-            appKey: lavaConfig.appKey,
-            clientId: lavaConfig.clientId,
-            logLevel: .verbose,
-            serverLogLevel: .verbose
+            appKey: "test-access-key",
+            clientId: "gcp2dev-backend.test"
         )
         
         let customStyle = Style()
@@ -40,38 +34,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         Lava.shared.setCustomStyle(customStyle: customStyle)
         
-        Lava.shared.start()
-        
-        if (lavaConfig.enableSecureMemberToken) {
-            Lava.shared.subscribeSecureMemberTokenExpiry(self)
-        } else {
-            Lava.shared.setSecureMemberToken(nil)
-            Lava.shared.unsubscribeSecureMemberTokenExpiry(self)
-        }
-        
-        AppSession.current.lavaConfig = lavaConfig
-    }
-    
-    //MARK:- Application callbacks
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        //initialise LavaSDK.
-        initLavaSdk()
+        Lava.debug = true
         
         checkLoggedIn()
         
         registerForPushNotifications()
         
-        if let secureMemberToken = AppSession.current.secureMemberToken {
-            Lava.shared.setSecureMemberToken(secureMemberToken)
-        }
+        Lava.shared.start()
         
-        AppDelegate.shared = self
-                
         return true
     }
-    
-
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -93,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        Lava.shared.unsubscribeSecureMemberTokenExpiry(self)
+        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
     fileprivate func checkLoggedIn() {
@@ -114,7 +86,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        
         Lava.shared.setNotificationToken(deviceToken: deviceToken)
+        
     }
 
     
@@ -170,13 +144,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     ) {
         let userInfo = response.notification.request.content.userInfo
         
-        if (Lava.shared.canHandlePushNotification(userInfo: userInfo)) {
-            let handled = Lava.shared.handleNotification(userInfo: userInfo)
-            if (!handled) {
-                // handling lava notification failed
-            }
-        } else {
-            // handle other notifications.
+        let handled = Lava.shared.handleNotification(userInfo: userInfo)
+        
+        if handled == false {
+            //handle other notifications.
         }
     }
     
@@ -188,13 +159,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         completionHandler([.alert, .badge, .sound])
         
         let userInfo = notification.request.content.userInfo
-
-        if (Lava.shared.canHandlePushNotification(userInfo: userInfo)) {
-            let handled = Lava.shared.handleNotification(userInfo: userInfo)
-            if !handled {
-                // handling lava notification failed
-            }
-        } else {
+        
+        let handled = Lava.shared.handleNotification(userInfo: userInfo)
+        
+        if handled == false {
             //handle other notifications.
         }
     }
@@ -204,12 +172,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         open url: URL,
         options: [UIApplication.OpenURLOptionsKey : Any] = [:]
     ) -> Bool {
-        if (Lava.shared.canHandleDeepLink(url: url)) {
-            return Lava.shared.handleDeepLink(url: url)
-        } else {
-            // handle other deep links
-            return false
-        }
+        
+        return Lava.shared.handleDeepLink(url: url)
+        
     }
     
     func application(
@@ -230,31 +195,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         return true
     }
-}
-
-extension AppDelegate: TokenExpiryDelegate {
-    
-    func onExpire(onSuccess: @escaping OnSuccess, onError: @escaping OnError) {
-        // RESTClient.shared.refreshToken is an example of API call to App Backend in Mobile App
-        guard let email = AppSession.current.email else {
-            print("No email provided")
-            return
-        }
-        
-        RESTClient.shared.refreshToken(username: email, successCallback: { authResponse in
-            guard let memberToken = authResponse.memberToken else {
-                onError(APIError.emptyData)
-                return
-            }
-            Lava.shared.setSecureMemberToken(memberToken)
-            onSuccess()
-        }, errorCallback: { error in
-            onError(error)
-        })
-    }
     
 }
-
-
 
 

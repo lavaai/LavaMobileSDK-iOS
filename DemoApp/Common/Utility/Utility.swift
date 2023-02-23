@@ -3,6 +3,7 @@
 //  DemoApp1
 //
 //  Created by rohith on 21/01/16.
+//  Copyright © 2016 codecraft. All rights reserved.
 //
 
 import UIKit

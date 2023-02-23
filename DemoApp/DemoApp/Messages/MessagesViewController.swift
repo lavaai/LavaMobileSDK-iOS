@@ -3,6 +3,7 @@
 //  DemoApp
 //
 //  Created by Muhameed Shabeer on 25/07/18.
+//  Copyright © 2018 CodeCraft Technologies. All rights reserved.
 //
 
 import UIKit
@@ -17,7 +18,7 @@ enum MessageState {
 class MessagesViewController: UIViewController {
     
     var messages = [Message]()
-    var filteredMessages: [Message] = []
+    var filteredMessages: [Message]? = nil
     var selectedMessages = [String]()
     var refreshControl = UIRefreshControl()
     var inboxMessageState = MessageState.all
@@ -32,7 +33,9 @@ class MessagesViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         
-        fetchRemoteMessages()
+        getMessages { [weak self] in
+            self?.view.hideLoading()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,29 +69,21 @@ class MessagesViewController: UIViewController {
         self.view.showLoading(.center)
     }
     
-    func fetchRemoteMessages() {
-        getMessages { [weak self] in
-            self?.view.hideLoading()
-        }
-    }
-    
     func getMessages(includeExpired: Bool = true, callback: (() -> Void)? = nil) {
         Lava.shared.getMessages { [weak self] messageList in
-            guard let strongSelf = self else { return }
             if includeExpired {
-                strongSelf.messages = messageList.messages
+                self?.messages = messageList.messages
             } else {
-                strongSelf.messages = messageList.messages.filter({ !$0.isExpired() })
+                self?.messages = messageList.messages.filter({ !$0.isExpired() })
             }
             
-            strongSelf.messages.sort(by: { a, b in
+            self?.messages.sort(by: { a, b in
                 let idA = Int(a.messageId ?? "0") ?? 0
                 let idB = Int(b.messageId ?? "0") ?? 0
                 return idA > idB
             })
             
-            strongSelf.performFilterMessages(strongSelf.inboxMessageState)
-            
+            self?.tableView.reloadData()
             callback?()
         } onError: { error in
             // TODO: Show error
@@ -104,35 +99,23 @@ class MessagesViewController: UIViewController {
     
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
         
-        var state: MessageState
-
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            state = .all
+            inboxMessageState = .all
         case 1:
-            state = .unread
+            inboxMessageState = .unread
         default:
-            state = .read
+            inboxMessageState = .read
         }
         
-        performFilterMessages(state)
-    }
-    
-    func performFilterMessages(_ messageState: MessageState) {
-        inboxMessageState = messageState
-        switch messageState {
-        case .all:
-            filteredMessages = messages
-        case .read:
-            filteredMessages = messages.filter({ message in
-                message.read ?? false
-            })
-        case .unread:
-            filteredMessages = messages.filter({ message in
-                message.read != nil ? !message.read! : true
-            })
+        self.view.showLoading(.center)
+        
+        selectedMessages.removeAll()
+        
+        // TODO: Filter messages by read / unread
+        getMessages { [weak self] in
+            self?.view.hideLoading()
         }
-        tableView.reloadData()
     }
     
     
@@ -140,7 +123,9 @@ class MessagesViewController: UIViewController {
     @objc func handleRefresh() {
         self.view.showLoading(.center)
         
-        fetchRemoteMessages()
+        getMessages { [weak self] in
+            self?.view.hideLoading()
+        }
         
         refreshControl.endRefreshing()
     }
@@ -179,7 +164,14 @@ class MessagesViewController: UIViewController {
     }
     
     func onFinishMarkMessages(read: Bool) {
-        fetchRemoteMessages()
+        for index in messages.indices {
+            guard let messageId = messages[index].messageId else { continue }
+            if selectedMessages.contains(messageId) {
+                messages[index].read = read
+            }
+        }
+        selectedMessages.removeAll()
+        tableView.reloadData()
         isEditing = false
     }
     
@@ -203,11 +195,11 @@ class MessagesViewController: UIViewController {
     func onFinishDeleteMessages() {
         messages = messages.filter({ message in
             guard let messageId = message.messageId else { return false }
-            return !selectedMessages.contains(messageId)
+            return selectedMessages.contains(messageId)
         })
         
         selectedMessages.removeAll()
-        performFilterMessages(inboxMessageState)
+        tableView.reloadData()
         isEditing = false
     }
 
@@ -216,18 +208,18 @@ class MessagesViewController: UIViewController {
 extension MessagesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredMessages.count
+        return messages.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath) as! MessageTableViewCell
-        cell.message = filteredMessages[indexPath.row]
+        cell.message = messages[indexPath.row]
         return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        guard let messageId = filteredMessages[indexPath.row].messageId else { return }
+        guard let messageId = messages[indexPath.row].messageId else { return }
         selectedMessages.append(messageId)
         deleteMessages()
     }
@@ -262,7 +254,8 @@ extension MessagesViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 Lava.shared.markMessages(
                     messageReadUpdate: messageUpdate) { [weak self] _ in
-                        self?.onFinishMarkMessages(read: true)
+                        self?.messages[indexPath.row].read = true
+                        tableView.reloadData()
                     } onError: { err in
                         print(err)
                     }

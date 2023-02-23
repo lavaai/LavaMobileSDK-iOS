@@ -3,6 +3,7 @@
 //  DemoApp
 //
 //  Created by srinath on 21/09/16.
+//  Copyright © 2016 CodeCraft Technologies. All rights reserved.
 //
 
 import Foundation
