@@ -734,7 +734,7 @@
         <!--Debug Info View Controller-->
         <scene sceneID="P4W-Oo-uiM">
             <objects>
-                <viewController storyboardIdentifier="DebugInfoViewController" id="cg6-3d-Dyg" customClass="DebugInfoViewController" customModule="DemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DebugInfoViewController" id="cg6-3d-Dyg" customClass="DebugInfoViewController" customModule="DemoApp" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Y0Q-v8-XtT"/>
                         <viewControllerLayoutGuide type="bottom" id="wXs-vu-3MH"/>

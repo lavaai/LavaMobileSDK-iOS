@@ -170,13 +170,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     ) {
         let userInfo = response.notification.request.content.userInfo
         
-        if (Lava.shared.canHandlePushNotification(userInfo: userInfo)) {
-            let handled = Lava.shared.handleNotification(userInfo: userInfo)
-            if (!handled) {
-                // handling lava notification failed
-            }
-        } else {
-            // handle other notifications.
+        let handled = Lava.shared.handleNotification(userInfo: userInfo)
+        
+        if handled == false {
+            //handle other notifications.
         }
     }
     
@@ -188,13 +185,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         completionHandler([.alert, .badge, .sound])
         
         let userInfo = notification.request.content.userInfo
-
-        if (Lava.shared.canHandlePushNotification(userInfo: userInfo)) {
-            let handled = Lava.shared.handleNotification(userInfo: userInfo)
-            if !handled {
-                // handling lava notification failed
-            }
-        } else {
+        
+        let handled = Lava.shared.handleNotification(userInfo: userInfo)
+        
+        if handled == false {
             //handle other notifications.
         }
     }
@@ -204,12 +198,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         open url: URL,
         options: [UIApplication.OpenURLOptionsKey : Any] = [:]
     ) -> Bool {
-        if (Lava.shared.canHandleDeepLink(url: url)) {
-            return Lava.shared.handleDeepLink(url: url)
-        } else {
-            // handle other deep links
-            return false
-        }
+        
+        return Lava.shared.handleDeepLink(url: url)
+        
     }
     
     func application(

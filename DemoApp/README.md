@@ -1,19 +1,16 @@
 # DemoApp
 
-This repo is the DemoApp for LavaSDK. It already contains the compatible LavaSDK.xcframework and ready for building and running.
+Demo app for Lava SDK.
+
+LavaSDK project is added to DemoApp project as a subproject in order to work on both projects simultaneously.
+
+For more info on these projects read Build Guide.
 
 ## Requirements
 
-* Xcode 13.2 and above
-* Swift 5.5
-
-## Working with the LavaSDK source code
-
-To work directly with the LavaSDK source code, we need to add LavaSDK project into DemoApp project as a subproject with following steps:
-1. Remove the LavaSDK.xcframework from the DemoApp project.
-2. Drag and drop the Lava.xcodeproj into the DemoApp project.
-3. Under General tab > Frameworks, Libraries and Embedded Content in targets DemoApp and DemoAppSecure of DemoApp project, we need to add the LavaSDK.framework.
-4. Clean (Cmd + Shift + K) and build the project.
+* Xcode 8.3, Swift 3 compiler
+* Fabric from Twitter
+* CocoaPods 1.2.0
 
 ## Building
 
@@ -21,6 +18,17 @@ To work directly with the LavaSDK source code, we need to add LavaSDK project in
 
 * Run the following commands to install cocaopods and to checkout the dependencies of DemoApp:
 
-## lava-service.json
-This file is located in DemoApp/DemoApp and its content will be either replaced by GitHub workflow or the developer with appropriate values.
+```
+bash
+sudo gem install cocoapods
+pod install
+
+```
+
+* Open finder and double-click on DemoApp.xcworkspace to build and run!
+
+## DemoApp
+
+### lava-service.json
+This file is located in DemoApp/DemoApp and its content will be either replaced by GitHub workflow or the developer.
 
