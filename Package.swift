@@ -18,7 +18,7 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "LavaSDK",
-            url: "https://raw.githubusercontent.com/lavaai/LavaSDK-iOS-SP/\(version)/LavaSDK.xcframework.zip",
+            url: "https://raw.githubusercontent.com/lavaai/LavaMobileSDK-iOS/\(version)/LavaSDK.xcframework.zip",
             checksum: checksum
         )
     ]

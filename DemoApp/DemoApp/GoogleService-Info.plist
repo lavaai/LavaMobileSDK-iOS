@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>547375242027-ptre827gjq6rthebeca56td6p81j2bk3.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.547375242027-ptre827gjq6rthebeca56td6p81j2bk3</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>547375242027-4mjl88j84fm8qde405hni0r83eep6qnr.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCvV3Qo8XqrwLeCdTzpFdydKFHoL7ZR5gg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>547375242027</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>ai.lava.sdkdemo.ios</string>
+	<key>PROJECT_ID</key>
+	<string>lava-demo-104d6</string>
+	<key>STORAGE_BUCKET</key>
+	<string>lava-demo-104d6.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:547375242027:ios:3cb5dddc562b2b6b73036e</string>
+</dict>
+</plist>
