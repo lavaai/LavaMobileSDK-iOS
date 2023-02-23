@@ -7,13 +7,14 @@
 [![Platforms](https://img.shields.io/badge/Platforms-iOS-green?style=flat-square)](https://img.shields.io/badge/Platforms-iOS-green?style=flat-square)
 [![Swift Package Manager](https://img.shields.io/badge/Swift_Package_Manager-compatible-green?style=flat-square)](https://img.shields.io/badge/Swift_Package_Manager-compatible-green?style=flat-square)
 
-LavaMobileSDK for iOS is the client libary to integrate your mobile apps with Lava Lava Platform.
+LavaMobileSDK for iOS is the client libary to integrate your mobile apps with Lava Platform.
 
 - [Features](#features)
 - [Requirements](#requirements)
 - [Installation](#installation)
   - [Install LAVA SDK iOS with Swift Package Manager](#install-lava-sdk-ios-with-swift-package-manager)
   - [Install LAVA SDK iOS manually](#install-lava-sdk-ios-manually)
+- [Help](#help)
 
 ## Features
 
@@ -53,3 +54,6 @@ LavaMobileSDK for iOS is the client libary to integrate your mobile apps with La
 1. Clone the repository or download the `LavaSDK.xcframework.zip`.
 2. Extract the `LavaSDK.xcframework.zip`.
 3. Drag the `LavaSDK.xcframework` folder to your project.
+
+## Help
+Please contact LAVA Support in case you need help.
