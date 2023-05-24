@@ -8,114 +8,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Pop Up Ad View Controller-->
-        <scene sceneID="UL2-nC-73j">
-            <objects>
-                <viewController storyboardIdentifier="PopUpAdViewController" id="NpC-c5-Qmq" customClass="PopUpAdViewController" customModule="DemoApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Q7N-j2-Lbr"/>
-                        <viewControllerLayoutGuide type="bottom" id="UaS-xC-O2X"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="78J-OU-LXv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RdL-76-iSG">
-                                <rect key="frame" x="20" y="60" width="335" height="547"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="advertisement_Border" translatesAutoresizingMaskIntoConstraints="NO" id="zJT-Ui-VRj">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="547"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Py2-fz-Lfw">
-                                        <rect key="frame" x="0.0" y="498" width="335" height="49"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="49" id="rwu-qu-S6t"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
-                                        <state key="normal" title="PURCHASE" backgroundImage="bottom_Button">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="purchaseButtonAction:" destination="NpC-c5-Qmq" eventType="touchUpInside" id="nzM-g6-n3Z"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Congratulations: get a 10% discount on a Bellator cap (valid for the next 2 hours)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="bvE-M2-glb">
-                                        <rect key="frame" x="15" y="15" width="260" height="61"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8UW-16-kfZ">
-                                        <rect key="frame" x="15" y="91" width="305" height="392"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="adImage" translatesAutoresizingMaskIntoConstraints="NO" id="7Bn-VX-zlc">
-                                                <rect key="frame" x="0.0" y="0.0" width="305" height="392"/>
-                                            </imageView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="7Bn-VX-zlc" secondAttribute="bottom" id="5fQ-rv-aLi"/>
-                                            <constraint firstItem="7Bn-VX-zlc" firstAttribute="top" secondItem="8UW-16-kfZ" secondAttribute="top" id="C7x-85-Amk"/>
-                                            <constraint firstItem="7Bn-VX-zlc" firstAttribute="leading" secondItem="8UW-16-kfZ" secondAttribute="leading" id="R0P-xF-Gxv"/>
-                                            <constraint firstAttribute="trailing" secondItem="7Bn-VX-zlc" secondAttribute="trailing" id="hhC-A2-lmH"/>
-                                        </constraints>
-                                    </view>
-                                    <webView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GEl-WS-LqV">
-                                        <rect key="frame" x="8" y="8" width="319" height="531"/>
-                                        <color key="backgroundColor" red="0.28958413004875183" green="0.31462949514389038" blue="0.32950475811958313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </webView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tt5-bN-TSE">
-                                        <rect key="frame" x="288" y="10" width="37" height="37"/>
-                                        <state key="normal" image="close_Button"/>
-                                        <connections>
-                                            <action selector="closeButtonAction:" destination="NpC-c5-Qmq" eventType="touchUpInside" id="gbl-mK-YAV"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="GEl-WS-LqV" secondAttribute="bottom" constant="8" id="2Ns-Xx-0vI"/>
-                                    <constraint firstItem="8UW-16-kfZ" firstAttribute="leading" secondItem="RdL-76-iSG" secondAttribute="leading" constant="15" id="3Do-Fn-nCT"/>
-                                    <constraint firstItem="8UW-16-kfZ" firstAttribute="top" secondItem="bvE-M2-glb" secondAttribute="bottom" constant="15" id="5iC-UL-hEA"/>
-                                    <constraint firstItem="GEl-WS-LqV" firstAttribute="top" secondItem="RdL-76-iSG" secondAttribute="top" constant="8" id="Dri-45-Xaj"/>
-                                    <constraint firstItem="GEl-WS-LqV" firstAttribute="leading" secondItem="RdL-76-iSG" secondAttribute="leading" constant="8" id="MPh-uh-tsj"/>
-                                    <constraint firstItem="zJT-Ui-VRj" firstAttribute="leading" secondItem="RdL-76-iSG" secondAttribute="leading" id="NS6-iS-zuu"/>
-                                    <constraint firstAttribute="trailing" secondItem="Tt5-bN-TSE" secondAttribute="trailing" constant="10" id="QIU-1x-XHe"/>
-                                    <constraint firstAttribute="trailing" secondItem="zJT-Ui-VRj" secondAttribute="trailing" id="QbN-DD-q3W"/>
-                                    <constraint firstItem="zJT-Ui-VRj" firstAttribute="top" secondItem="RdL-76-iSG" secondAttribute="top" id="RqB-Uz-9Cd"/>
-                                    <constraint firstAttribute="trailing" secondItem="8UW-16-kfZ" secondAttribute="trailing" constant="15" id="bHr-he-Rnh"/>
-                                    <constraint firstAttribute="trailing" secondItem="bvE-M2-glb" secondAttribute="trailing" constant="60" id="gjV-05-2gX"/>
-                                    <constraint firstAttribute="bottom" secondItem="zJT-Ui-VRj" secondAttribute="bottom" id="jun-BP-3Vb"/>
-                                    <constraint firstAttribute="trailing" secondItem="Py2-fz-Lfw" secondAttribute="trailing" id="qQL-4L-ltq"/>
-                                    <constraint firstItem="bvE-M2-glb" firstAttribute="top" secondItem="RdL-76-iSG" secondAttribute="top" constant="15" id="rY6-GN-wgn"/>
-                                    <constraint firstItem="bvE-M2-glb" firstAttribute="leading" secondItem="RdL-76-iSG" secondAttribute="leading" constant="15" id="rsG-hu-b88"/>
-                                    <constraint firstAttribute="bottom" secondItem="Py2-fz-Lfw" secondAttribute="bottom" id="sOf-am-rQw"/>
-                                    <constraint firstAttribute="trailing" secondItem="GEl-WS-LqV" secondAttribute="trailing" constant="8" id="tY4-Kj-kfh"/>
-                                    <constraint firstItem="Tt5-bN-TSE" firstAttribute="top" secondItem="RdL-76-iSG" secondAttribute="top" constant="10" id="ur7-cr-ERn"/>
-                                    <constraint firstItem="Py2-fz-Lfw" firstAttribute="top" secondItem="8UW-16-kfZ" secondAttribute="bottom" constant="15" id="vIH-oC-obv"/>
-                                    <constraint firstItem="Py2-fz-Lfw" firstAttribute="leading" secondItem="RdL-76-iSG" secondAttribute="leading" id="vaV-KG-twZ"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.24506440033783783" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="RdL-76-iSG" firstAttribute="leading" secondItem="78J-OU-LXv" secondAttribute="leading" constant="20" id="7AH-af-Rpg"/>
-                            <constraint firstAttribute="trailing" secondItem="RdL-76-iSG" secondAttribute="trailing" constant="20" id="8YQ-9o-99m"/>
-                            <constraint firstItem="RdL-76-iSG" firstAttribute="top" secondItem="Q7N-j2-Lbr" secondAttribute="bottom" constant="60" id="dZm-Ry-FkA"/>
-                            <constraint firstItem="UaS-xC-O2X" firstAttribute="top" secondItem="RdL-76-iSG" secondAttribute="bottom" constant="60" id="f1U-sx-PzI"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="adImageView" destination="7Bn-VX-zlc" id="Afs-jo-dTj"/>
-                        <outlet property="adWebView" destination="GEl-WS-LqV" id="6Vw-XZ-ARC"/>
-                        <outlet property="purchaseButton" destination="Py2-fz-Lfw" id="lTA-Da-dl8"/>
-                        <outlet property="titleLabel" destination="bvE-M2-glb" id="lCc-H8-7Xw"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yBJ-ud-f7g" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2692" y="-299"/>
-        </scene>
         <!--Login-->
         <scene sceneID="ZgV-yb-7Za">
             <objects>
@@ -755,7 +647,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pu5-Jc-qsI">
-                                                    <rect key="frame" x="16" y="11" width="343" height="35"/>
+                                                    <rect key="frame" x="16" y="11" width="26" height="35"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="13"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </label>
@@ -772,8 +664,8 @@
                                                 <constraint firstItem="dVI-Ra-aN4" firstAttribute="top" secondItem="pu5-Jc-qsI" secondAttribute="bottom" constant="4" id="Pco-Z6-673"/>
                                                 <constraint firstItem="dVI-Ra-aN4" firstAttribute="bottom" secondItem="TXU-2e-L7p" secondAttribute="bottomMargin" id="dMS-1I-lCp"/>
                                                 <constraint firstItem="pu5-Jc-qsI" firstAttribute="top" secondItem="TXU-2e-L7p" secondAttribute="topMargin" id="hPa-vH-3Fd"/>
-                                                <constraint firstItem="dVI-Ra-aN4" firstAttribute="trailing" secondItem="TXU-2e-L7p" secondAttribute="trailingMargin" id="qaa-IR-6Yl"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="pu5-Jc-qsI" secondAttribute="trailing" id="uQf-Pd-1QR"/>
+                                                <constraint firstItem="dVI-Ra-aN4" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="TXU-2e-L7p" secondAttribute="trailingMargin" id="qaa-IR-6Yl"/>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="pu5-Jc-qsI" secondAttribute="trailing" id="uQf-Pd-1QR"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -814,11 +706,7 @@
         </designable>
     </designables>
     <resources>
-        <image name="adImage" width="375" height="443"/>
-        <image name="advertisement_Border" width="305" height="481"/>
         <image name="backGroundImage" width="375" height="667"/>
-        <image name="bottom_Button" width="305" height="49"/>
-        <image name="close_Button" width="37" height="37"/>
         <image name="shadow" width="375" height="7"/>
         <image name="splash_background" width="375" height="469"/>
         <image name="splash_logo" width="148" height="71"/>
