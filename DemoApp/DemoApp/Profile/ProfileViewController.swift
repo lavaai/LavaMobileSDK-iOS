@@ -226,6 +226,35 @@ class ProfileViewController: UIViewController {
         Lava.shared.showPass()
     }
     
+    @IBAction func showBuiltinInbox(_ sender: Any) {
+        Lava.shared.showInboxMessages(self)
+    }
+    
+    @IBAction func showBuiltinCustomInbox(_ sender: Any) {
+        let style = InboxStyle(titleTextColor: .blue, indicatorColor: .blue)
+        Lava.shared.showInboxMessages(self, onViewMessage: { message in
+            
+            guard let raw = message.payload, let data = raw.data(using: .utf8) else { return }
+            
+            guard let rawPayload = try? JSONSerialization.jsonObject(
+                    with: data,
+                    options: []) as? [String: Any]
+            else { return }
+            
+            let payload = rawPayload.mapValues { "\($0)" }
+            
+            let event = TrackEvent(
+                action: TrackEvent.ACTION_VIEW_SCREEN,
+                category: "Inbox",
+                userParams: payload
+            )
+            
+            Lava.shared.track(event: event)
+        }, style: style)
+    }
+    
+    
+    
     func buildUserInfoDict(userProfile: UserProfile?) -> [ProfileItem: String?] {
         var ret = [ProfileItem: String?]()
         guard let userProfile = userProfile else { return ret }

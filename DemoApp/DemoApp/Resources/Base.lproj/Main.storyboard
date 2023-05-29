@@ -278,7 +278,7 @@
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="RcN-2M-SLi">
-                                    <rect key="frame" x="0.0" y="100.5" width="375" height="80"/>
+                                    <rect key="frame" x="0.0" y="100.5" width="375" height="210"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8QD-uK-Qun" customClass="RoundedButton" customModule="DemoApp" customModuleProvider="target">
@@ -297,12 +297,51 @@
                                                 <action selector="getPassData:" destination="eVq-a2-vF1" eventType="touchUpInside" id="8bj-v3-bvp"/>
                                             </connections>
                                         </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3xx-de-Yix" customClass="RoundedButton" customModule="DemoApp" customModuleProvider="target">
+                                            <rect key="frame" x="16" y="80" width="343" height="50"/>
+                                            <color key="backgroundColor" red="0.92549019610000005" green="0.0" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="V5j-Px-I39"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="YNg-qa-iz6"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                            <state key="normal" title="Show Built-in Inbox">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="showBuiltinInbox:" destination="QVI-P3-GOW" eventType="touchUpInside" id="rV5-LI-bzN"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dtt-9l-TU4" customClass="RoundedButton" customModule="DemoApp" customModuleProvider="target">
+                                            <rect key="frame" x="16" y="145" width="343" height="50"/>
+                                            <color key="backgroundColor" red="0.92549019610000005" green="0.0" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="3LV-ph-fv5"/>
+                                                <constraint firstAttribute="height" constant="50" id="Hze-Sm-o6V"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                            <state key="normal" title="Show Custom Built-in Inbox">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="showBuiltinCustomInbox:" destination="QVI-P3-GOW" eventType="touchUpInside" id="zvd-Nt-Cij"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstItem="8QD-uK-Qun" firstAttribute="centerY" secondItem="RcN-2M-SLi" secondAttribute="centerY" id="T2S-Cv-9oq"/>
+                                        <constraint firstItem="8QD-uK-Qun" firstAttribute="bottom" secondItem="3xx-de-Yix" secondAttribute="top" constant="-15" id="9AL-sj-LUh"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Dtt-9l-TU4" secondAttribute="trailing" constant="16" id="Amk-Lf-WiW"/>
+                                        <constraint firstItem="Dtt-9l-TU4" firstAttribute="trailing" secondItem="3xx-de-Yix" secondAttribute="trailing" id="OzZ-Aj-ELK"/>
+                                        <constraint firstItem="Dtt-9l-TU4" firstAttribute="leading" secondItem="3xx-de-Yix" secondAttribute="leading" id="Smp-rn-2Ky"/>
+                                        <constraint firstItem="3xx-de-Yix" firstAttribute="trailing" secondItem="8QD-uK-Qun" secondAttribute="trailing" id="UUp-AN-n0W"/>
                                         <constraint firstAttribute="trailing" secondItem="8QD-uK-Qun" secondAttribute="trailing" constant="16" id="Vl0-Eh-aMe"/>
+                                        <constraint firstItem="Dtt-9l-TU4" firstAttribute="leading" secondItem="RcN-2M-SLi" secondAttribute="leading" constant="16" id="d7F-AL-2c8"/>
                                         <constraint firstItem="8QD-uK-Qun" firstAttribute="leading" secondItem="RcN-2M-SLi" secondAttribute="leading" constant="16" id="kvg-ab-dvN"/>
+                                        <constraint firstItem="Dtt-9l-TU4" firstAttribute="top" secondItem="3xx-de-Yix" secondAttribute="bottom" constant="15" id="mud-4P-uE1"/>
+                                        <constraint firstAttribute="bottom" secondItem="Dtt-9l-TU4" secondAttribute="bottom" constant="15" id="rhQ-PE-hsv"/>
+                                        <constraint firstItem="3xx-de-Yix" firstAttribute="leading" secondItem="8QD-uK-Qun" secondAttribute="leading" id="rik-Ts-S36"/>
+                                        <constraint firstItem="8QD-uK-Qun" firstAttribute="top" secondItem="RcN-2M-SLi" secondAttribute="top" constant="15" id="ygP-g2-nsh"/>
                                     </constraints>
                                 </view>
                                 <prototypes>
@@ -806,8 +845,14 @@
         </scene>
     </scenes>
     <designables>
+        <designable name="3xx-de-Yix">
+            <size key="intrinsicContentSize" width="141" height="31"/>
+        </designable>
         <designable name="8QD-uK-Qun">
             <size key="intrinsicContentSize" width="117" height="31"/>
+        </designable>
+        <designable name="Dtt-9l-TU4">
+            <size key="intrinsicContentSize" width="201" height="31"/>
         </designable>
         <designable name="lT2-7P-E6s">
             <size key="intrinsicContentSize" width="40" height="31"/>
