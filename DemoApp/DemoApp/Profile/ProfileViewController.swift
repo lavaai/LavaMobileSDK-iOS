@@ -231,7 +231,11 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func showBuiltinCustomInbox(_ sender: Any) {
-        let style = InboxStyle(titleTextColor: .blue, indicatorColor: .blue)
+        let style = InboxStyle(
+            titleTextColor: .blue,
+            indicatorColor: .red
+        )
+        
         Lava.shared.showInboxMessages(self, onViewMessage: { message in
             
             guard let raw = message.payload, let data = raw.data(using: .utf8) else { return }
