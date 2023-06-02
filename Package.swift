@@ -2,7 +2,7 @@
 import PackageDescription
 
 let version = "2.0.14"
-let checksum = "21b8de9bef8f6874d211e7d180e41adfffb3926d8942ad6c40993ef5aa1c24dd"
+let checksum = "ccb0bc173a8b6d1223076981d77b532f2b1838b529cf96ba869f341da10fdb4a"
 
 let package = Package(
     name: "LavaSDK",
