@@ -252,7 +252,10 @@ extension MessagesViewController: UITableViewDelegate, UITableViewDataSource {
             cell?.selectionStyle = UITableViewCell.SelectionStyle.default
         } else {
             let message = messages[indexPath.row]
-            Lava.shared.showNotification(messageId: messageId, payload: message.payload)
+//            Lava.shared.showNotification(messageId: messageId, payload: message.payload)
+            
+            // This is an alternative method for displaying notification overlay
+            Lava.shared.showInboxMessage(message: message)
             
             if let messageId = message.messageId {
                 let messageUpdate = MessageReadUpdate(
