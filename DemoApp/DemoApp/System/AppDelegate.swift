@@ -58,8 +58,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         //initialise LavaSDK.
         initLavaSdk()
         
-        checkLoggedIn()
-        
         registerForPushNotifications()
         
         if let secureMemberToken = AppSession.current.secureMemberToken {
@@ -94,22 +92,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func applicationWillTerminate(_ application: UIApplication) {
         Lava.shared.unsubscribeSecureMemberTokenExpiry(self)
-    }
-    
-    fileprivate func checkLoggedIn() {
-        guard let _ = Lava.shared.getLavaUser() else {
-            return
-        }
-        
-        guard let navVC = self.window?.rootViewController as? UINavigationController else {
-            return
-        }
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        let targetVC: UIViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
-        
-        navVC.pushViewController(targetVC, animated: false)
     }
 
 
