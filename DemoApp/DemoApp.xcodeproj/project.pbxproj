@@ -53,11 +53,15 @@
 		1B449C1B28F6710A0040E032 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B449C1A28F6710A0040E032 /* APIError.swift */; };
 		1B449C1F28F671A30040E032 /* JSONEncoder+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B449C1E28F671A30040E032 /* JSONEncoder+Date.swift */; };
 		1B449C2128F671B00040E032 /* JSONDecoder+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B449C2028F671B00040E032 /* JSONDecoder+Date.swift */; };
+		1B614FC62AB064F000C87E4F /* AppContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B614FC52AB064F000C87E4F /* AppContainerViewController.swift */; };
+		1B614FC82AB0671500C87E4F /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B614FC72AB0671500C87E4F /* Navigator.swift */; };
 		1B6344412AAEF72F004DB132 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6344402AAEF72F004DB132 /* SceneDelegate.swift */; };
 		1B6E8789295073AD00E25496 /* ConfigLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6E8788295073AD00E25496 /* ConfigLoader.swift */; };
 		1B6E878B2950772200E25496 /* Encodable+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6E878A2950772200E25496 /* Encodable+JSON.swift */; };
 		1B6E878D2950783900E25496 /* String+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6E878C2950783900E25496 /* String+JSON.swift */; };
 		1B6E878E29507B0200E25496 /* lava-services.json in Resources */ = {isa = PBXBuildFile; fileRef = 1B6E87872950711C00E25496 /* lava-services.json */; };
+		1B87AF2A2AB1698F0003077D /* SideBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B87AF292AB1698F0003077D /* SideBarViewController.swift */; };
+		1B87AF2C2AB16A620003077D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B87AF2B2AB16A620003077D /* Color.swift */; };
 		1BC4ADB928F594BE0054FA7C /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC4ADB828F594BE0054FA7C /* HTTPClient.swift */; };
 		1BF4510C299B70A7009C2C93 /* LavaSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BF4510A299B709C009C2C93 /* LavaSDK.xcframework */; };
 		1BF4510D299B70A7009C2C93 /* LavaSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1BF4510A299B709C009C2C93 /* LavaSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -146,11 +150,15 @@
 		1B449C1A28F6710A0040E032 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		1B449C1E28F671A30040E032 /* JSONEncoder+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONEncoder+Date.swift"; sourceTree = "<group>"; };
 		1B449C2028F671B00040E032 /* JSONDecoder+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Date.swift"; sourceTree = "<group>"; };
+		1B614FC52AB064F000C87E4F /* AppContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainerViewController.swift; sourceTree = "<group>"; };
+		1B614FC72AB0671500C87E4F /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		1B6344402AAEF72F004DB132 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1B6E87872950711C00E25496 /* lava-services.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lava-services.json"; sourceTree = "<group>"; };
 		1B6E8788295073AD00E25496 /* ConfigLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigLoader.swift; sourceTree = "<group>"; };
 		1B6E878A2950772200E25496 /* Encodable+JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+JSON.swift"; sourceTree = "<group>"; };
 		1B6E878C2950783900E25496 /* String+JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+JSON.swift"; sourceTree = "<group>"; };
+		1B87AF292AB1698F0003077D /* SideBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarViewController.swift; sourceTree = "<group>"; };
+		1B87AF2B2AB16A620003077D /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		1BC4ADB828F594BE0054FA7C /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		1BF4510A299B709C009C2C93 /* LavaSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = LavaSDK.xcframework; sourceTree = "<group>"; };
 		2303F8291C4F33EB001E6A67 /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -234,6 +242,9 @@
 			children = (
 				2303F82C1C4F33EB001E6A67 /* AppDelegate.swift */,
 				1B6344402AAEF72F004DB132 /* SceneDelegate.swift */,
+				1B614FC52AB064F000C87E4F /* AppContainerViewController.swift */,
+				1B614FC72AB0671500C87E4F /* Navigator.swift */,
+				1B87AF292AB1698F0003077D /* SideBarViewController.swift */,
 			);
 			path = System;
 			sourceTree = "<group>";
@@ -353,6 +364,7 @@
 				1B6E8788295073AD00E25496 /* ConfigLoader.swift */,
 				1B6E878A2950772200E25496 /* Encodable+JSON.swift */,
 				1B6E878C2950783900E25496 /* String+JSON.swift */,
+				1B87AF2B2AB16A620003077D /* Color.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -527,7 +539,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 1250;
-				ORGANIZATIONNAME = "CodeCraft Technologies";
+				ORGANIZATIONNAME = LAVA;
 				TargetAttributes = {
 					1B046C74295442DA009AE91E = {
 						DevelopmentTeam = L8A72CRMLV;
@@ -711,14 +723,18 @@
 				B3BFE47F1D509BBE00CBE060 /* Toast.swift in Sources */,
 				1B6E878D2950783900E25496 /* String+JSON.swift in Sources */,
 				3D08AAFF21141B240059523B /* MessagesViewController.swift in Sources */,
+				1B614FC82AB0671500C87E4F /* Navigator.swift in Sources */,
 				71F44A78211887EB00A9AFF5 /* Int64Extension.swift in Sources */,
 				8A9CD664276062D900A40EE2 /* DebugInfoViewController.swift in Sources */,
+				1B614FC62AB064F000C87E4F /* AppContainerViewController.swift in Sources */,
 				B3BFE4E71D50B8D500CBE060 /* ProfileViewController.swift in Sources */,
 				1B449C1B28F6710A0040E032 /* APIError.swift in Sources */,
 				B3BFE4B71D50B7CC00CBE060 /* GetContentRequestVideoPlayerViewController.swift in Sources */,
 				8A420B31274BF00000AC3AEE /* ProfileTextFieldCell.swift in Sources */,
 				8A8DF7692754BB0400DCA11F /* RoundedButton.swift in Sources */,
+				1B87AF2A2AB1698F0003077D /* SideBarViewController.swift in Sources */,
 				8A8DF7652754AF8900DCA11F /* EditableViewController.swift in Sources */,
+				1B87AF2C2AB16A620003077D /* Color.swift in Sources */,
 				B3F5E1451D478C4E002D533B /* ContentRequestViewController.swift in Sources */,
 				1B6344412AAEF72F004DB132 /* SceneDelegate.swift in Sources */,
 				8A9CD666276062DF00A40EE2 /* DebugInfoTableViewCell.swift in Sources */,

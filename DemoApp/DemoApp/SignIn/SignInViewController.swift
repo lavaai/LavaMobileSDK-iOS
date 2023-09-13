@@ -48,16 +48,7 @@ class SignInViewController: EditableViewController {
     }
     
     func goToHome() {
-        guard let navigationController = navigationController else { return }
-        
-        let storyboard = UIStoryboard(
-            name: "Main",
-            bundle: nil
-        )
-        
-        let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-        
-        navigationController.pushViewController(homeVC, animated: true)
+        Navigator.shared.goToToMain()
     }
     
     // MARK: - Action methods
@@ -118,6 +109,8 @@ class SignInViewController: EditableViewController {
     }
     
     func loginWithSdk(email: String?) {
+        view.showLoading(ToastPosition.center)
+        
         Lava.shared.setSecureMemberToken(nil)
         Lava.shared.setEmail(email: email) { [weak self] in
             let event = TrackEvent(

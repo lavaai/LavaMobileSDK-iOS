@@ -134,7 +134,7 @@ class HomeViewController: UIViewController {
             view.showLoading(.center)
             Lava.shared.setEmail(email: nil) { [weak self] in
                 self?.view.hideLoading()
-                self?.navigationController?.popToRootViewController(animated: true)
+                Navigator.shared.goToSignIn()
             } onError: {  [weak self] err in
                 self?.view.hideLoading()
                 self?.showAlert(title: "Error", message: err.localizedDescription)

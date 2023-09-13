@@ -11,7 +11,7 @@
         <!--Login-->
         <scene sceneID="ZgV-yb-7Za">
             <objects>
-                <viewController storyboardIdentifier="SignInViewControllerIdentifier" id="XP0-ct-XoM" customClass="SignInViewController" customModule="DemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignInViewController" id="XP0-ct-XoM" customClass="SignInViewController" customModule="DemoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="H7Y-9P-2hY"/>
                         <viewControllerLayoutGuide type="bottom" id="otH-0W-MYw"/>
