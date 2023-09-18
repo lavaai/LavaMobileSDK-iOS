@@ -31,9 +31,19 @@ class DebugInfoViewController: UIViewController {
         super.viewDidLoad()
         
         setupViews()
+        
+        setupMenu()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        debugInfo = Lava.shared.getDebugInfo()
     }
     
     func setupViews() {
+        navigationItem.title = "Debug Information"
+        
+        view.backgroundColor = .white
         tvDebugInfo.rowHeight = UITableView.automaticDimension
         tvDebugInfo.estimatedRowHeight = 80
     }

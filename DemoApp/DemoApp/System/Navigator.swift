@@ -12,7 +12,7 @@ import LavaSDK
 class Navigator {
     
     private let window: UIWindow
-    private let guessRootVC: UINavigationController
+    private let guestRootVC: UINavigationController
     private let userRootVC: UINavigationController
     
     static var shared: Navigator!
@@ -23,8 +23,8 @@ class Navigator {
     
     private init(_ window: UIWindow) {
         self.window = window
-        self.guessRootVC = UINavigationController()
-        guessRootVC.navigationBar.isHidden = true
+        self.guestRootVC = UINavigationController()
+        guestRootVC.navigationBar.isHidden = true
         self.userRootVC = UINavigationController()
         userRootVC.navigationBar.isHidden = false
     }
@@ -44,12 +44,35 @@ class Navigator {
     
     func goToSignIn() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
         let targetVC: UIViewController = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
-        guessRootVC.viewControllers.removeAll()
-        guessRootVC.pushViewController(targetVC, animated: false)
+        guestRootVC.viewControllers.removeAll()
+        guestRootVC.pushViewController(targetVC, animated: false)
         
-        window.rootViewController = guessRootVC
+        window.rootViewController = guestRootVC
+    }
+    
+    func openProfile(_ nc: UINavigationController) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let targetVC: UIViewController = storyboard.instantiateViewController(withIdentifier: "ProfileViewController")
+        nc.viewControllers = [
+            targetVC
+        ]
+    }
+    
+    func openMessages(_ nc: UINavigationController) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let targetVC: UIViewController = storyboard.instantiateViewController(withIdentifier: "MessagesViewController")
+        nc.viewControllers = [
+            targetVC
+        ]
+    }
+    
+    func openDebug(_ nc: UINavigationController) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let targetVC: UIViewController = storyboard.instantiateViewController(withIdentifier: "DebugInfoViewController")
+        nc.viewControllers = [
+            targetVC
+        ]
     }
 }
 

@@ -53,6 +53,8 @@ class ProfileViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(ProfileViewController.keyboardDidShow(notification:)), name: UIResponder.keyboardDidShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ProfileViewController.keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ProfileViewController.menuPressed), name: NSNotification.Name(rawValue: "menuPressed"), object: nil)
+        
+        setupMenu()
     }
     
     deinit{
@@ -89,8 +91,8 @@ class ProfileViewController: UIViewController {
                 action: #selector(onEditProfile)
             )
             
-            self.navigationController?.parent?.navigationItem.rightBarButtonItem = btnEdit
-            self.navigationController?.parent?.navigationItem.title = "Profile"
+            self.navigationItem.rightBarButtonItem = btnEdit
+            self.navigationItem.title = "Profile"
             
         case .edit :
             let btnUpdate = UIBarButtonItem(
@@ -99,8 +101,8 @@ class ProfileViewController: UIViewController {
                 target: self,
                 action: #selector(onUpdateProfile)
             )
-            self.navigationController?.parent?.navigationItem.rightBarButtonItem = btnUpdate
-            self.navigationController?.parent?.navigationItem.title = "Edit Profile"
+            self.navigationItem.rightBarButtonItem = btnUpdate
+            self.navigationItem.title = "Edit Profile"
         default:
             break
         }
