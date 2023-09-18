@@ -34,7 +34,6 @@
 		1B046C94295442DA009AE91E /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD7CAE321146A8E0049B2F1 /* DateExtension.swift */; };
 		1B046C95295442DA009AE91E /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BFE47D1D509BBE00CBE060 /* Utility.swift */; };
 		1B046C96295442DA009AE91E /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2BD5A327635686002D8B31 /* MenuTableViewCell.swift */; };
-		1B046C97295442DA009AE91E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BFE4E41D50B8D500CBE060 /* HomeViewController.swift */; };
 		1B046C98295442DA009AE91E /* ConfigLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6E8788295073AD00E25496 /* ConfigLoader.swift */; };
 		1B046C99295442DA009AE91E /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D08AAF621141B240059523B /* MessageTableViewCell.swift */; };
 		1B046C9A295442DA009AE91E /* JSONDecoder+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B449C2028F671B00040E032 /* JSONDecoder+Date.swift */; };
@@ -95,7 +94,6 @@
 		B3BFE4AA1D509F2500CBE060 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BFE4A91D509F2500CBE060 /* AppSettings.swift */; };
 		B3BFE4B71D50B7CC00CBE060 /* GetContentRequestVideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BFE4B61D50B7CC00CBE060 /* GetContentRequestVideoPlayerViewController.swift */; };
 		B3BFE4E21D50B84900CBE060 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BFE4DF1D50B84900CBE060 /* SignInViewController.swift */; };
-		B3BFE4E61D50B8D500CBE060 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BFE4E41D50B8D500CBE060 /* HomeViewController.swift */; };
 		B3BFE4E71D50B8D500CBE060 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BFE4E51D50B8D500CBE060 /* ProfileViewController.swift */; };
 		B3F5E1451D478C4E002D533B /* ContentRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F5E1441D478C4E002D533B /* ContentRequestViewController.swift */; };
 /* End PBXBuildFile section */
@@ -200,7 +198,6 @@
 		B3BFE4A91D509F2500CBE060 /* AppSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		B3BFE4B61D50B7CC00CBE060 /* GetContentRequestVideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetContentRequestVideoPlayerViewController.swift; sourceTree = "<group>"; };
 		B3BFE4DF1D50B84900CBE060 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
-		B3BFE4E41D50B8D500CBE060 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B3BFE4E51D50B8D500CBE060 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B3F5E1441D478C4E002D533B /* ContentRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentRequestViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -242,6 +239,7 @@
 		1B63443F2AAEF71F004DB132 /* System */ = {
 			isa = PBXGroup;
 			children = (
+				8A2BD5A327635686002D8B31 /* MenuTableViewCell.swift */,
 				2303F82C1C4F33EB001E6A67 /* AppDelegate.swift */,
 				1B6344402AAEF72F004DB132 /* SceneDelegate.swift */,
 				1B614FC52AB064F000C87E4F /* AppContainerViewController.swift */,
@@ -302,7 +300,6 @@
 				8A420B2F274BEF8A00AC3AEE /* Profile */,
 				3D08AAF421141B240059523B /* Messages */,
 				B3BFE4DC1D50B84900CBE060 /* SignIn */,
-				B3BFE4E31D50B8D500CBE060 /* Home */,
 				B3F5E1431D478C4E002D533B /* ContentRequest */,
 				8AE6B2262750D17200C396E0 /* Resources */,
 				715D1DE11E56D4D100A9FF32 /* DemoApp.entitlements */,
@@ -437,15 +434,6 @@
 				B3BFE4DF1D50B84900CBE060 /* SignInViewController.swift */,
 			);
 			path = SignIn;
-			sourceTree = "<group>";
-		};
-		B3BFE4E31D50B8D500CBE060 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				B3BFE4E41D50B8D500CBE060 /* HomeViewController.swift */,
-				8A2BD5A327635686002D8B31 /* MenuTableViewCell.swift */,
-			);
-			path = Home;
 			sourceTree = "<group>";
 		};
 		B3F5E1431D478C4E002D533B /* ContentRequest */ = {
@@ -706,7 +694,6 @@
 				1B046C94295442DA009AE91E /* DateExtension.swift in Sources */,
 				1B046C95295442DA009AE91E /* Utility.swift in Sources */,
 				1B046C96295442DA009AE91E /* MenuTableViewCell.swift in Sources */,
-				1B046C97295442DA009AE91E /* HomeViewController.swift in Sources */,
 				1B046C98295442DA009AE91E /* ConfigLoader.swift in Sources */,
 				1B046C99295442DA009AE91E /* MessageTableViewCell.swift in Sources */,
 				1B046C9A295442DA009AE91E /* JSONDecoder+Date.swift in Sources */,
@@ -753,7 +740,6 @@
 				3DD7CAE421146A8E0049B2F1 /* DateExtension.swift in Sources */,
 				B3BFE4801D509BBE00CBE060 /* Utility.swift in Sources */,
 				8A2BD5A427635686002D8B31 /* MenuTableViewCell.swift in Sources */,
-				B3BFE4E61D50B8D500CBE060 /* HomeViewController.swift in Sources */,
 				1B6E8789295073AD00E25496 /* ConfigLoader.swift in Sources */,
 				3D08AAFD21141B240059523B /* MessageTableViewCell.swift in Sources */,
 				1B449C2128F671B00040E032 /* JSONDecoder+Date.swift in Sources */,

@@ -12,6 +12,7 @@ enum MenuItem: String {
     case profile = "Profile"
     case messages = "Messages"
     case debugInfo = "Debug Info"
+    case membershipCard = "Membership Card"
     case logOut = "Log Out"
 }
 
@@ -25,6 +26,7 @@ class SideBarViewController: UIViewController {
     var menuItems: [MenuItem] = [
         .profile,
         .messages,
+        .membershipCard,
         .debugInfo,
         .logOut
     ]
@@ -110,7 +112,7 @@ extension SideBarViewController: UITableViewDataSource, UITableViewDelegate {
             return
         }
         
-        if menuItem == .logOut {
+        if menuItem == .logOut || menuItem == .membershipCard {
             delegate?.onSelectMenuItem(menuItem)
         } else if menuItem != selectedMenuItem {
             selectedMenuItem = menuItem

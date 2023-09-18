@@ -39,14 +39,6 @@ class SignInViewController: EditableViewController {
         return true
     }
     
-    func showProfileViewController() {
-        let profilePageViewCntrl = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-
-        if let _ = navigationController {
-            self.navigationController!.pushViewController(profilePageViewCntrl, animated: false)
-        }
-    }
-    
     func goToHome() {
         Navigator.shared.goToToMain()
     }
