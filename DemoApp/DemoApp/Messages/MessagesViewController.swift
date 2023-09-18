@@ -33,6 +33,8 @@ class MessagesViewController: UIViewController {
         setupViews()
         
         fetchRemoteMessages()
+        
+        setupMenu()
     }
     
     override func viewWillAppear(_ animated: Bool) {

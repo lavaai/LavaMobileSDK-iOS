@@ -3,7 +3,7 @@
 //  DemoApp
 //
 //  Created by Thuong Nguyen on 19/12/2022.
-//  Copyright © 2022 CodeCraft Technologies. All rights reserved.
+//  Copyright © 2022 LAVA. All rights reserved.
 //
 
 import Foundation

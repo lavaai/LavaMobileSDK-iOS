@@ -3,11 +3,10 @@
 //  DemoApp
 //
 //  Created by Thuong Nguyen on 11/09/2023.
-//  Copyright © 2023 CodeCraft Technologies. All rights reserved.
+//  Copyright © 2023 LAVA. All rights reserved.
 //
 
 import UIKit
-import LavaSDK
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -20,23 +19,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
         
-        checkLoggedIn()
-    }
-    
-    fileprivate func checkLoggedIn() {
-        guard let _ = Lava.shared.getLavaUser() else {
-            return
+        if let window = window {
+            Navigator.initialize(window)
+            Navigator.shared.goToStartUpScreen()
+        } else {
+            print("window is nil")
         }
         
-        guard let navVC = self.window?.rootViewController as? UINavigationController else {
-            return
-        }
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        let targetVC: UIViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
-        
-        navVC.pushViewController(targetVC, animated: false)
     }
     
 
