@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -559,6 +560,52 @@
             </objects>
             <point key="canvasLocation" x="3432.8000000000002" y="-299.10044977511245"/>
         </scene>
+        <!--Minimized Video Player View Controller-->
+        <scene sceneID="RUf-it-h3e">
+            <objects>
+                <viewController storyboardIdentifier="MinimizedVideoPlayerViewController" id="2KP-nt-7WR" customClass="MinimizedVideoPlayerViewController" customModule="DemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ec7-2h-441"/>
+                        <viewControllerLayoutGuide type="bottom" id="vLf-xj-944"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sdT-PJ-yDe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="efx-o6-fBd">
+                                <rect key="frame" x="0.0" y="2" width="178" height="95.5"/>
+                                <color key="backgroundColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="efx-o6-fBd" secondAttribute="height" multiplier="16:9" id="Vnx-gY-Yf7"/>
+                                </constraints>
+                                <imageReference key="image" image="play.circle.fill" catalog="system" symbolScale="small"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading video ..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EhE-AY-uHz">
+                                <rect key="frame" x="186" y="39.5" width="169" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="efx-o6-fBd" firstAttribute="height" secondItem="sdT-PJ-yDe" secondAttribute="height" id="0eB-5K-6NJ"/>
+                            <constraint firstItem="EhE-AY-uHz" firstAttribute="centerY" secondItem="sdT-PJ-yDe" secondAttribute="centerY" id="BFW-ef-NNY"/>
+                            <constraint firstItem="efx-o6-fBd" firstAttribute="centerY" secondItem="sdT-PJ-yDe" secondAttribute="centerY" id="FHJ-oR-acK"/>
+                            <constraint firstAttribute="trailing" secondItem="EhE-AY-uHz" secondAttribute="trailing" constant="20" symbolic="YES" id="gUA-Wb-czu"/>
+                            <constraint firstItem="EhE-AY-uHz" firstAttribute="leading" secondItem="efx-o6-fBd" secondAttribute="trailing" constant="8" symbolic="YES" id="lIO-7P-XRp"/>
+                            <constraint firstItem="efx-o6-fBd" firstAttribute="leading" secondItem="sdT-PJ-yDe" secondAttribute="leading" id="z6F-DM-w0T"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="100"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8yM-VG-YzB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4205.6000000000004" y="-299.55022488755623"/>
+        </scene>
         <!--Debug Info View Controller-->
         <scene sceneID="P4W-Oo-uiM">
             <objects>
@@ -649,6 +696,7 @@
     </designables>
     <resources>
         <image name="backGroundImage" width="375" height="667"/>
+        <image name="play.circle.fill" catalog="system" width="128" height="123"/>
         <image name="shadow" width="375" height="7"/>
         <image name="splash_background" width="375" height="469"/>
         <image name="splash_logo" width="148" height="71"/>

@@ -74,6 +74,13 @@ class Navigator {
             targetVC
         ]
     }
+    
+    static func getVideoPlayerVC() -> UIViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "MinimizedVideoPlayerViewController")
+        vc.modalPresentationStyle = .overCurrentContext
+        return vc
+    }
 }
 
 
