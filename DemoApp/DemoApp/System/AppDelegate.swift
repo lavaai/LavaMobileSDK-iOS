@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func initLavaSdk() {
         
-        guard let lavaConfig = ConfigLoader.loadConfig() else {
+        guard let lavaConfig = ConfigLoader.loadLavaConfig() else {
             fatalError("Error loading lava-services.json")
         }
         
@@ -27,8 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         Lava.initialize(
             appKey: lavaConfig.appKey,
             clientId: lavaConfig.clientId,
-            logLevel: .verbose,
-            serverLogLevel: .verbose
+            logLevel: .error,
+            serverLogLevel: .error
         )
         
         let customStyle = Style()

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="EPQ-Ze-xuJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="EPQ-Ze-xuJ">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,14 +17,14 @@
                         <viewControllerLayoutGuide type="bottom" id="otH-0W-MYw"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zLF-j7-re9">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_background" translatesAutoresizingMaskIntoConstraints="NO" id="0cD-u9-NEh">
-                                <rect key="frame" x="0.0" y="154" width="320" height="469"/>
+                                <rect key="frame" x="0.0" y="134" width="320" height="469"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oji-pZ-QJ4" userLabel="LoginContainer">
-                                <rect key="frame" x="0.0" y="210.5" width="320" height="202"/>
+                                <rect key="frame" x="0.0" y="173.5" width="320" height="256"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ZJ-iv-i2U" userLabel="Email" customClass="RoundedView" customModule="DemoApp" customModuleProvider="target">
                                         <rect key="frame" x="16" y="16" width="288" height="50"/>
@@ -95,18 +95,38 @@
                                             <action selector="signInAction:" destination="XP0-ct-XoM" eventType="touchUpInside" id="fNJ-de-soT"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NLf-6z-3NC" userLabel="loginTMButton" customClass="RoundedButton" customModule="DemoApp" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="196" width="288" height="50"/>
+                                        <color key="backgroundColor" red="0.0" green="0.33898761402378014" blue="0.76031037414965996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="I6e-gg-DUc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                        <state key="normal" title="Login with TicketMaster">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="signInWithTicketMaster:" destination="XP0-ct-XoM" eventType="touchUpInside" id="my8-AP-sT8"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="NLf-6z-3NC" firstAttribute="trailing" secondItem="lT2-7P-E6s" secondAttribute="trailing" id="FjT-hV-WXf"/>
+                                    <constraint firstItem="NLf-6z-3NC" firstAttribute="leading" secondItem="lT2-7P-E6s" secondAttribute="leading" id="JoW-IS-h9Q"/>
                                     <constraint firstItem="d5g-jw-Qyr" firstAttribute="trailing" secondItem="5ZJ-iv-i2U" secondAttribute="trailing" id="Kco-1V-dfI"/>
                                     <constraint firstItem="5ZJ-iv-i2U" firstAttribute="leading" secondItem="Oji-pZ-QJ4" secondAttribute="leading" constant="16" id="SiW-hT-bt8"/>
                                     <constraint firstAttribute="trailing" secondItem="5ZJ-iv-i2U" secondAttribute="trailing" constant="16" id="VKU-IQ-Sod"/>
                                     <constraint firstItem="5ZJ-iv-i2U" firstAttribute="top" secondItem="Oji-pZ-QJ4" secondAttribute="top" constant="16" id="VTp-7r-jI1"/>
+                                    <constraint firstItem="NLf-6z-3NC" firstAttribute="top" secondItem="lT2-7P-E6s" secondAttribute="bottom" constant="10" id="evf-12-8pN"/>
                                     <constraint firstItem="lT2-7P-E6s" firstAttribute="leading" secondItem="5ZJ-iv-i2U" secondAttribute="leading" id="fBa-ie-GmA"/>
                                     <constraint firstItem="lT2-7P-E6s" firstAttribute="top" secondItem="d5g-jw-Qyr" secondAttribute="bottom" constant="10" id="lUZ-1u-Boi"/>
                                     <constraint firstItem="d5g-jw-Qyr" firstAttribute="leading" secondItem="5ZJ-iv-i2U" secondAttribute="leading" id="qML-Kf-WB3"/>
-                                    <constraint firstAttribute="bottom" secondItem="lT2-7P-E6s" secondAttribute="bottom" constant="16" id="rPc-qk-gZV"/>
                                     <constraint firstItem="d5g-jw-Qyr" firstAttribute="top" secondItem="5ZJ-iv-i2U" secondAttribute="bottom" constant="10" id="w2Z-Vl-jDd"/>
                                     <constraint firstItem="lT2-7P-E6s" firstAttribute="trailing" secondItem="5ZJ-iv-i2U" secondAttribute="trailing" id="xdH-tL-q09"/>
+                                    <constraint firstAttribute="bottom" secondItem="NLf-6z-3NC" secondAttribute="bottom" constant="10" id="xqg-ML-Kg6"/>
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_logo" translatesAutoresizingMaskIntoConstraints="NO" id="arS-Zd-qfl">
@@ -136,6 +156,7 @@
                     <navigationItem key="navigationItem" title="Login" id="vSk-Rl-d65"/>
                     <connections>
                         <outlet property="btnSignIn" destination="lT2-7P-E6s" id="I3U-i2-KCj"/>
+                        <outlet property="btnSignInTM" destination="NLf-6z-3NC" id="rZz-PZ-vF0"/>
                         <outlet property="tfEmail" destination="nTE-VO-qTx" id="J1n-FL-CRQ"/>
                         <outlet property="tfPassword" destination="CLW-4x-lNf" id="LsI-IT-6h6"/>
                         <outlet property="vLoginForm" destination="Oji-pZ-QJ4" id="2BV-GR-SaF"/>
@@ -166,7 +187,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="1027"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" rowHeight="44" sectionHeaderHeight="44" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="m0y-Pl-UHm">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="RcN-2M-SLi">
@@ -415,7 +436,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="667"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" shadowImage="shadow" id="ZUm-FO-TBq">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="0.18823529411764706" green="0.13333333333333333" blue="0.41176470588235292" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -556,7 +577,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6Zq-xC-jjF">
-                                <rect key="frame" x="8" y="16" width="359" height="29"/>
+                                <rect key="frame" x="8" y="36" width="359" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="MFv-yO-PM4"/>
                                 </constraints>
@@ -571,7 +592,7 @@
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GES-5h-1xy">
-                                <rect key="frame" x="0.0" y="60" width="375" height="607"/>
+                                <rect key="frame" x="0.0" y="80" width="375" height="587"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="1Ck-cA-seV" id="fKD-28-Bmp"/>
@@ -612,7 +633,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bB4-db-MoA">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SubscriptionCell" rowHeight="50" id="22B-12-rVw" customClass="SubscriptionTableViewCell" customModule="DemoApp" customModuleProvider="target">
@@ -675,7 +696,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="o73-0t-c47">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DebugInfoCell" rowHeight="80" id="ynd-XN-tnY" customClass="DebugInfoTableViewCell" customModule="DemoApp" customModuleProvider="target">
@@ -745,6 +766,9 @@
         </designable>
         <designable name="Dtt-9l-TU4">
             <size key="intrinsicContentSize" width="201" height="31"/>
+        </designable>
+        <designable name="NLf-6z-3NC">
+            <size key="intrinsicContentSize" width="171" height="31"/>
         </designable>
         <designable name="lT2-7P-E6s">
             <size key="intrinsicContentSize" width="40" height="31"/>

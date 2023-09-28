@@ -14,11 +14,24 @@ struct LavaConfig: Codable {
     var enableSecureMemberToken: Bool = false
 }
 
+struct TMConfig: Codable {
+    var consumerKey: String
+    var consumerSecret: String
+}
+
 class ConfigLoader {
     
-    static func loadConfig() -> LavaConfig? {
-        guard let path = Bundle.main.path(forResource: "lava-services", ofType: "json") else {
-            fatalError("Cannot load lava-services.json")
+    static func loadLavaConfig() -> LavaConfig? {
+        return loadConfig("lava-services")
+    }
+    
+    static func loadTMConfig() -> TMConfig? {
+        return loadConfig("tm-services")
+    }
+    
+    static func loadConfig<T: Decodable>(_ configFileName: String) -> T? {
+        guard let path = Bundle.main.path(forResource: configFileName, ofType: "json") else {
+            fatalError("Cannot load \(configFileName).json")
         }
         
         do {
@@ -31,7 +44,7 @@ class ConfigLoader {
             
             let data = try Data(contentsOf: url, options: .mappedIfSafe)
             
-            return try JSONDecoder().decode(LavaConfig.self, from: data)
+            return try JSONDecoder().decode(T.self, from: data)
         } catch {
             fatalError("Cannot parse config: \(error)")
         }
