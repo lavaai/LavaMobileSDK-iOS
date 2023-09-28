@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -55,6 +55,12 @@
 		1B614FC62AB064F000C87E4F /* AppContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B614FC52AB064F000C87E4F /* AppContainerViewController.swift */; };
 		1B614FC82AB0671500C87E4F /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B614FC72AB0671500C87E4F /* Navigator.swift */; };
 		1B6344412AAEF72F004DB132 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6344402AAEF72F004DB132 /* SceneDelegate.swift */; };
+		1B65C7872AC5282200DCE124 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6344402AAEF72F004DB132 /* SceneDelegate.swift */; };
+		1B65C7882AC5282200DCE124 /* AppContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B614FC52AB064F000C87E4F /* AppContainerViewController.swift */; };
+		1B65C7892AC5282200DCE124 /* SideBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B87AF292AB1698F0003077D /* SideBarViewController.swift */; };
+		1B65C78A2AC5282200DCE124 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B614FC72AB0671500C87E4F /* Navigator.swift */; };
+		1B65C78B2AC5282200DCE124 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B87AF2B2AB16A620003077D /* Color.swift */; };
+		1B65C78C2AC5282200DCE124 /* UIViewController+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B87AF2D2AB84D3C0003077D /* UIViewController+Menu.swift */; };
 		1B6E8789295073AD00E25496 /* ConfigLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6E8788295073AD00E25496 /* ConfigLoader.swift */; };
 		1B6E878B2950772200E25496 /* Encodable+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6E878A2950772200E25496 /* Encodable+JSON.swift */; };
 		1B6E878D2950783900E25496 /* String+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6E878C2950783900E25496 /* String+JSON.swift */; };
@@ -667,6 +673,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B65C7872AC5282200DCE124 /* SceneDelegate.swift in Sources */,
+				1B65C7882AC5282200DCE124 /* AppContainerViewController.swift in Sources */,
+				1B65C7892AC5282200DCE124 /* SideBarViewController.swift in Sources */,
+				1B65C78A2AC5282200DCE124 /* Navigator.swift in Sources */,
+				1B65C78B2AC5282200DCE124 /* Color.swift in Sources */,
+				1B65C78C2AC5282200DCE124 /* UIViewController+Menu.swift in Sources */,
 				1B046C7C295442DA009AE91E /* Constants.swift in Sources */,
 				1B046C7D295442DA009AE91E /* RoundedView.swift in Sources */,
 				1B046C7E295442DA009AE91E /* HTTPClient.swift in Sources */,
