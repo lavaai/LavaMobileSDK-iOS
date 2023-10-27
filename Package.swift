@@ -1,8 +1,8 @@
 // swift-tools-version:5.3
 import PackageDescription
 
-let version = "2.0.16"
-let checksum = "f36b338ce99817145abdf304636c53f96ff691e48554e1fe13cbb36089cf1c58"
+let version = "2.0.15"
+let checksum = "dba5c66e67050ad104a2d4cb569258f7d3110bd6bef819d29b501f2d31f7dc04"
 
 let package = Package(
     name: "LavaSDK",
