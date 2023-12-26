@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 import LavaSDK
 
 class Navigator {
@@ -73,6 +74,19 @@ class Navigator {
         nc.viewControllers = [
             targetVC
         ]
+    }
+    
+    func openConsentPreferences(_ vc: UIViewController) {
+        let dismissAction = {
+            guard let targetVC = vc.presentedViewController else {
+                return
+            }
+            targetVC.dismiss(animated: true)
+        }
+        let targetVC = UIHostingController(
+            rootView: ConsentView(dismiss: dismissAction)
+        )
+        vc.present(targetVC, animated: true)
     }
 }
 

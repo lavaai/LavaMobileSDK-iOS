@@ -68,11 +68,13 @@
 		1B87AF2A2AB1698F0003077D /* SideBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B87AF292AB1698F0003077D /* SideBarViewController.swift */; };
 		1B87AF2C2AB16A620003077D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B87AF2B2AB16A620003077D /* Color.swift */; };
 		1B87AF2E2AB84D3C0003077D /* UIViewController+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B87AF2D2AB84D3C0003077D /* UIViewController+Menu.swift */; };
+		1BB7CBCF2B3A9290009247D7 /* ConsentUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7CBCE2B3A9290009247D7 /* ConsentUtils.swift */; };
+		1BB7CBD12B3A9377009247D7 /* ConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7CBD02B3A9377009247D7 /* ConsentView.swift */; };
+		1BB7CBD42B3AF39D009247D7 /* LavaSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BB7CBD22B3AF393009247D7 /* LavaSDK.xcframework */; };
+		1BB7CBD52B3AF39D009247D7 /* LavaSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1BB7CBD22B3AF393009247D7 /* LavaSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1BB7CBD62B3AF3E6009247D7 /* LavaSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BB7CBD22B3AF393009247D7 /* LavaSDK.xcframework */; };
+		1BB7CBD72B3AF3E6009247D7 /* LavaSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1BB7CBD22B3AF393009247D7 /* LavaSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1BC4ADB928F594BE0054FA7C /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC4ADB828F594BE0054FA7C /* HTTPClient.swift */; };
-		1BF4510C299B70A7009C2C93 /* LavaSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BF4510A299B709C009C2C93 /* LavaSDK.xcframework */; };
-		1BF4510D299B70A7009C2C93 /* LavaSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1BF4510A299B709C009C2C93 /* LavaSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		1BF4510E299B70B1009C2C93 /* LavaSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BF4510A299B709C009C2C93 /* LavaSDK.xcframework */; };
-		1BF4510F299B70B1009C2C93 /* LavaSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1BF4510A299B709C009C2C93 /* LavaSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2303F82D1C4F33EB001E6A67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2303F82C1C4F33EB001E6A67 /* AppDelegate.swift */; };
 		2303F8341C4F33EB001E6A67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2303F8331C4F33EB001E6A67 /* Assets.xcassets */; };
 		2303F8371C4F33EB001E6A67 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2303F8351C4F33EB001E6A67 /* Launch Screen.storyboard */; };
@@ -128,7 +130,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1BF4510D299B70A7009C2C93 /* LavaSDK.xcframework in Embed Frameworks */,
+				1BB7CBD72B3AF3E6009247D7 /* LavaSDK.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,7 +141,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1BF4510F299B70B1009C2C93 /* LavaSDK.xcframework in Embed Frameworks */,
+				1BB7CBD52B3AF39D009247D7 /* LavaSDK.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -165,8 +167,10 @@
 		1B87AF292AB1698F0003077D /* SideBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarViewController.swift; sourceTree = "<group>"; };
 		1B87AF2B2AB16A620003077D /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		1B87AF2D2AB84D3C0003077D /* UIViewController+Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Menu.swift"; sourceTree = "<group>"; };
+		1BB7CBCE2B3A9290009247D7 /* ConsentUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentUtils.swift; sourceTree = "<group>"; };
+		1BB7CBD02B3A9377009247D7 /* ConsentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentView.swift; sourceTree = "<group>"; };
+		1BB7CBD22B3AF393009247D7 /* LavaSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = LavaSDK.xcframework; path = DemoApp/LavaSDK.xcframework; sourceTree = "<group>"; };
 		1BC4ADB828F594BE0054FA7C /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
-		1BF4510A299B709C009C2C93 /* LavaSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = LavaSDK.xcframework; sourceTree = "<group>"; };
 		2303F8291C4F33EB001E6A67 /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2303F82C1C4F33EB001E6A67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2303F8331C4F33EB001E6A67 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -213,7 +217,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1BF4510C299B70A7009C2C93 /* LavaSDK.xcframework in Frameworks */,
+				1BB7CBD62B3AF3E6009247D7 /* LavaSDK.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,7 +225,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1BF4510E299B70B1009C2C93 /* LavaSDK.xcframework in Frameworks */,
+				1BB7CBD42B3AF39D009247D7 /* LavaSDK.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +266,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		1BB7CBCA2B3A9280009247D7 /* Consent */ = {
+			isa = PBXGroup;
+			children = (
+				1BB7CBD02B3A9377009247D7 /* ConsentView.swift */,
+			);
+			path = Consent;
+			sourceTree = "<group>";
+		};
 		1BC4ADB528F5766A0054FA7C /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,6 +287,7 @@
 		2303F8201C4F33EB001E6A67 = {
 			isa = PBXGroup;
 			children = (
+				1BB7CBD22B3AF393009247D7 /* LavaSDK.xcframework */,
 				9D609ED31CF5815200A590EB /* README.md */,
 				2303F82B1C4F33EB001E6A67 /* DemoApp */,
 				B3BFE4771D509BBE00CBE060 /* Common */,
@@ -299,6 +312,7 @@
 		2303F82B1C4F33EB001E6A67 /* DemoApp */ = {
 			isa = PBXGroup;
 			children = (
+				1BB7CBCA2B3A9280009247D7 /* Consent */,
 				1B63443F2AAEF71F004DB132 /* System */,
 				1BC4ADB528F5766A0054FA7C /* Network */,
 				8A9CD660276062CC00A40EE2 /* Debug */,
@@ -313,7 +327,6 @@
 				1B046CB02954A2E8009AE91E /* SecureInfo.plist */,
 				2303F8331C4F33EB001E6A67 /* Assets.xcassets */,
 				1B6E87872950711C00E25496 /* lava-services.json */,
-				1BF4510A299B709C009C2C93 /* LavaSDK.xcframework */,
 			);
 			path = DemoApp;
 			sourceTree = "<group>";
@@ -371,6 +384,7 @@
 				1B6E878C2950783900E25496 /* String+JSON.swift */,
 				1B87AF2B2AB16A620003077D /* Color.swift */,
 				1B87AF2D2AB84D3C0003077D /* UIViewController+Menu.swift */,
+				1BB7CBCE2B3A9290009247D7 /* ConsentUtils.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -538,9 +552,15 @@
 				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = LAVA;
 				TargetAttributes = {
+					1B046C74295442DA009AE91E = {
+						DevelopmentTeam = L8A72CRMLV;
+						ProvisioningStyle = Manual;
+					};
 					2303F8281C4F33EB001E6A67 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = L8A72CRMLV;
 						LastSwiftMigration = 0820;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -737,6 +757,7 @@
 				1B6E878B2950772200E25496 /* Encodable+JSON.swift in Sources */,
 				B3BFE4E21D50B84900CBE060 /* SignInViewController.swift in Sources */,
 				2303F82D1C4F33EB001E6A67 /* AppDelegate.swift in Sources */,
+				1BB7CBCF2B3A9290009247D7 /* ConsentUtils.swift in Sources */,
 				71F0978D1E4842E000545B30 /* AppDelegate+App.swift in Sources */,
 				B3BFE4AA1D509F2500CBE060 /* AppSettings.swift in Sources */,
 				8A64D1C1276373EC009726F0 /* UIViewController+Alert.swift in Sources */,
@@ -747,6 +768,7 @@
 				B3BFE4801D509BBE00CBE060 /* Utility.swift in Sources */,
 				8A2BD5A427635686002D8B31 /* MenuTableViewCell.swift in Sources */,
 				1B6E8789295073AD00E25496 /* ConfigLoader.swift in Sources */,
+				1BB7CBD12B3A9377009247D7 /* ConsentView.swift in Sources */,
 				3D08AAFD21141B240059523B /* MessageTableViewCell.swift in Sources */,
 				1B449C2128F671B00040E032 /* JSONDecoder+Date.swift in Sources */,
 				1B36E0DF28F695730046AC4C /* RESTClient.swift in Sources */,
@@ -1038,7 +1060,7 @@
 				INFOPLIST_FILE = DemoApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "SDK Demo App";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1084,7 +1106,7 @@
 				INFOPLIST_FILE = DemoApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "SDK Demo App";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

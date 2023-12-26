@@ -52,6 +52,11 @@ class SignInViewController: EditableViewController {
         login(email: tfEmail.text, password: tfPassword.text)
     }
     
+    
+    @IBAction func showConsentPreferences(_ sender: Any) {
+        Navigator.shared.openConsentPreferences(self)
+    }
+    
     func login(email: String?, password: String?) {
         if AppSession.current.lavaConfig.enableSecureMemberToken {
             loginWithAppBackend(email: email, password: password)

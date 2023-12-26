@@ -259,6 +259,9 @@ class ProfileViewController: UIViewController {
         }, style: style)
     }
     
+    @IBAction func showConsentPreferences(_ sender: Any) {
+        Navigator.shared.openConsentPreferences(self)
+    }
     
     
     func buildUserInfoDict(userProfile: UserProfile?) -> [ProfileItem: String?] {
