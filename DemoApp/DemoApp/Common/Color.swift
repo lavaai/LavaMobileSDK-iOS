@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SwiftUI
 
-class Color {
+class AppColor {
     static let primary: UIColor = fromHex(hex: "#581AA6")
     static let secondary: UIColor = fromHex(hex: "#D72ADB")
     static let white: UIColor = .white
@@ -38,5 +39,11 @@ class Color {
             blue: Double(b) / 255,
             alpha: Double(a) / 255
         )
+    }
+}
+
+extension UIColor {
+    func toColor() -> Color {
+        return Color(self)
     }
 }

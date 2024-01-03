@@ -11,6 +11,7 @@ import UIKit
 enum MenuItem: String {
     case profile = "Profile"
     case messages = "Messages"
+    case analytics = "Analytics"
     case debugInfo = "Debug Info"
     case membershipCard = "Membership Card"
     case logOut = "Log Out"
@@ -26,6 +27,7 @@ class SideBarViewController: UIViewController {
     var menuItems: [MenuItem] = [
         .profile,
         .messages,
+        .analytics,
         .membershipCard,
         .debugInfo,
         .logOut
@@ -95,7 +97,7 @@ extension SideBarViewController: UITableViewDataSource, UITableViewDelegate {
         
         if menuItems[indexPath.row] == selectedMenuItem {
             cell.textLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
-            cell.textLabel?.textColor = Color.secondary
+            cell.textLabel?.textColor = AppColor.secondary
         }
         
         return cell

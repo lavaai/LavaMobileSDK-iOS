@@ -70,10 +70,14 @@
 		1B87AF2E2AB84D3C0003077D /* UIViewController+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B87AF2D2AB84D3C0003077D /* UIViewController+Menu.swift */; };
 		1BB7CBCF2B3A9290009247D7 /* ConsentUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7CBCE2B3A9290009247D7 /* ConsentUtils.swift */; };
 		1BB7CBD12B3A9377009247D7 /* ConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7CBD02B3A9377009247D7 /* ConsentView.swift */; };
-		1BB7CBD42B3AF39D009247D7 /* LavaSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BB7CBD22B3AF393009247D7 /* LavaSDK.xcframework */; };
-		1BB7CBD52B3AF39D009247D7 /* LavaSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1BB7CBD22B3AF393009247D7 /* LavaSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		1BB7CBD62B3AF3E6009247D7 /* LavaSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BB7CBD22B3AF393009247D7 /* LavaSDK.xcframework */; };
-		1BB7CBD72B3AF3E6009247D7 /* LavaSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1BB7CBD22B3AF393009247D7 /* LavaSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1BB7CBF32B442721009247D7 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7CBF22B442721009247D7 /* AnalyticsView.swift */; };
+		1BB7CBF52B4500B8009247D7 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7CBF42B4500B8009247D7 /* ButtonStyle.swift */; };
+		1BB7CBF82B450828009247D7 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 1BB7CBF72B450828009247D7 /* AlertToast */; };
+		1BB7CBFA2B450840009247D7 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 1BB7CBF92B450840009247D7 /* AlertToast */; };
+		1BB7CBFD2B4543D3009247D7 /* LavaSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BB7CBFB2B4543C9009247D7 /* LavaSDK.xcframework */; };
+		1BB7CBFE2B4543D3009247D7 /* LavaSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1BB7CBFB2B4543C9009247D7 /* LavaSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1BB7CBFF2B4543E1009247D7 /* LavaSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BB7CBFB2B4543C9009247D7 /* LavaSDK.xcframework */; };
+		1BB7CC002B4543E1009247D7 /* LavaSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1BB7CBFB2B4543C9009247D7 /* LavaSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1BC4ADB928F594BE0054FA7C /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC4ADB828F594BE0054FA7C /* HTTPClient.swift */; };
 		2303F82D1C4F33EB001E6A67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2303F82C1C4F33EB001E6A67 /* AppDelegate.swift */; };
 		2303F8341C4F33EB001E6A67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2303F8331C4F33EB001E6A67 /* Assets.xcassets */; };
@@ -130,7 +134,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1BB7CBD72B3AF3E6009247D7 /* LavaSDK.xcframework in Embed Frameworks */,
+				1BB7CBFE2B4543D3009247D7 /* LavaSDK.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -141,7 +145,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1BB7CBD52B3AF39D009247D7 /* LavaSDK.xcframework in Embed Frameworks */,
+				1BB7CC002B4543E1009247D7 /* LavaSDK.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -169,7 +173,9 @@
 		1B87AF2D2AB84D3C0003077D /* UIViewController+Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Menu.swift"; sourceTree = "<group>"; };
 		1BB7CBCE2B3A9290009247D7 /* ConsentUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentUtils.swift; sourceTree = "<group>"; };
 		1BB7CBD02B3A9377009247D7 /* ConsentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentView.swift; sourceTree = "<group>"; };
-		1BB7CBD22B3AF393009247D7 /* LavaSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = LavaSDK.xcframework; path = DemoApp/LavaSDK.xcframework; sourceTree = "<group>"; };
+		1BB7CBF22B442721009247D7 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
+		1BB7CBF42B4500B8009247D7 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
+		1BB7CBFB2B4543C9009247D7 /* LavaSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = LavaSDK.xcframework; sourceTree = "<group>"; };
 		1BC4ADB828F594BE0054FA7C /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		2303F8291C4F33EB001E6A67 /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2303F82C1C4F33EB001E6A67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -217,7 +223,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1BB7CBD62B3AF3E6009247D7 /* LavaSDK.xcframework in Frameworks */,
+				1BB7CBFD2B4543D3009247D7 /* LavaSDK.xcframework in Frameworks */,
+				1BB7CBFA2B450840009247D7 /* AlertToast in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,7 +232,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1BB7CBD42B3AF39D009247D7 /* LavaSDK.xcframework in Frameworks */,
+				1BB7CBFF2B4543E1009247D7 /* LavaSDK.xcframework in Frameworks */,
+				1BB7CBF82B450828009247D7 /* AlertToast in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +282,14 @@
 			path = Consent;
 			sourceTree = "<group>";
 		};
+		1BB7CBF12B44270C009247D7 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				1BB7CBF22B442721009247D7 /* AnalyticsView.swift */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
 		1BC4ADB528F5766A0054FA7C /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,7 +303,6 @@
 		2303F8201C4F33EB001E6A67 = {
 			isa = PBXGroup;
 			children = (
-				1BB7CBD22B3AF393009247D7 /* LavaSDK.xcframework */,
 				9D609ED31CF5815200A590EB /* README.md */,
 				2303F82B1C4F33EB001E6A67 /* DemoApp */,
 				B3BFE4771D509BBE00CBE060 /* Common */,
@@ -312,6 +327,7 @@
 		2303F82B1C4F33EB001E6A67 /* DemoApp */ = {
 			isa = PBXGroup;
 			children = (
+				1BB7CBFB2B4543C9009247D7 /* LavaSDK.xcframework */,
 				1BB7CBCA2B3A9280009247D7 /* Consent */,
 				1B63443F2AAEF71F004DB132 /* System */,
 				1BC4ADB528F5766A0054FA7C /* Network */,
@@ -322,6 +338,7 @@
 				B3BFE4DC1D50B84900CBE060 /* SignIn */,
 				B3F5E1431D478C4E002D533B /* ContentRequest */,
 				8AE6B2262750D17200C396E0 /* Resources */,
+				1BB7CBF12B44270C009247D7 /* Analytics */,
 				715D1DE11E56D4D100A9FF32 /* DemoApp.entitlements */,
 				2303F8381C4F33EB001E6A67 /* Info.plist */,
 				1B046CB02954A2E8009AE91E /* SecureInfo.plist */,
@@ -385,6 +402,7 @@
 				1B87AF2B2AB16A620003077D /* Color.swift */,
 				1B87AF2D2AB84D3C0003077D /* UIViewController+Menu.swift */,
 				1BB7CBCE2B3A9290009247D7 /* ConsentUtils.swift */,
+				1BB7CBF42B4500B8009247D7 /* ButtonStyle.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -483,6 +501,9 @@
 			dependencies = (
 			);
 			name = DemoAppSecure;
+			packageProductDependencies = (
+				1BB7CBF92B450840009247D7 /* AlertToast */,
+			);
 			productName = DemoApp;
 			productReference = 1B046CAC295442DA009AE91E /* DemoAppSecure.app */;
 			productType = "com.apple.product-type.application";
@@ -502,6 +523,9 @@
 			dependencies = (
 			);
 			name = DemoApp;
+			packageProductDependencies = (
+				1BB7CBF72B450828009247D7 /* AlertToast */,
+			);
 			productName = DemoApp;
 			productReference = 2303F8291C4F33EB001E6A67 /* DemoApp.app */;
 			productType = "com.apple.product-type.application";
@@ -591,6 +615,9 @@
 				Base,
 			);
 			mainGroup = 2303F8201C4F33EB001E6A67;
+			packageReferences = (
+				1BB7CBF62B450802009247D7 /* XCRemoteSwiftPackageReference "AlertToast" */,
+			);
 			productRefGroup = 2303F82A1C4F33EB001E6A67 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -770,8 +797,10 @@
 				1B6E8789295073AD00E25496 /* ConfigLoader.swift in Sources */,
 				1BB7CBD12B3A9377009247D7 /* ConsentView.swift in Sources */,
 				3D08AAFD21141B240059523B /* MessageTableViewCell.swift in Sources */,
+				1BB7CBF52B4500B8009247D7 /* ButtonStyle.swift in Sources */,
 				1B449C2128F671B00040E032 /* JSONDecoder+Date.swift in Sources */,
 				1B36E0DF28F695730046AC4C /* RESTClient.swift in Sources */,
+				1BB7CBF32B442721009247D7 /* AnalyticsView.swift in Sources */,
 				B3BFE4A81D509CDD00CBE060 /* DictionaryExtension.swift in Sources */,
 				1B36E0E128F6CA200046AC4C /* AppSession.swift in Sources */,
 			);
@@ -1252,6 +1281,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1BB7CBF62B450802009247D7 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.9;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1BB7CBF72B450828009247D7 /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1BB7CBF62B450802009247D7 /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
+		};
+		1BB7CBF92B450840009247D7 /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1BB7CBF62B450802009247D7 /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2303F8211C4F33EB001E6A67 /* Project object */;
 }

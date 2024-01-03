@@ -76,6 +76,16 @@ class Navigator {
         ]
     }
     
+    func openAnalytics(_ nc: UINavigationController) {
+        let targetVC = UIHostingController(
+            rootView: AnalyticsView()
+        )
+        targetVC.setupMenu()
+        nc.viewControllers = [
+            targetVC
+        ]
+    }
+    
     func openConsentPreferences(_ vc: UIViewController) {
         let dismissAction = {
             guard let targetVC = vc.presentedViewController else {

@@ -104,11 +104,13 @@ extension AppContainerViewController: MenuDelegate {
         case .messages:
             Navigator.shared.openMessages(contentVC)
             break
+        case .analytics:
+            Navigator.shared.openAnalytics(contentVC)
         case .debugInfo:
             Navigator.shared.openDebug(contentVC)
             break
         case .membershipCard:
-            Lava.shared.showPass()
+            Lava.shared.showPass(useVisibleViewController: contentVC)
         case .logOut:
             view.showLoading(.center)
             Lava.shared.setEmail(email: nil) { [weak self] in
