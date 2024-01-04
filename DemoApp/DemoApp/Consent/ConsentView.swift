@@ -86,6 +86,8 @@ struct ConsentView: View {
     }
 }
 
-#Preview {
-    ConsentView(dismiss: nil)
+struct ConsentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ConsentView(dismiss: nil)
+    }
 }

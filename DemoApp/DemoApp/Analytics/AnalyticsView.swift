@@ -68,6 +68,8 @@ struct AnalyticsView: View {
     }
 }
 
-#Preview {
-    AnalyticsView()
+struct AnalyticsView_Previews: PreviewProvider {
+    static var previews: some View {
+        AnalyticsView()
+    }
 }
