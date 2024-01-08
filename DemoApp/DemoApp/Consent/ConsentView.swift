@@ -17,7 +17,7 @@ struct AppConsentToggle: Identifiable {
 struct ConsentView: View {
     
     let dismiss: (() -> Void)?
-    @State var appConsentToggles: [AppConsentToggle] = {
+    @State var appConsentToggles: [AppConsentToggle] = { 
         var enabledSet = AppSession.current.appConsent ?? []
         
         return AppConsent.allCases.map { appConsent in
@@ -25,8 +25,19 @@ struct ConsentView: View {
         }
     }()
     
+    @State var hasError: Bool = false
+    @State var error: Error? = nil
+    
     var isCheckedAll: Bool {
         return appConsentToggles.filter { $0.enabled }.count == AppConsent.allCases.count
+    }
+    
+    func getAppConsentToggles() -> [AppConsentToggle] {
+        var enabledSet = AppSession.current.appConsent ?? []
+        
+        return AppConsent.allCases.map { appConsent in
+            AppConsentToggle(id: appConsent, enabled: enabledSet.contains(appConsent))
+        }
     }
     
     func updateConsent(appConsent: AppConsent, isSelected: Bool) {
@@ -36,8 +47,16 @@ struct ConsentView: View {
         } else {
             appConsentList.remove(appConsent)
         }
-        AppSession.current.appConsent = appConsentList
-        ConsentUtils.updateLavaConsent()
+        
+        ConsentUtils.updateLavaConsent(consentFlags: appConsentList) { err in
+            if err != nil {
+                hasError = true
+                error = err
+                appConsentToggles = getAppConsentToggles()
+                return
+            }
+            AppSession.current.appConsent = appConsentList
+        }
     }
     
     var body: some View {
@@ -81,6 +100,13 @@ struct ConsentView: View {
             
             Spacer()
         }
+        .alert(isPresented: $hasError, content: {
+            Alert(
+                title: Text("Consent Error"),
+                message: Text(error?.localizedDescription ?? "Unknown consent error"),
+                dismissButton: .default(Text("Close"))
+            )
+        })
         
         
     }

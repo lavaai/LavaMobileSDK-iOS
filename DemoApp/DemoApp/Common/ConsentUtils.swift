@@ -37,8 +37,11 @@ enum AppConsent: String, Codable, CaseIterable {
 }
 
 class ConsentUtils {
-    static func updateLavaConsent() {
-        let itemsToUpdate = AppConsent.toLavaPIConsentFlags(items: AppSession.current.appConsent) ?? Set()
-        Lava.shared.setPIConsentFlags(piConsentFlags: itemsToUpdate)
+    static func updateLavaConsent(consentFlags: Set<AppConsent>, callback: @escaping (Error?) -> Void) {
+        let itemsToUpdate = AppConsent.toLavaPIConsentFlags(items: consentFlags) ?? Set()
+        return Lava.shared.setPIConsentFlags(
+            piConsentFlags: itemsToUpdate,
+            piConsentCallback: callback
+        )
     }
 }

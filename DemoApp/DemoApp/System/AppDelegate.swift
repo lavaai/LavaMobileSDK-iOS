@@ -41,7 +41,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             clientId: lavaConfig.clientId,
             logLevel: .verbose,
             serverLogLevel: .verbose,
-            piConsentFlags: AppConsent.toLavaPIConsentFlags(items: appConsent)
+            piConsentFlags: AppConsent.toLavaPIConsentFlags(items: appConsent),
+            piConsentCallback: { err in
+                print(err?.localizedDescription ?? "Unknown consent error")
+            }
         )
         
         let customStyle = Style()

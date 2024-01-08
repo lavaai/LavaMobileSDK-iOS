@@ -52,3 +52,9 @@ extension APIError: CustomStringConvertible {
         }
     }
 }
+
+extension APIError: LocalizedError {
+    public var errorDescription: String? {
+        return description
+    }
+}
