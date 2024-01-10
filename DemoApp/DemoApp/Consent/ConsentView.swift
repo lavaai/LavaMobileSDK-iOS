@@ -80,7 +80,7 @@ struct ConsentView: View {
             
             Form {
                 ForEach($appConsentToggles) { $item in
-                    Toggle(item.id.rawValue, isOn: $item.enabled)
+                    Toggle(item.id.title, isOn: $item.enabled)
                         .onChange(of: item.enabled) { isOn in
                             updateConsent(appConsent: item.id, isSelected: isOn)
                         }

@@ -10,22 +10,42 @@ import Foundation
 import LavaSDK
 
 enum AppConsent: String, Codable, CaseIterable {
-    case strictlyNecessary = "Strictly Necessary"
-    case performanceAndLogging = "Performance And Logging"
+    case strictlyNecessary = "StrictlyNecessary"
+    case performanceAndLogging = "PerformanceAndLogging"
     case functional = "Functional"
     case targeting = "Targeting"
     
     func toLavaPIConsentFlag() -> LavaPIConsentFlag {
+        // Must not crash
+        return LavaPIConsentFlag(rawValue: rawValue)!
+    }
+    
+    var title: String {
         switch self {
         case .functional:
-            return .functional
+            return "Strictly Necessary"
         case .performanceAndLogging:
-            return .performanceAndLogging
+            return "Performance And Logging"
         case .strictlyNecessary:
-            return .strictlyNecessary
+            return "Strictly Necessary"
         case .targeting:
-            return .targeting
+            return "Targeting"
         }
+    }
+    
+    
+}
+
+class ConsentUtils {
+    
+    static func getConsentFlags(predefined: [String]) -> Set<LavaPIConsentFlag>? {
+        var consentFlags = AppSession.current.appConsent
+        if consentFlags == nil {
+            consentFlags = Set(predefined.map { AppConsent(rawValue: $0)! })
+            AppSession.current.appConsent = consentFlags
+        }
+        
+        return toLavaPIConsentFlags(items: consentFlags!)
     }
     
     static func toLavaPIConsentFlags(items: Set<AppConsent>?) -> Set<LavaPIConsentFlag>? {
@@ -34,12 +54,10 @@ enum AppConsent: String, Codable, CaseIterable {
         }
         return Set(items.map { $0.toLavaPIConsentFlag() })
     }
-}
-
-class ConsentUtils {
+    
     static func updateLavaConsent(consentFlags: Set<AppConsent>, callback: @escaping (Error?) -> Void) {
-        let itemsToUpdate = AppConsent.toLavaPIConsentFlags(items: consentFlags) ?? Set()
-        return Lava.shared.setPIConsentFlags(
+        let itemsToUpdate = ConsentUtils.toLavaPIConsentFlags(items: consentFlags) ?? Set()
+        return  Lava.shared.setPIConsentFlags(
             piConsentFlags: itemsToUpdate,
             piConsentCallback: callback
         )

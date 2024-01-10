@@ -23,25 +23,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             fatalError("Error loading lava-services.json")
         }
         
-        var appConsent: Set<AppConsent>? = AppSession.current.appConsent
-        if appConsent == nil {
-            appConsent = [
-                .strictlyNecessary,
-                .performanceAndLogging,
-                .targeting,
-                .functional
-            ]
-            
-            AppSession.current.appConsent = appConsent
-        }
-        
         // Initialise LavaSDK.
         Lava.initialize(
             appKey: lavaConfig.appKey,
             clientId: lavaConfig.clientId,
             logLevel: .verbose,
             serverLogLevel: .verbose,
-            piConsentFlags: AppConsent.toLavaPIConsentFlags(items: appConsent),
+            piConsentFlags: ConsentUtils.getConsentFlags(predefined: lavaConfig.consentFlags),
             piConsentCallback: { err in
                 print(err?.localizedDescription ?? "Unknown consent error")
             }
