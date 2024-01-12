@@ -38,10 +38,11 @@ enum AppConsent: String, Codable, CaseIterable {
 
 class ConsentUtils {
     
-    static func getConsentFlags(predefined: [String]) -> Set<LavaPIConsentFlag>? {
+    static func getConsentFlags(predefined: [String]?) -> Set<LavaPIConsentFlag>? {
         var consentFlags = AppSession.current.appConsent
         if consentFlags == nil {
-            consentFlags = Set(predefined.map { AppConsent(rawValue: $0)! })
+            let defaultConsentFlags = predefined ?? AppConsent.allCases.map { $0.rawValue }
+            consentFlags = Set(defaultConsentFlags.map { AppConsent(rawValue: $0)! })
             AppSession.current.appConsent = consentFlags
         }
         

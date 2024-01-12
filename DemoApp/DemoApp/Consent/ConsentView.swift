@@ -9,7 +9,7 @@
 import SwiftUI
 import Combine
 
-struct AppConsentToggle: Identifiable {
+struct AppConsentToggle: Identifiable, Equatable {
     var id: AppConsent
     var enabled: Bool
 }
@@ -32,30 +32,33 @@ struct ConsentView: View {
         return appConsentToggles.filter { $0.enabled }.count == AppConsent.allCases.count
     }
     
-    func getAppConsentToggles() -> [AppConsentToggle] {
-        var enabledSet = AppSession.current.appConsent ?? []
+    func getAppConsentToggles(selected: Set<AppConsent>? = nil) -> [AppConsentToggle] {
+        let enabledSet = selected ?? AppSession.current.appConsent ?? []
         
         return AppConsent.allCases.map { appConsent in
             AppConsentToggle(id: appConsent, enabled: enabledSet.contains(appConsent))
         }
     }
     
-    func updateConsent(appConsent: AppConsent, isSelected: Bool) {
-        var appConsentList = AppSession.current.appConsent ?? Set()
-        if (isSelected) {
-            appConsentList.insert(appConsent)
+    func updateConsent(consentList: Set<AppConsent>) {
+        var storedConsentList = AppSession.current.appConsent ?? Set()
+        if (storedConsentList.isSuperset(of: consentList)) {
+            storedConsentList = storedConsentList.subtracting(consentList)
         } else {
-            appConsentList.remove(appConsent)
+            storedConsentList = storedConsentList.union(consentList)
         }
         
-        ConsentUtils.updateLavaConsent(consentFlags: appConsentList) { err in
+        appConsentToggles = getAppConsentToggles(selected: storedConsentList)
+        
+        ConsentUtils.updateLavaConsent(consentFlags: storedConsentList) { err in
             if err != nil {
+                appConsentToggles = getAppConsentToggles()
                 hasError = true
                 error = err
-                appConsentToggles = getAppConsentToggles()
                 return
             }
-            AppSession.current.appConsent = appConsentList
+            AppSession.current.appConsent = storedConsentList
+            appConsentToggles = getAppConsentToggles()
         }
     }
     
@@ -82,14 +85,33 @@ struct ConsentView: View {
                 ForEach($appConsentToggles) { $item in
                     Toggle(item.id.title, isOn: $item.enabled)
                         .onChange(of: item.enabled) { isOn in
-                            updateConsent(appConsent: item.id, isSelected: isOn)
+                            updateConsent(consentList: Set([item.id]))
                         }
                 }
                 
                 Section {
                     Button {
-                        appConsentToggles = appConsentToggles.map { item in
-                            AppConsentToggle(id: item.id, enabled: !isCheckedAll)
+                        let checked = !isCheckedAll
+                        if (checked) {
+                            appConsentToggles[0].enabled = checked
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                                for index in 1..<appConsentToggles.count {
+                                    appConsentToggles[index].enabled = checked
+                                }
+                            }
+                            
+                        }
+                        
+                        
+                        
+                        if (!checked) {
+                            for index in 1..<appConsentToggles.count {
+                                appConsentToggles[index].enabled = checked
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                                appConsentToggles[0].enabled = checked
+                            }
                         }
                     } label: {
                         Text(isCheckedAll ? "Uncheck All" : "Check All")
