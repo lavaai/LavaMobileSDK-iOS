@@ -23,7 +23,7 @@ enum AppConsent: String, Codable, CaseIterable {
     var title: String {
         switch self {
         case .functional:
-            return "Strictly Necessary"
+            return "Functional"
         case .performanceAndLogging:
             return "Performance And Logging"
         case .strictlyNecessary:
