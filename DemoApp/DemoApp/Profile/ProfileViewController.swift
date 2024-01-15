@@ -116,8 +116,9 @@ class ProfileViewController: UIViewController {
             self?.profileTableView.reloadData()
         } onError: { [weak self] error in
             print(error)
-            // TODO: Handle error
             self?.view.hideLoading()
+            self?.data = self?.buildUserInfoDict(userProfile: nil)
+            self?.profileTableView.reloadData()
         }
     }
     
@@ -213,6 +214,9 @@ class ProfileViewController: UIViewController {
     
     // MARK: - Action Methods
     @objc func onEditProfile() {
+        if Lava.shared.getLavaUser()?.email == nil {
+            return
+        }
         changeMode(.edit)
         profileTableView.reloadData()
     }
@@ -266,11 +270,9 @@ class ProfileViewController: UIViewController {
     
     func buildUserInfoDict(userProfile: UserProfile?) -> [ProfileItem: String?] {
         var ret = [ProfileItem: String?]()
-        guard let userProfile = userProfile else { return ret }
-        
-        ret[.firstName] = userProfile.firstName
-        ret[.lastName] = userProfile.lastName
-        ret[.phoneNumber] = userProfile.phoneNumber
+        ret[.firstName] = userProfile?.firstName
+        ret[.lastName] = userProfile?.lastName
+        ret[.phoneNumber] = userProfile?.phoneNumber
         ret[.email] = Lava.shared.getLavaUser()?.email
         
         return ret

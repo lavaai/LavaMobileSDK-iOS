@@ -92,6 +92,7 @@ class Navigator {
                 return
             }
             targetVC.dismiss(animated: true)
+            vc.viewWillAppear(true)
         }
         let targetVC = UIHostingController(
             rootView: ConsentView(dismiss: dismissAction)
