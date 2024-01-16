@@ -273,7 +273,7 @@ class ProfileViewController: UIViewController {
         ret[.firstName] = userProfile?.firstName
         ret[.lastName] = userProfile?.lastName
         ret[.phoneNumber] = userProfile?.phoneNumber
-        ret[.email] = Lava.shared.getLavaUser()?.email
+        ret[.email] = userProfile == nil ? nil : Lava.shared.getLavaUser()?.email
         
         return ret
     }

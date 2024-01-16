@@ -56,7 +56,7 @@ class ConsentUtils {
         return Set(items.map { $0.toLavaPIConsentFlag() })
     }
     
-    static func updateLavaConsent(consentFlags: Set<AppConsent>, callback: @escaping (Error?) -> Void) {
+    static func updateLavaConsent(consentFlags: Set<AppConsent>, callback: @escaping (Error?, Bool) -> Void) {
         let itemsToUpdate = ConsentUtils.toLavaPIConsentFlags(items: consentFlags) ?? Set()
         return  Lava.shared.setPIConsentFlags(
             piConsentFlags: itemsToUpdate,

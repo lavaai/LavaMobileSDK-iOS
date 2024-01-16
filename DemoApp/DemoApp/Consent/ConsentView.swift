@@ -28,6 +28,8 @@ struct ConsentView: View {
     @State var hasError: Bool = false
     @State var error: Error? = nil
     
+    @State var requireLogout: Bool = false
+    
     var isCheckedAll: Bool {
         return appConsentToggles.filter { $0.enabled }.count == AppConsent.allCases.count
     }
@@ -50,7 +52,7 @@ struct ConsentView: View {
         
         appConsentToggles = getAppConsentToggles(selected: storedConsentList)
         
-        ConsentUtils.updateLavaConsent(consentFlags: storedConsentList) { err in
+        ConsentUtils.updateLavaConsent(consentFlags: storedConsentList) { err, shouldLogout in
             if err != nil {
                 appConsentToggles = getAppConsentToggles()
                 hasError = true
@@ -59,6 +61,10 @@ struct ConsentView: View {
             }
             AppSession.current.appConsent = storedConsentList
             appConsentToggles = getAppConsentToggles()
+            
+            if (shouldLogout) {
+                requireLogout = shouldLogout
+            }
         }
     }
     
@@ -67,6 +73,9 @@ struct ConsentView: View {
             HStack(alignment: .center) {
                 Button {
                     dismiss?()
+                    if requireLogout {
+                        Navigator.shared.goToSignIn()
+                    }
                 } label: {
                     Image(systemName: "arrow.backward")
                 }

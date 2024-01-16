@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             logLevel: .verbose,
             serverLogLevel: .verbose,
             piConsentFlags: ConsentUtils.getConsentFlags(predefined: lavaConfig.consentFlags),
-            piConsentCallback: { err in
+            piConsentCallback: { err, shouldLogout in
                 print(err?.localizedDescription ?? "Unknown consent error")
             }
         )
