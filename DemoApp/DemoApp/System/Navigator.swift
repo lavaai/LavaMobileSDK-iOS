@@ -76,6 +76,12 @@ class Navigator {
         ]
     }
     
+    func openDebugSheet(_ vc: UIViewController) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let targetVC: UIViewController = storyboard.instantiateViewController(withIdentifier: "DebugInfoViewController")
+        vc.present(targetVC, animated: true)
+    }
+    
     func openAnalytics(_ nc: UINavigationController) {
         let targetVC = UIHostingController(
             rootView: AnalyticsView()

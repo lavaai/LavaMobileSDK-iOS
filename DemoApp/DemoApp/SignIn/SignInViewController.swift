@@ -14,6 +14,9 @@ class SignInViewController: EditableViewController {
     @IBOutlet weak var tfEmail: UITextField!
     @IBOutlet weak var tfPassword: UITextField!
     @IBOutlet weak var btnSignIn: UIButton!
+    @IBOutlet weak var aiAnonymousLogin: UIActivityIndicatorView!
+    @IBOutlet weak var lbAnonymousStatus: UILabel!
+    @IBOutlet weak var lbAnonymousError: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +28,28 @@ class SignInViewController: EditableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        loginAnonymous()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+    }
+    
+    func loginAnonymous() {
+        lbAnonymousError.isHidden = true
+        lbAnonymousStatus.isHidden = true
+        aiAnonymousLogin.isHidden = false
+        aiAnonymousLogin.startAnimating()
+        Lava.shared.setEmail(email: nil) { [weak self] in
+            self?.aiAnonymousLogin.isHidden = true
+            self?.lbAnonymousError.isHidden = true
+            self?.lbAnonymousStatus.isHidden = false
+        } onError: { [weak self] err in
+            self?.aiAnonymousLogin.isHidden = true
+            self?.lbAnonymousError.isHidden = false
+            self?.lbAnonymousStatus.isHidden = true
+        }
+
     }
 
     // MARK: - UITextfieldDelegate
@@ -64,6 +85,16 @@ class SignInViewController: EditableViewController {
             loginWithSdk(email: email)
         }
     }
+    
+    @IBAction func showInbox(_ sender: Any) {
+        Lava.shared.showInboxMessages(self)
+    }
+    
+    @IBAction func showDebugInfo(_ sender: Any) {
+        Navigator.shared.openDebugSheet(self)
+    }
+    
+    
     
     func loginWithAppBackend(email: String?, password: String?) {
         guard let email = email, let password = password else {
