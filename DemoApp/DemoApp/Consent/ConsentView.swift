@@ -7,10 +7,11 @@
 //
 
 import SwiftUI
+import LavaSDK
 import Combine
 
 struct AppConsentToggle: Identifiable, Equatable {
-    var id: AppConsent
+    var id: String
     var enabled: Bool
 }
 
@@ -20,7 +21,7 @@ struct ConsentView: View {
     @State var appConsentToggles: [AppConsentToggle] = { 
         var enabledSet = AppSession.current.appConsent ?? []
         
-        return AppConsent.allCases.map { appConsent in
+        return AppConsent.currentConsentList.map { appConsent in
             AppConsentToggle(id: appConsent, enabled: enabledSet.contains(appConsent))
         }
     }()
@@ -29,20 +30,21 @@ struct ConsentView: View {
     @State var error: Error? = nil
     
     @State var requireLogout: Bool = false
+    @State var useCustomConsent: Bool = AppSession.current.useCustomConsent
     
     var isCheckedAll: Bool {
-        return appConsentToggles.filter { $0.enabled }.count == AppConsent.allCases.count
+        return appConsentToggles.filter { $0.enabled }.count == AppConsent.currentConsentMapping.keys.count
     }
     
-    func getAppConsentToggles(selected: Set<AppConsent>? = nil) -> [AppConsentToggle] {
+    func getAppConsentToggles(selected: Set<String>? = nil) -> [AppConsentToggle] {
         let enabledSet = selected ?? AppSession.current.appConsent ?? []
         
-        return AppConsent.allCases.map { appConsent in
+        return AppConsent.currentConsentList.map { appConsent in
             AppConsentToggle(id: appConsent, enabled: enabledSet.contains(appConsent))
         }
     }
     
-    func updateConsent(consentList: Set<AppConsent>) {
+    func updateConsent(consentList: Set<String>) {
         var storedConsentList = AppSession.current.appConsent ?? Set()
         if (storedConsentList.isSuperset(of: consentList)) {
             storedConsentList = storedConsentList.subtracting(consentList)
@@ -66,6 +68,28 @@ struct ConsentView: View {
                 requireLogout = shouldLogout
             }
         }
+    }
+    
+    func toggleCustomConsent() {
+        let storedConsentList = AppSession.current.appConsent ?? Set()
+        let lavaConsentList = ConsentUtils.toLavaPIConsentFlags(items: storedConsentList)
+        
+        let shouldUseCustomConsent = !AppSession.current.useCustomConsent
+        useCustomConsent = shouldUseCustomConsent
+        
+        // Reinit the SDK
+        AppDelegate.shared?.initLavaSdk(useCustomConsentMapping: useCustomConsent)
+        
+        var newConsentList: Set<String> = []
+        for (key, value) in AppConsent.currentConsentMapping {
+            if (lavaConsentList?.isSuperset(of: value) ?? false) {
+                newConsentList.insert(key)
+            }
+        }
+        
+        AppSession.current.appConsent = newConsentList
+                                                 
+        appConsentToggles = getAppConsentToggles(selected: newConsentList)
     }
     
     var body: some View {
@@ -92,10 +116,14 @@ struct ConsentView: View {
             
             Form {
                 ForEach($appConsentToggles) { $item in
-                    Toggle(item.id.title, isOn: $item.enabled)
-                        .onChange(of: item.enabled) { isOn in
-                            updateConsent(consentList: Set([item.id]))
-                        }
+                    Toggle(isOn: $item.enabled) {
+                        Text(item.id)
+                            .font(.system(size: 18, weight: .bold))
+                        Text(AppConsent.currentConsentMapping[item.id]?.map { $0.rawValue }.joined(separator: ", ") ?? "N/A")
+                    }
+                    .onChange(of: item.enabled) { isOn in
+                        updateConsent(consentList: Set([item.id]))
+                    }
                 }
                 
                 Section {
@@ -109,10 +137,7 @@ struct ConsentView: View {
                                     appConsentToggles[index].enabled = checked
                                 }
                             }
-                            
                         }
-                        
-                        
                         
                         if (!checked) {
                             for index in 1..<appConsentToggles.count {
@@ -125,6 +150,13 @@ struct ConsentView: View {
                     } label: {
                         Text(isCheckedAll ? "Uncheck All" : "Check All")
                             .foregroundColor(.red)
+                    }
+                    
+                    Button {
+                        toggleCustomConsent()
+                    } label: {
+                        Text(!useCustomConsent ? "Use Custom consents" : "Use LAVA default consents")
+                            .foregroundColor(.blue)
                     }
                 }
             }

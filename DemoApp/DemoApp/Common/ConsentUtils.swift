@@ -9,56 +9,108 @@
 import Foundation
 import LavaSDK
 
-enum AppConsent: String, Codable, CaseIterable {
-    case strictlyNecessary = "StrictlyNecessary"
-    case performanceAndLogging = "PerformanceAndLogging"
-    case functional = "Functional"
-    case targeting = "Targeting"
+typealias AppConsentMapping = [String: Set<LavaPIConsentFlag>]
+
+struct AppConsent {
     
-    func toLavaPIConsentFlag() -> LavaPIConsentFlag {
-        // Must not crash
-        return LavaPIConsentFlag(rawValue: rawValue)!
-    }
+    static let defaultConsentList: [String] = [
+        "Strictly Necessary",
+        "Performance And Logging",
+        "Functional",
+        "Targeting"
+    ]
     
-    var title: String {
-        switch self {
-        case .functional:
-            return "Functional"
-        case .performanceAndLogging:
-            return "Performance And Logging"
-        case .strictlyNecessary:
-            return "Strictly Necessary"
-        case .targeting:
-            return "Targeting"
+    static let customConsentList: [String] = [
+        "C0001",
+        "C0002",
+        "C0003",
+        "C0004"
+    ]
+    
+    static let defaultMapping: AppConsentMapping = [
+        "Strictly Necessary": [ .strictlyNecessary ],
+        "Performance And Logging": [ .performanceAndLogging ],
+        "Functional": [ .functional ],
+        "Targeting" : [ .targeting ]
+    ]
+    
+    static let customMapping: AppConsentMapping = [
+        "C0001": [ .strictlyNecessary ],
+        "C0002": [ .performanceAndLogging ],
+        "C0003": [ .functional ],
+        "C0004" : [ .targeting ]
+    ]
+    
+    static var currentConsentMapping: AppConsentMapping {
+        if (AppSession.current.useCustomConsent) {
+            return customMapping
         }
+        return defaultMapping
     }
     
-    
+    static var currentConsentList: [String] {
+        if (AppSession.current.useCustomConsent) {
+            return customConsentList
+        }
+        return defaultConsentList
+    }
 }
+
 
 class ConsentUtils {
     
     static func getConsentFlags(predefined: [String]?) -> Set<LavaPIConsentFlag>? {
         var consentFlags = AppSession.current.appConsent
         if consentFlags == nil {
-            let defaultConsentFlags = predefined ?? AppConsent.allCases.map { $0.rawValue }
-            consentFlags = Set(defaultConsentFlags.map { AppConsent(rawValue: $0)! })
+            let defaultConsentFlags = predefined ?? Array(AppConsent.currentConsentMapping.keys)
+            consentFlags = Set(defaultConsentFlags)
             AppSession.current.appConsent = consentFlags
         }
         
-        return toLavaPIConsentFlags(items: consentFlags!)
+        return toLavaPIConsentFlags(items: consentFlags)
     }
     
-    static func toLavaPIConsentFlags(items: Set<AppConsent>?) -> Set<LavaPIConsentFlag>? {
+    static func getCustomConsentFlags(predefined: [String]?) -> Set<String>? {
+        var consentFlags = AppSession.current.appConsent
+        if consentFlags == nil {
+            let defaultConsentFlags = predefined ?? Array(AppConsent.currentConsentMapping.keys)
+            consentFlags = Set(defaultConsentFlags)
+            AppSession.current.appConsent = consentFlags
+        }
+        
+        return consentFlags
+    }
+    
+    static func toLavaPIConsentFlags(items: Set<String>?) -> Set<LavaPIConsentFlag>? {
         guard let items = items else {
             return nil
         }
-        return Set(items.map { $0.toLavaPIConsentFlag() })
+        
+        var ret: Set<LavaPIConsentFlag> = []
+        items.forEach { item in
+            if AppConsent.currentConsentMapping[item] != nil {
+                ret = ret.union(AppConsent.currentConsentMapping[item]!)
+            }
+        }
+        
+        return ret
     }
     
-    static func updateLavaConsent(consentFlags: Set<AppConsent>, callback: @escaping (Error?, Bool) -> Void) {
+    static func updateLavaConsent(
+        consentFlags: Set<String>,
+        callback: @escaping (Error?, Bool) -> Void
+    ) {
+        
+        if (AppSession.current.useCustomConsent) {
+            Lava.shared.setCustomPIConsentFlags(
+                customPIConsentFlags: consentFlags,
+                piConsentCallback: callback
+            )
+            return
+        }
+        
         let itemsToUpdate = ConsentUtils.toLavaPIConsentFlags(items: consentFlags) ?? Set()
-        return  Lava.shared.setPIConsentFlags(
+        Lava.shared.setPIConsentFlags(
             piConsentFlags: itemsToUpdate,
             piConsentCallback: callback
         )

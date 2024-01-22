@@ -12,6 +12,7 @@ class AppSession {
     private let KeySecureMemberToken = "secure_member_token"
     private let KeyEnableSecureMemberToken = "enable_secure_member_token"
     private let KeyAppConsent = "app_consent"
+    private let KeyUseCustomConsent = "use_custom_consent"
     
     private var userDefaults: UserDefaults? = UserDefaults(suiteName: "sdkdemoapp")
     
@@ -33,12 +34,12 @@ class AppSession {
         }
     }
     
-    var appConsent: Set<AppConsent>? {
+    var appConsent: Set<String>? {
         get {
             guard let raw = userDefaults?.value(forKey: KeyAppConsent) as? Data else {
                 return nil
             }
-            guard let ret = try? JSONDecoder().decode(Set<AppConsent>.self, from: raw) else {
+            guard let ret = try? JSONDecoder().decode(Set<String>.self, from: raw) else {
                 return nil
             }
             return ret
@@ -49,6 +50,16 @@ class AppSession {
                 return
             }
             userDefaults?.set(encoded, forKey: KeyAppConsent)
+        }
+    }
+    
+    var useCustomConsent: Bool {
+        get {
+            return userDefaults?.bool(forKey: KeyUseCustomConsent) ?? false
+        }
+        
+        set(value) {
+            userDefaults?.set(value, forKey: KeyUseCustomConsent)
         }
     }
     
