@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 import LavaSDK
 
 class Navigator {
@@ -73,6 +74,36 @@ class Navigator {
         nc.viewControllers = [
             targetVC
         ]
+    }
+    
+    func openDebugSheet(_ vc: UIViewController) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let targetVC: UIViewController = storyboard.instantiateViewController(withIdentifier: "DebugInfoViewController")
+        vc.present(targetVC, animated: true)
+    }
+    
+    func openAnalytics(_ nc: UINavigationController) {
+        let targetVC = UIHostingController(
+            rootView: AnalyticsView()
+        )
+        targetVC.setupMenu()
+        nc.viewControllers = [
+            targetVC
+        ]
+    }
+    
+    func openConsentPreferences(_ vc: UIViewController) {
+        let dismissAction = {
+            guard let targetVC = vc.presentedViewController else {
+                return
+            }
+            targetVC.dismiss(animated: true)
+            vc.viewWillAppear(true)
+        }
+        let targetVC = UIHostingController(
+            rootView: ConsentView(dismiss: dismissAction)
+        )
+        vc.present(targetVC, animated: true)
     }
 }
 

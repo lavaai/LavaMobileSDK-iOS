@@ -17,19 +17,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     var window: UIWindow?
     
-    func initLavaSdk() {
+    func initLavaSdk(
+        useCustomConsentMapping: Bool = false
+    ) {
         
         guard let lavaConfig = ConfigLoader.loadConfig() else {
             fatalError("Error loading lava-services.json")
         }
         
         // Initialise LavaSDK.
-        Lava.initialize(
-            appKey: lavaConfig.appKey,
-            clientId: lavaConfig.clientId,
-            logLevel: .verbose,
-            serverLogLevel: .verbose
-        )
+        if useCustomConsentMapping {
+            Lava.initialize(
+                appKey: lavaConfig.appKey,
+                clientId: lavaConfig.clientId,
+                logLevel: .verbose,
+                serverLogLevel: .verbose,
+                customPiConsentMapping: LavaConsent.OneTrustDefaultConsentMapping,
+                customPiConsentFlags: ConsentUtils.getCustomConsentFlags(predefined: lavaConfig.customConsentFlags),
+                piConsentCallback: { err, shouldLogout in
+                    print(err?.localizedDescription ?? "Unknown consent error")
+                }
+            )
+        } else {
+            Lava.initialize(
+                appKey: lavaConfig.appKey,
+                clientId: lavaConfig.clientId,
+                logLevel: .verbose,
+                serverLogLevel: .verbose,
+                piConsentFlags: ConsentUtils.getConsentFlags(predefined: lavaConfig.consentFlags),
+                piConsentCallback: { err, shouldLogout in
+                    print(err?.localizedDescription ?? "Unknown consent error")
+                }
+            )
+        }
+        
+        AppSession.current.useCustomConsent = useCustomConsentMapping
         
         let customStyle = Style()
             .setTitleFont(UIFont.systemFont(ofSize: 24))
@@ -56,7 +78,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         //initialise LavaSDK.
-        initLavaSdk()
+        initLavaSdk(
+            useCustomConsentMapping: AppSession.current.useCustomConsent
+        )
         
         registerForPushNotifications()
         

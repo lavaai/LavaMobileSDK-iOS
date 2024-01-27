@@ -12,6 +12,8 @@ struct LavaConfig: Codable {
     var clientId: String
     var appKey: String
     var enableSecureMemberToken: Bool = false
+    var consentFlags: [String]? = nil
+    var customConsentFlags: [String]? = nil
 }
 
 class ConfigLoader {

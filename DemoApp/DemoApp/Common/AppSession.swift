@@ -11,8 +11,10 @@ class AppSession {
     private let KeyEmail = "email"
     private let KeySecureMemberToken = "secure_member_token"
     private let KeyEnableSecureMemberToken = "enable_secure_member_token"
+    private let KeyAppConsent = "app_consent"
+    private let KeyUseCustomConsent = "use_custom_consent"
     
-    private var userDefaults: UserDefaults? = UserDefaults(suiteName: "demoapp")
+    private var userDefaults: UserDefaults? = UserDefaults(suiteName: "sdkdemoapp")
     
     var email: String? {
         get {
@@ -20,7 +22,6 @@ class AppSession {
         }
         set(newEmail) {
             userDefaults?.set(newEmail, forKey: KeyEmail)
-            userDefaults?.synchronize()
         }
     }
     
@@ -30,7 +31,35 @@ class AppSession {
         }
         set(newSecureMemberToken) {
             userDefaults?.set(newSecureMemberToken, forKey: KeySecureMemberToken)
-            userDefaults?.synchronize()
+        }
+    }
+    
+    var appConsent: Set<String>? {
+        get {
+            guard let raw = userDefaults?.value(forKey: KeyAppConsent) as? Data else {
+                return nil
+            }
+            guard let ret = try? JSONDecoder().decode(Set<String>.self, from: raw) else {
+                return nil
+            }
+            return ret
+        }
+        
+        set(value) {
+            guard let encoded = try? JSONEncoder().encode(value) else {
+                return
+            }
+            userDefaults?.set(encoded, forKey: KeyAppConsent)
+        }
+    }
+    
+    var useCustomConsent: Bool {
+        get {
+            return userDefaults?.bool(forKey: KeyUseCustomConsent) ?? false
+        }
+        
+        set(value) {
+            userDefaults?.set(value, forKey: KeyUseCustomConsent)
         }
     }
     
@@ -39,6 +68,7 @@ class AppSession {
     func clear() {
         email = nil
         secureMemberToken = nil
+        userDefaults?.removeSuite(named: "sdkdemoapp")
     }
     
 }
