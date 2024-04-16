@@ -79,6 +79,10 @@
 		1BB7CBFF2B4543E1009247D7 /* LavaSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BB7CBFB2B4543C9009247D7 /* LavaSDK.xcframework */; };
 		1BB7CC002B4543E1009247D7 /* LavaSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1BB7CBFB2B4543C9009247D7 /* LavaSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1BC4ADB928F594BE0054FA7C /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC4ADB828F594BE0054FA7C /* HTTPClient.swift */; };
+		1BC6A3C72BCE531500B9F110 /* ConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7CBD02B3A9377009247D7 /* ConsentView.swift */; };
+		1BC6A3C82BCE531500B9F110 /* ConsentUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7CBCE2B3A9290009247D7 /* ConsentUtils.swift */; };
+		1BC6A3C92BCE531500B9F110 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7CBF42B4500B8009247D7 /* ButtonStyle.swift */; };
+		1BC6A3CA2BCE531500B9F110 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7CBF22B442721009247D7 /* AnalyticsView.swift */; };
 		2303F82D1C4F33EB001E6A67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2303F82C1C4F33EB001E6A67 /* AppDelegate.swift */; };
 		2303F8341C4F33EB001E6A67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2303F8331C4F33EB001E6A67 /* Assets.xcassets */; };
 		2303F8371C4F33EB001E6A67 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2303F8351C4F33EB001E6A67 /* Launch Screen.storyboard */; };
@@ -714,6 +718,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BC6A3C72BCE531500B9F110 /* ConsentView.swift in Sources */,
+				1BC6A3C82BCE531500B9F110 /* ConsentUtils.swift in Sources */,
+				1BC6A3C92BCE531500B9F110 /* ButtonStyle.swift in Sources */,
+				1BC6A3CA2BCE531500B9F110 /* AnalyticsView.swift in Sources */,
 				1B65C7872AC5282200DCE124 /* SceneDelegate.swift in Sources */,
 				1B65C7882AC5282200DCE124 /* AppContainerViewController.swift in Sources */,
 				1B65C7892AC5282200DCE124 /* SideBarViewController.swift in Sources */,
@@ -884,7 +892,7 @@
 				INFOPLIST_FILE = DemoApp/SecureInfo.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "SDK Demo App Secure";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -931,7 +939,7 @@
 				INFOPLIST_FILE = DemoApp/SecureInfo.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "SDK Demo App Secure";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -999,7 +1007,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1051,7 +1059,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
