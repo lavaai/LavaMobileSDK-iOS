@@ -68,6 +68,8 @@
 		1B87AF2A2AB1698F0003077D /* SideBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B87AF292AB1698F0003077D /* SideBarViewController.swift */; };
 		1B87AF2C2AB16A620003077D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B87AF2B2AB16A620003077D /* Color.swift */; };
 		1B87AF2E2AB84D3C0003077D /* UIViewController+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B87AF2D2AB84D3C0003077D /* UIViewController+Menu.swift */; };
+		1B9A91E32BCFF0FD002082FE /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 1B9A91E22BCFF097002082FE /* PrivacyInfo.xcprivacy */; };
+		1B9A91E42BCFF106002082FE /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 1B9A91E22BCFF097002082FE /* PrivacyInfo.xcprivacy */; };
 		1BB7CBCF2B3A9290009247D7 /* ConsentUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7CBCE2B3A9290009247D7 /* ConsentUtils.swift */; };
 		1BB7CBD12B3A9377009247D7 /* ConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7CBD02B3A9377009247D7 /* ConsentView.swift */; };
 		1BB7CBF32B442721009247D7 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7CBF22B442721009247D7 /* AnalyticsView.swift */; };
@@ -175,6 +177,7 @@
 		1B87AF292AB1698F0003077D /* SideBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarViewController.swift; sourceTree = "<group>"; };
 		1B87AF2B2AB16A620003077D /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		1B87AF2D2AB84D3C0003077D /* UIViewController+Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Menu.swift"; sourceTree = "<group>"; };
+		1B9A91E22BCFF097002082FE /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		1BB7CBCE2B3A9290009247D7 /* ConsentUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentUtils.swift; sourceTree = "<group>"; };
 		1BB7CBD02B3A9377009247D7 /* ConsentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentView.swift; sourceTree = "<group>"; };
 		1BB7CBF22B442721009247D7 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
@@ -348,6 +351,7 @@
 				1B046CB02954A2E8009AE91E /* SecureInfo.plist */,
 				2303F8331C4F33EB001E6A67 /* Assets.xcassets */,
 				1B6E87872950711C00E25496 /* lava-services.json */,
+				1B9A91E22BCFF097002082FE /* PrivacyInfo.xcprivacy */,
 			);
 			path = DemoApp;
 			sourceTree = "<group>";
@@ -639,6 +643,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B9A91E42BCFF106002082FE /* PrivacyInfo.xcprivacy in Resources */,
 				1B046CA1295442DA009AE91E /* lava-services.json in Resources */,
 				1B046CA2295442DA009AE91E /* MessageTableViewCell.xib in Resources */,
 				1B046CA3295442DA009AE91E /* Main.storyboard in Resources */,
@@ -651,6 +656,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B9A91E32BCFF0FD002082FE /* PrivacyInfo.xcprivacy in Resources */,
 				1B6E878E29507B0200E25496 /* lava-services.json in Resources */,
 				3D08AAFE21141B240059523B /* MessageTableViewCell.xib in Resources */,
 				71BD987F1E48997B00C8E416 /* Main.storyboard in Resources */,
