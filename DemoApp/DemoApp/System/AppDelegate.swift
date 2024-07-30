@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     static var shared: AppDelegate? = nil
 
     var window: UIWindow?
+    var userInfoToRender: [AnyHashable: Any]? = nil
     
     func initLavaSdk(
         useCustomConsentMapping: Bool = false
@@ -76,7 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     //MARK:- Application callbacks
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+    
         //initialise LavaSDK.
         initLavaSdk(
             useCustomConsentMapping: AppSession.current.useCustomConsent
@@ -92,7 +93,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 
         return true
     }
-    
+
 
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -168,7 +169,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             completionHandler: nil
         )
     }
-    
+
     func userNotificationCenter(
         _ center: UNUserNotificationCenter,
         didReceive response: UNNotificationResponse,
@@ -177,10 +178,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let userInfo = response.notification.request.content.userInfo
         
         if (Lava.shared.canHandlePushNotification(userInfo: userInfo)) {
-            let handled = Lava.shared.handleNotification(userInfo: userInfo)
-            if (!handled) {
-                // handling lava notification failed
-            }
+            self.userInfoToRender = userInfo
         } else {
             // handle other notifications.
         }
@@ -191,17 +189,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         willPresent notification: UNNotification,
         withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
     ) {
-        completionHandler([.alert, .badge, .sound])
-        
         let userInfo = notification.request.content.userInfo
 
+        var handled = false
+        
         if (Lava.shared.canHandlePushNotification(userInfo: userInfo)) {
-            let handled = Lava.shared.handleNotification(userInfo: userInfo)
+            handled = Lava.shared.handleNotification(userInfo: userInfo)
             if !handled {
                 // handling lava notification failed
             }
         } else {
             //handle other notifications.
+        }
+
+        if !handled {
+            completionHandler([.badge, .sound])
         }
     }
     
