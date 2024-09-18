@@ -229,7 +229,9 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func fetchInAppPass(_ sender: Any) {
-        Lava.shared.showPass()
+        Lava.shared.showPass { err in
+            print(err.localizedDescription)
+        }
     }
     
     @IBAction func showBuiltinInbox(_ sender: Any) {

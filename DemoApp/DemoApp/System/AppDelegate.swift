@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 clientId: lavaConfig.clientId,
                 logLevel: .verbose,
                 serverLogLevel: .verbose,
-                piConsentFlags: ConsentUtils.getConsentFlags(predefined: lavaConfig.consentFlags),
+                piConsentFlags: ConsentUtils.getConsentFlags(predefined: ["Strictly Necessary"]),
                 piConsentCallback: { err, shouldLogout in
                     print(err?.localizedDescription ?? "Unknown consent error")
                 }
@@ -213,7 +213,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         options: [UIApplication.OpenURLOptionsKey : Any] = [:]
     ) -> Bool {
         if (Lava.shared.canHandleDeepLink(url: url)) {
-            return Lava.shared.handleDeepLink(url: url)
+            return Lava.shared.handleDeepLink(url: url) { err in
+                print(err.localizedDescription)
+            }
         } else {
             // handle other deep links
             return false
