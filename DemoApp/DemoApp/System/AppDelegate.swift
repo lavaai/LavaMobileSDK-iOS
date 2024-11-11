@@ -14,7 +14,7 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     
     static var shared: AppDelegate? = nil
-
+    
     var window: UIWindow?
     var userInfoToRender: [AnyHashable: Any]? = nil
     
@@ -27,30 +27,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         
         // Initialise LavaSDK.
-        if useCustomConsentMapping {
-            Lava.initialize(
-                appKey: lavaConfig.appKey,
-                clientId: lavaConfig.clientId,
-                logLevel: .verbose,
-                serverLogLevel: .verbose,
-                customPiConsentMapping: LavaConsent.OneTrustDefaultConsentMapping,
-                customPiConsentFlags: ConsentUtils.getCustomConsentFlags(predefined: lavaConfig.customConsentFlags),
-                piConsentCallback: { err, shouldLogout in
-                    print(err?.localizedDescription ?? "Unknown consent error")
-                }
-            )
-        } else {
-            Lava.initialize(
-                appKey: lavaConfig.appKey,
-                clientId: lavaConfig.clientId,
-                logLevel: .verbose,
-                serverLogLevel: .verbose,
-                piConsentFlags: ConsentUtils.getConsentFlags(predefined: ["Strictly Necessary"]),
-                piConsentCallback: { err, shouldLogout in
-                    print(err?.localizedDescription ?? "Unknown consent error")
-                }
-            )
-        }
+        //        if useCustomConsentMapping {
+        //            Lava.initialize(
+        //                appKey: lavaConfig.appKey,
+        //                clientId: lavaConfig.clientId,
+        //                logLevel: .verbose,
+        //                serverLogLevel: .verbose,
+        //                customPiConsentMapping: LavaConsent.OneTrustDefaultConsentMapping,
+        //                customPiConsentFlags: ConsentUtils.getCustomConsentFlags(predefined: lavaConfig.customConsentFlags),
+        //                piConsentCallback: { err, shouldLogout in
+        //                    print(err?.localizedDescription ?? "Unknown consent error")
+        //                }
+        //            )
+        //        } else {
+        //            Lava.initialize(
+        //                appKey: lavaConfig.appKey,
+        //                clientId: lavaConfig.clientId,
+        //                logLevel: .verbose,
+        //                serverLogLevel: .verbose,
+        //                piConsentFlags: ConsentUtils.getConsentFlags(predefined: ["Strictly Necessary"]),
+        //                piConsentCallback: { err, shouldLogout in
+        //                    print(err?.localizedDescription ?? "Unknown consent error")
+        //                }
+        //            )
+        //        }
+        
+        Lava.initialize(
+            appKey: lavaConfig.appKey,
+            clientId: lavaConfig.clientId,
+            logLevel: .verbose,
+            serverLogLevel: .verbose,
+            appInitialized: false,
+            onCompleted: onLavaSDKInitialized
+        )
         
         AppSession.current.useCustomConsent = useCustomConsentMapping
         
@@ -77,7 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     //MARK:- Application callbacks
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    
+        
         //initialise LavaSDK.
         initLavaSdk(
             useCustomConsentMapping: AppSession.current.useCustomConsent
@@ -90,40 +99,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         
         AppDelegate.shared = self
-                
+        
         return true
     }
-
-
-
+    
+    
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     }
-
+    
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
-
+    
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
         UIApplication.shared.applicationIconBadgeNumber = 0
     }
-
+    
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
-
+    
     func applicationWillTerminate(_ application: UIApplication) {
         Lava.shared.unsubscribeSecureMemberTokenExpiry(self)
     }
-
-
+    
+    
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         Lava.shared.setNotificationToken(deviceToken: deviceToken)
     }
-
+    
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("Couldn't register: \(error)")
@@ -169,7 +178,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             completionHandler: nil
         )
     }
-
+    
     func userNotificationCenter(
         _ center: UNUserNotificationCenter,
         didReceive response: UNNotificationResponse,
@@ -178,7 +187,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let userInfo = response.notification.request.content.userInfo
         
         if (Lava.shared.canHandlePushNotification(userInfo: userInfo)) {
-            self.userInfoToRender = userInfo
+            let handled = Lava.shared.handleNotification(userInfo: userInfo)
+            if !handled {
+                // handling lava notification failed
+            }
         } else {
             // handle other notifications.
         }
@@ -190,7 +202,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
     ) {
         let userInfo = notification.request.content.userInfo
-
+        
         var handled = false
         
         if (Lava.shared.canHandlePushNotification(userInfo: userInfo)) {
@@ -201,7 +213,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         } else {
             //handle other notifications.
         }
-
+        
         if !handled {
             completionHandler([.badge, .sound])
         }
@@ -263,6 +275,14 @@ extension AppDelegate: TokenExpiryDelegate {
         })
     }
     
+}
+
+extension AppDelegate {
+    func onLavaSDKInitialized() {
+        print("----------------------------------------")
+        print("-- LAVA SDK INITIALIZED")
+        print("----------------------------------------")
+    }
 }
 
 

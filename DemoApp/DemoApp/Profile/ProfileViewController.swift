@@ -55,6 +55,9 @@ class ProfileViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(ProfileViewController.menuPressed), name: NSNotification.Name(rawValue: "menuPressed"), object: nil)
         
         setupMenu()
+        
+        // App loaded
+        Lava.shared.finishAppInitialization()
     }
     
     deinit{
