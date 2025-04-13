@@ -10,7 +10,7 @@ import Foundation
 public typealias completionBlock = () -> Void
 
 // TODO: Update this BaseURL when you need to call your app backend
-public let AppBackendBaseURL = "https://gcp2dev-sdk-sample-app-backend.test.lava.ai"
+public let AppBackendBaseURL = "https://gcp2dev1-sdk-sample-app-backend.test.lava.ai"
 
 
 enum ProfileMode: Int {

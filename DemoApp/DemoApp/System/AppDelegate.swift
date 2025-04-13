@@ -55,10 +55,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         Lava.initialize(
             appKey: lavaConfig.appKey,
             clientId: lavaConfig.clientId,
-            logLevel: .verbose,
+            logLevel: .error,
             serverLogLevel: .verbose,
-            appInitialized: false,
-            onCompleted: onLavaSDKInitialized
+            hostAppUIReady: false,
+            onInitCompleted: onLavaSDKInitialized
         )
         
         AppSession.current.useCustomConsent = useCustomConsentMapping

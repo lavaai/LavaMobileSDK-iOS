@@ -37,6 +37,7 @@ class ProfileViewController: UIViewController {
     var profileMode : ProfileMode!
     var userProfile: UserProfile?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,8 +57,7 @@ class ProfileViewController: UIViewController {
         
         setupMenu()
         
-        // App loaded
-        Lava.shared.finishAppInitialization()
+        
     }
     
     deinit{
@@ -67,6 +67,8 @@ class ProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getProfile()
+        // App loaded
+        Lava.shared.finishAppInitialization()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

@@ -95,6 +95,16 @@ class SignInViewController: EditableViewController {
     }
     
     
+    @IBAction func quickShowPass(_ sender: Any) {
+        guard let email = tfEmail.text, email.count > 0 else {
+            return
+        }
+        
+        Lava.shared.setEmail(email: email, onSuccess: {}, onError: { err in })
+        Lava.shared.showPass()
+        Lava.shared.setEmail(email: nil, onSuccess: {}, onError: { err in })
+    }
+
     
     func loginWithAppBackend(email: String?, password: String?) {
         guard let email = email, let password = password else {
