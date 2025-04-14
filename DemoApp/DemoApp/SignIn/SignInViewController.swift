@@ -100,9 +100,13 @@ class SignInViewController: EditableViewController {
             return
         }
         
-        Lava.shared.setEmail(email: email, onSuccess: {}, onError: { err in })
+        Lava.shared.setEmail(email: email, onSuccess: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                Lava.shared.setEmail(email: nil, onSuccess: {}, onError: { err in })
+            }
+        }, onError: { err in })
+        
         Lava.shared.showPass()
-        Lava.shared.setEmail(email: nil, onSuccess: {}, onError: { err in })
     }
 
     
