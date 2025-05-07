@@ -37,6 +37,7 @@ class ProfileViewController: UIViewController {
     var profileMode : ProfileMode!
     var userProfile: UserProfile?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,6 +56,8 @@ class ProfileViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(ProfileViewController.menuPressed), name: NSNotification.Name(rawValue: "menuPressed"), object: nil)
         
         setupMenu()
+        
+        
     }
     
     deinit{
@@ -64,6 +67,8 @@ class ProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getProfile()
+        // App loaded
+        Lava.shared.finishAppInitialization()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
