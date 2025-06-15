@@ -9,14 +9,17 @@ import UIKit
 import LavaSDK
 
 class SignInViewController: EditableViewController {
+    let ExternalSystemEmail = 0
+    let ExternalSystemExternalUserID = 1
+    
     
     @IBOutlet weak var vLoginForm: UIView!
     @IBOutlet weak var tfEmail: UITextField!
-    @IBOutlet weak var tfPassword: UITextField!
     @IBOutlet weak var btnSignIn: UIButton!
     @IBOutlet weak var aiAnonymousLogin: UIActivityIndicatorView!
     @IBOutlet weak var lbAnonymousStatus: UILabel!
     @IBOutlet weak var lbAnonymousError: UILabel!
+    @IBOutlet weak var scExternalSystem: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,17 +73,29 @@ class SignInViewController: EditableViewController {
         view.endEditing(true)
 
         // Perform login
-        login(email: tfEmail.text, password: tfPassword.text)
+        login(email: tfEmail.text)
     }
     
+    @IBAction func onChangeExternalSystem(_ sender: UISegmentedControl) {
+        switch (sender.selectedSegmentIndex) {
+        case ExternalSystemEmail:
+            tfEmail.text = "app.001@lava.ai"
+            break
+        case ExternalSystemExternalUserID:
+            tfEmail.text = "123123123"
+            break
+        default:
+            break
+        }
+    }
     
     @IBAction func showConsentPreferences(_ sender: Any) {
         Navigator.shared.openConsentPreferences(self)
     }
     
-    func login(email: String?, password: String?) {
+    func login(email: String?) {
         if AppSession.current.lavaConfig.enableSecureMemberToken {
-            loginWithAppBackend(email: email, password: password)
+            loginWithAppBackend(email: email)
         } else {
             loginWithSdk(email: email)
         }
@@ -94,16 +109,14 @@ class SignInViewController: EditableViewController {
         Navigator.shared.openDebugSheet(self)
     }
     
-    
-    
-    func loginWithAppBackend(email: String?, password: String?) {
-        guard let email = email, let password = password else {
+    func loginWithAppBackend(email: String?) {
+        guard let email = email else {
             return
         }
         
         view.showLoading(ToastPosition.center)
         
-        RESTClient.shared.login(username: email, password: password, successCallback: { authResponse in
+        RESTClient.shared.login(username: email, successCallback: { authResponse in
                     
             Lava.shared.setEmail(email: email) { [weak self] in
                 let event = TrackEvent(
@@ -140,7 +153,33 @@ class SignInViewController: EditableViewController {
         view.showLoading(ToastPosition.center)
         
         Lava.shared.setSecureMemberToken(nil)
-        Lava.shared.setEmail(email: email) { [weak self] in
+        
+        if (scExternalSystem.selectedSegmentIndex == ExternalSystemEmail) {
+            Lava.shared.setEmail(email: email) { [weak self] in
+                let event = TrackEvent(
+                    category: "DEBUG",
+                    path: "Successfully login",
+                    trackerType: "log"
+                )
+                
+                Lava.shared.track(event: event)
+                
+                AppSession.current.email = email
+                
+                self?.view.hideLoading()
+                self?.goToHome()
+            } onError: { [weak self] error in
+                self?.view.hideLoading()
+                self?.showAlert(title: "Error", message: "\(error)")
+            }
+            
+            return
+        }
+        
+        Lava.shared.setUserId(
+            id: email,
+            type: EXTERNAL_SYSTEM_NBA_ID
+        ) { [weak self] in
             let event = TrackEvent(
                 category: "DEBUG",
                 path: "Successfully login",
@@ -155,7 +194,7 @@ class SignInViewController: EditableViewController {
             self?.goToHome()
         } onError: { [weak self] error in
             self?.view.hideLoading()
-            self?.showAlert(title: "Error", message: "\(error)")
+            self?.showAlert(title: "Error", message: "\(error.localizedDescription)")
         }
     }
 

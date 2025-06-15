@@ -30,11 +30,10 @@ class RESTClient {
     }
     
     func login(username: String,
-               password: String,
                successCallback: @escaping APIOnSuccess<AuthResponse>,
                errorCallback: @escaping APIOnError
     ) {
-        let loginRequest = LoginRequest(email: username, password: password)
+        let loginRequest = LoginRequest(email: username)
         httpClient.postJSON(endpoint: "/login", headers: nil, data: loginRequest) { response in
             successCallback(response)
         } onError: { error in
