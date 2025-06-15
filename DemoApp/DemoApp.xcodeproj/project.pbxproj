@@ -76,15 +76,13 @@
 		1BB7CBF52B4500B8009247D7 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7CBF42B4500B8009247D7 /* ButtonStyle.swift */; };
 		1BB7CBF82B450828009247D7 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 1BB7CBF72B450828009247D7 /* AlertToast */; };
 		1BB7CBFA2B450840009247D7 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 1BB7CBF92B450840009247D7 /* AlertToast */; };
-		1BB7CBFD2B4543D3009247D7 /* LavaSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BB7CBFB2B4543C9009247D7 /* LavaSDK.xcframework */; };
-		1BB7CBFE2B4543D3009247D7 /* LavaSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1BB7CBFB2B4543C9009247D7 /* LavaSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		1BB7CBFF2B4543E1009247D7 /* LavaSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BB7CBFB2B4543C9009247D7 /* LavaSDK.xcframework */; };
-		1BB7CC002B4543E1009247D7 /* LavaSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1BB7CBFB2B4543C9009247D7 /* LavaSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1BC4ADB928F594BE0054FA7C /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC4ADB828F594BE0054FA7C /* HTTPClient.swift */; };
 		1BC6A3C72BCE531500B9F110 /* ConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7CBD02B3A9377009247D7 /* ConsentView.swift */; };
 		1BC6A3C82BCE531500B9F110 /* ConsentUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7CBCE2B3A9290009247D7 /* ConsentUtils.swift */; };
 		1BC6A3C92BCE531500B9F110 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7CBF42B4500B8009247D7 /* ButtonStyle.swift */; };
 		1BC6A3CA2BCE531500B9F110 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7CBF22B442721009247D7 /* AnalyticsView.swift */; };
+		1BD0E9012DFF0DF400FA54B7 /* LavaSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD0E9002DFF0DF400FA54B7 /* LavaSDK.xcframework */; };
+		1BD0E9022DFF0DF400FA54B7 /* LavaSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD0E9002DFF0DF400FA54B7 /* LavaSDK.xcframework */; };
 		2303F82D1C4F33EB001E6A67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2303F82C1C4F33EB001E6A67 /* AppDelegate.swift */; };
 		2303F8341C4F33EB001E6A67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2303F8331C4F33EB001E6A67 /* Assets.xcassets */; };
 		2303F8371C4F33EB001E6A67 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2303F8351C4F33EB001E6A67 /* Launch Screen.storyboard */; };
@@ -134,13 +132,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		1B046CA6295442DA009AE91E /* Embed Frameworks */ = {
+		1BD0E8FD2DFEE8D800FA54B7 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1BB7CBFE2B4543D3009247D7 /* LavaSDK.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -151,7 +148,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1BB7CC002B4543E1009247D7 /* LavaSDK.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -182,8 +178,8 @@
 		1BB7CBD02B3A9377009247D7 /* ConsentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentView.swift; sourceTree = "<group>"; };
 		1BB7CBF22B442721009247D7 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
 		1BB7CBF42B4500B8009247D7 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
-		1BB7CBFB2B4543C9009247D7 /* LavaSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = LavaSDK.xcframework; sourceTree = "<group>"; };
 		1BC4ADB828F594BE0054FA7C /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		1BD0E9002DFF0DF400FA54B7 /* LavaSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = LavaSDK.xcframework; sourceTree = "<group>"; };
 		2303F8291C4F33EB001E6A67 /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2303F82C1C4F33EB001E6A67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2303F8331C4F33EB001E6A67 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -230,7 +226,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1BB7CBFD2B4543D3009247D7 /* LavaSDK.xcframework in Frameworks */,
+				1BD0E9022DFF0DF400FA54B7 /* LavaSDK.xcframework in Frameworks */,
 				1BB7CBFA2B450840009247D7 /* AlertToast in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -239,7 +235,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1BB7CBFF2B4543E1009247D7 /* LavaSDK.xcframework in Frameworks */,
+				1BD0E9012DFF0DF400FA54B7 /* LavaSDK.xcframework in Frameworks */,
 				1BB7CBF82B450828009247D7 /* AlertToast in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -334,7 +330,7 @@
 		2303F82B1C4F33EB001E6A67 /* DemoApp */ = {
 			isa = PBXGroup;
 			children = (
-				1BB7CBFB2B4543C9009247D7 /* LavaSDK.xcframework */,
+				1BD0E9002DFF0DF400FA54B7 /* LavaSDK.xcframework */,
 				1BB7CBCA2B3A9280009247D7 /* Consent */,
 				1B63443F2AAEF71F004DB132 /* System */,
 				1BC4ADB528F5766A0054FA7C /* Network */,
@@ -501,8 +497,8 @@
 				1B046C7B295442DA009AE91E /* Sources */,
 				1B046C9E295442DA009AE91E /* Frameworks */,
 				1B046CA0295442DA009AE91E /* Resources */,
-				1B046CA6295442DA009AE91E /* Embed Frameworks */,
 				1B046CA8295442DA009AE91E /* ShellScript */,
+				1BD0E8FD2DFEE8D800FA54B7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -874,7 +870,6 @@
 		1B046CAA295442DA009AE91E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DemoApp/DemoApp.entitlements;
@@ -903,7 +898,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.3;
+				MARKETING_VERSION = 5.4;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ai.lava.sdkdemo.ios.secure;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -922,7 +917,6 @@
 		1B046CAB295442DA009AE91E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DemoApp/DemoApp.entitlements;
@@ -950,7 +944,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.3;
+				MARKETING_VERSION = 5.4;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ai.lava.sdkdemo.ios.secure;
 				PRODUCT_NAME = "$(TARGET_NAME)";
