@@ -178,7 +178,7 @@ class SignInViewController: EditableViewController {
         
         Lava.shared.setUserId(
             id: email,
-            type: EXTERNAL_SYSTEM_NBA_ID
+            type: "nba_id_encrypted"
         ) { [weak self] in
             let event = TrackEvent(
                 category: "DEBUG",
