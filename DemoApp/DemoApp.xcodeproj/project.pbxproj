@@ -46,6 +46,10 @@
 		1B046CA4295442DA009AE91E /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2303F8351C4F33EB001E6A67 /* Launch Screen.storyboard */; };
 		1B046CA5295442DA009AE91E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2303F8331C4F33EB001E6A67 /* Assets.xcassets */; };
 		1B046CB12954A2E8009AE91E /* SecureInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1B046CB02954A2E8009AE91E /* SecureInfo.plist */; };
+		1B2541582E01176A0003C6CF /* LavaSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD0E9002DFF0DF400FA54B7 /* LavaSDK.xcframework */; };
+		1B2541592E01176A0003C6CF /* LavaSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD0E9002DFF0DF400FA54B7 /* LavaSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1B25415A2E01176D0003C6CF /* LavaSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD0E9002DFF0DF400FA54B7 /* LavaSDK.xcframework */; };
+		1B25415B2E01176D0003C6CF /* LavaSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD0E9002DFF0DF400FA54B7 /* LavaSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1B36E0DF28F695730046AC4C /* RESTClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B36E0DC28F695730046AC4C /* RESTClient.swift */; };
 		1B36E0E128F6CA200046AC4C /* AppSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B36E0E028F6CA200046AC4C /* AppSession.swift */; };
 		1B36E0E528F7CA750046AC4C /* AppSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B36E0E428F7CA750046AC4C /* AppSessionTests.swift */; };
@@ -81,8 +85,6 @@
 		1BC6A3C82BCE531500B9F110 /* ConsentUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7CBCE2B3A9290009247D7 /* ConsentUtils.swift */; };
 		1BC6A3C92BCE531500B9F110 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7CBF42B4500B8009247D7 /* ButtonStyle.swift */; };
 		1BC6A3CA2BCE531500B9F110 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7CBF22B442721009247D7 /* AnalyticsView.swift */; };
-		1BD0E9012DFF0DF400FA54B7 /* LavaSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD0E9002DFF0DF400FA54B7 /* LavaSDK.xcframework */; };
-		1BD0E9022DFF0DF400FA54B7 /* LavaSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD0E9002DFF0DF400FA54B7 /* LavaSDK.xcframework */; };
 		2303F82D1C4F33EB001E6A67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2303F82C1C4F33EB001E6A67 /* AppDelegate.swift */; };
 		2303F8341C4F33EB001E6A67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2303F8331C4F33EB001E6A67 /* Assets.xcassets */; };
 		2303F8371C4F33EB001E6A67 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2303F8351C4F33EB001E6A67 /* Launch Screen.storyboard */; };
@@ -138,6 +140,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				1B25415B2E01176D0003C6CF /* LavaSDK.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -148,6 +151,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				1B2541592E01176A0003C6CF /* LavaSDK.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -226,7 +230,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1BD0E9022DFF0DF400FA54B7 /* LavaSDK.xcframework in Frameworks */,
+				1B25415A2E01176D0003C6CF /* LavaSDK.xcframework in Frameworks */,
 				1BB7CBFA2B450840009247D7 /* AlertToast in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -235,7 +239,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1BD0E9012DFF0DF400FA54B7 /* LavaSDK.xcframework in Frameworks */,
+				1B2541582E01176A0003C6CF /* LavaSDK.xcframework in Frameworks */,
 				1BB7CBF82B450828009247D7 /* AlertToast in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
