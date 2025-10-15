@@ -198,8 +198,8 @@
                                                     <action selector="showInitializeOptions:" destination="XP0-ct-XoM" eventType="touchUpInside" id="lMU-Cr-ncQ"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rS7-Iz-7XH" userLabel="consentButton" customClass="RoundedButton" customModule="DemoApp" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="286" width="288" height="50"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rS7-Iz-7XH" userLabel="initializeOptionsButton" customClass="RoundedButton" customModule="DemoApp" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="346" width="288" height="50"/>
                                                 <color key="backgroundColor" red="0.92549019610000005" green="0.0" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="t9N-c6-MT1"/>
@@ -212,7 +212,7 @@
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                 </variation>
                                                 <connections>
-                                                    <segue destination="89Q-kA-rJd" kind="show" id="lDJ-XA-iHp"/>
+                                                    <action selector="showInitializeOptions:" destination="XP0-ct-XoM" eventType="touchUpInside" id="lMU-Cr-ncQ"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -773,25 +773,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XYq-3D-V4q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2692" y="385"/>
-        </scene>
-        <!--Initialize Options-->
-        <scene sceneID="UEk-OE-8gQ">
-            <objects>
-                <viewController title="Initialize Options" id="89Q-kA-rJd" customClass="InitializeOptionsViewController" customModule="DemoApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Bv2-Dv-ejd"/>
-                        <viewControllerLayoutGuide type="bottom" id="Eff-5l-dNx"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="yit-E8-DMw">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="603"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="GkU-SJ-IVq"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="urI-sC-ViL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1277" y="557"/>
         </scene>
     </scenes>
     <resources>

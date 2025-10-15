@@ -52,8 +52,6 @@
 		1B449C1B28F6710A0040E032 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B449C1A28F6710A0040E032 /* APIError.swift */; };
 		1B449C1F28F671A30040E032 /* JSONEncoder+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B449C1E28F671A30040E032 /* JSONEncoder+Date.swift */; };
 		1B449C2128F671B00040E032 /* JSONDecoder+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B449C2028F671B00040E032 /* JSONDecoder+Date.swift */; };
-		1B5F959E2E9F876300ECAF7E /* InitializeOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F959D2E9F875900ECAF7E /* InitializeOptionsViewController.swift */; };
-		1B5F959F2E9F876300ECAF7E /* InitializeOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F959D2E9F875900ECAF7E /* InitializeOptionsViewController.swift */; };
 		1B614FC62AB064F000C87E4F /* AppContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B614FC52AB064F000C87E4F /* AppContainerViewController.swift */; };
 		1B614FC82AB0671500C87E4F /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B614FC72AB0671500C87E4F /* Navigator.swift */; };
 		1B6344412AAEF72F004DB132 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6344402AAEF72F004DB132 /* SceneDelegate.swift */; };
@@ -123,6 +121,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		1BF273B22E9F88EC00577EDF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1BF273AA2E9F88EB00577EDF /* LavaSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 23CE2B7F1C47B5E00031EF97;
+			remoteInfo = LavaSDK;
+		};
+		1BF273B42E9F88EC00577EDF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1BF273AA2E9F88EB00577EDF /* LavaSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 23CE2B891C47B5E00031EF97;
+			remoteInfo = LavaSDKTests;
+		};
 		2303F83E1C4F33EB001E6A67 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2303F8211C4F33EB001E6A67 /* Project object */;
@@ -173,7 +185,6 @@
 		1B449C1A28F6710A0040E032 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		1B449C1E28F671A30040E032 /* JSONEncoder+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONEncoder+Date.swift"; sourceTree = "<group>"; };
 		1B449C2028F671B00040E032 /* JSONDecoder+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Date.swift"; sourceTree = "<group>"; };
-		1B5F959D2E9F875900ECAF7E /* InitializeOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitializeOptionsViewController.swift; sourceTree = "<group>"; };
 		1B614FC52AB064F000C87E4F /* AppContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainerViewController.swift; sourceTree = "<group>"; };
 		1B614FC72AB0671500C87E4F /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		1B6344402AAEF72F004DB132 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -250,6 +261,7 @@
 			files = (
 				1B8DD5BE2EA5DCDE008D7BEB /* LavaSDK.xcframework in Frameworks */,
 				1BB7CBF82B450828009247D7 /* AlertToast in Frameworks */,
+				1BF273B62E9F88F100577EDF /* LavaSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,7 +508,6 @@
 		B3BFE4DC1D50B84900CBE060 /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
-				1B5F959D2E9F875900ECAF7E /* InitializeOptionsViewController.swift */,
 				B3BFE4DF1D50B84900CBE060 /* SignInViewController.swift */,
 			);
 			path = SignIn;
@@ -648,6 +659,12 @@
 			);
 			productRefGroup = 2303F82A1C4F33EB001E6A67 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 1BF273AD2E9F88EB00577EDF /* Products */;
+					ProjectRef = 1BF273AA2E9F88EB00577EDF /* LavaSDK.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				2303F8281C4F33EB001E6A67 /* DemoApp */,
@@ -657,6 +674,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		1BF273B32E9F88EC00577EDF /* LavaSDK.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = LavaSDK.framework;
+			remoteRef = 1BF273B22E9F88EC00577EDF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1BF273B52E9F88EC00577EDF /* LavaSDKTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = LavaSDKTests.xctest;
+			remoteRef = 1BF273B42E9F88EC00577EDF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1B046CA0295442DA009AE91E /* Resources */ = {
@@ -745,7 +779,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BC6A3C72BCE531500B9F110 /* ConsentView.swift in Sources */,
-				1B5F959E2E9F876300ECAF7E /* InitializeOptionsViewController.swift in Sources */,
 				1BC6A3C82BCE531500B9F110 /* ConsentUtils.swift in Sources */,
 				1BC6A3C92BCE531500B9F110 /* ButtonStyle.swift in Sources */,
 				1BC6A3CA2BCE531500B9F110 /* AnalyticsView.swift in Sources */,
@@ -798,7 +831,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3BFE47E1D509BBE00CBE060 /* Constants.swift in Sources */,
-				1B5F959F2E9F876300ECAF7E /* InitializeOptionsViewController.swift in Sources */,
 				8A8DF7672754BA3100DCA11F /* RoundedView.swift in Sources */,
 				1BC4ADB928F594BE0054FA7C /* HTTPClient.swift in Sources */,
 				B3BFE47F1D509BBE00CBE060 /* Toast.swift in Sources */,
