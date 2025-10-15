@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="367" width="320" height="469"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oji-pZ-QJ4" userLabel="LoginContainer">
-                                <rect key="frame" x="0.0" y="244" width="320" height="548.5"/>
+                                <rect key="frame" x="0.0" y="214" width="320" height="608.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="eYe-WX-oL9">
                                         <rect key="frame" x="12" y="0.0" width="296" height="155"/>
@@ -94,7 +94,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="oNH-BF-eIX">
-                                        <rect key="frame" x="16" y="196.5" width="288" height="336"/>
+                                        <rect key="frame" x="16" y="196.5" width="288" height="396"/>
                                         <subviews>
                                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="FMb-pG-PeI">
                                                 <rect key="frame" x="0.0" y="0.0" width="288" height="37"/>
@@ -154,6 +154,23 @@
                                                     <constraint firstAttribute="height" constant="50" id="ku1-3a-ZUZ"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                                <state key="normal" title="Show Pass">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <variation key="heightClass=regular-widthClass=compact">
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="showPass:" destination="XP0-ct-XoM" eventType="touchUpInside" id="ZjS-Jc-z24"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXj-Mg-GWj" userLabel="consentButton" customClass="RoundedButton" customModule="DemoApp" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="286" width="288" height="50"/>
+                                                <color key="backgroundColor" red="0.92549019610000005" green="0.0" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="aSh-NB-RlC"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                                 <state key="normal" title="Consent Preferences">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
@@ -161,11 +178,11 @@
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                 </variation>
                                                 <connections>
-                                                    <action selector="showConsentPreferences:" destination="XP0-ct-XoM" eventType="touchUpInside" id="zpE-YO-tE8"/>
+                                                    <action selector="showConsentPreferences:" destination="XP0-ct-XoM" eventType="touchUpInside" id="Al9-oX-Onp"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rS7-Iz-7XH" userLabel="consentButton" customClass="RoundedButton" customModule="DemoApp" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="286" width="288" height="50"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rS7-Iz-7XH" userLabel="initializeOptionsButton" customClass="RoundedButton" customModule="DemoApp" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="346" width="288" height="50"/>
                                                 <color key="backgroundColor" red="0.92549019610000005" green="0.0" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="t9N-c6-MT1"/>
@@ -178,7 +195,7 @@
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                 </variation>
                                                 <connections>
-                                                    <segue destination="89Q-kA-rJd" kind="show" id="lDJ-XA-iHp"/>
+                                                    <action selector="showInitializeOptions:" destination="XP0-ct-XoM" eventType="touchUpInside" id="lMU-Cr-ncQ"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -740,25 +757,6 @@
             </objects>
             <point key="canvasLocation" x="2692" y="385"/>
         </scene>
-        <!--Initialize Options-->
-        <scene sceneID="UEk-OE-8gQ">
-            <objects>
-                <viewController title="Initialize Options" id="89Q-kA-rJd" customClass="InitializeOptionsViewController" customModule="DemoApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Bv2-Dv-ejd"/>
-                        <viewControllerLayoutGuide type="bottom" id="Eff-5l-dNx"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="yit-E8-DMw">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="603"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="GkU-SJ-IVq"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="urI-sC-ViL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1277" y="557"/>
-        </scene>
     </scenes>
     <resources>
         <image name="backGroundImage" width="375" height="667"/>
@@ -769,10 +767,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
-            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

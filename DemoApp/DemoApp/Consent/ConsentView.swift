@@ -78,7 +78,12 @@ struct ConsentView: View {
         useCustomConsent = shouldUseCustomConsent
         
         // Reinit the SDK
-        AppDelegate.shared?.initLavaSdk(useCustomConsentMapping: useCustomConsent)
+        if (shouldUseCustomConsent) {
+            AppDelegate.shared?.initLavaSDKWithCustomConsentMapping()
+        } else {
+            AppDelegate.shared?.initLavaSDKWithDefaultConsent()
+        }
+        
         
         var newConsentList: Set<String> = []
         for (key, value) in AppConsent.currentConsentMapping {

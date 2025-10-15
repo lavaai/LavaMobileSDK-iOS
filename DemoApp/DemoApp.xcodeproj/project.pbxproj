@@ -46,18 +46,12 @@
 		1B046CA4295442DA009AE91E /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2303F8351C4F33EB001E6A67 /* Launch Screen.storyboard */; };
 		1B046CA5295442DA009AE91E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2303F8331C4F33EB001E6A67 /* Assets.xcassets */; };
 		1B046CB12954A2E8009AE91E /* SecureInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1B046CB02954A2E8009AE91E /* SecureInfo.plist */; };
-		1B2541582E01176A0003C6CF /* LavaSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD0E9002DFF0DF400FA54B7 /* LavaSDK.xcframework */; };
-		1B2541592E01176A0003C6CF /* LavaSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD0E9002DFF0DF400FA54B7 /* LavaSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		1B25415A2E01176D0003C6CF /* LavaSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD0E9002DFF0DF400FA54B7 /* LavaSDK.xcframework */; };
-		1B25415B2E01176D0003C6CF /* LavaSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD0E9002DFF0DF400FA54B7 /* LavaSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1B36E0DF28F695730046AC4C /* RESTClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B36E0DC28F695730046AC4C /* RESTClient.swift */; };
 		1B36E0E128F6CA200046AC4C /* AppSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B36E0E028F6CA200046AC4C /* AppSession.swift */; };
 		1B36E0E528F7CA750046AC4C /* AppSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B36E0E428F7CA750046AC4C /* AppSessionTests.swift */; };
 		1B449C1B28F6710A0040E032 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B449C1A28F6710A0040E032 /* APIError.swift */; };
 		1B449C1F28F671A30040E032 /* JSONEncoder+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B449C1E28F671A30040E032 /* JSONEncoder+Date.swift */; };
 		1B449C2128F671B00040E032 /* JSONDecoder+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B449C2028F671B00040E032 /* JSONDecoder+Date.swift */; };
-		1B5F959E2E9F876300ECAF7E /* InitializeOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F959D2E9F875900ECAF7E /* InitializeOptionsViewController.swift */; };
-		1B5F959F2E9F876300ECAF7E /* InitializeOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F959D2E9F875900ECAF7E /* InitializeOptionsViewController.swift */; };
 		1B614FC62AB064F000C87E4F /* AppContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B614FC52AB064F000C87E4F /* AppContainerViewController.swift */; };
 		1B614FC82AB0671500C87E4F /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B614FC72AB0671500C87E4F /* Navigator.swift */; };
 		1B6344412AAEF72F004DB132 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6344402AAEF72F004DB132 /* SceneDelegate.swift */; };
@@ -87,6 +81,12 @@
 		1BC6A3C82BCE531500B9F110 /* ConsentUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7CBCE2B3A9290009247D7 /* ConsentUtils.swift */; };
 		1BC6A3C92BCE531500B9F110 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7CBF42B4500B8009247D7 /* ButtonStyle.swift */; };
 		1BC6A3CA2BCE531500B9F110 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7CBF22B442721009247D7 /* AnalyticsView.swift */; };
+		1BF273B62E9F88F100577EDF /* LavaSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BF273B32E9F88EC00577EDF /* LavaSDK.framework */; };
+		1BF273B72E9F88F100577EDF /* LavaSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1BF273B32E9F88EC00577EDF /* LavaSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1BF273BA2E9F898E00577EDF /* InitializeOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF273B92E9F898800577EDF /* InitializeOptionsView.swift */; };
+		1BF273BB2E9F898E00577EDF /* InitializeOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF273B92E9F898800577EDF /* InitializeOptionsView.swift */; };
+		1BF273BD2E9FE08F00577EDF /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF273BC2E9FE08F00577EDF /* ButtonStyles.swift */; };
+		1BF273BE2E9FE08F00577EDF /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF273BC2E9FE08F00577EDF /* ButtonStyles.swift */; };
 		2303F82D1C4F33EB001E6A67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2303F82C1C4F33EB001E6A67 /* AppDelegate.swift */; };
 		2303F8341C4F33EB001E6A67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2303F8331C4F33EB001E6A67 /* Assets.xcassets */; };
 		2303F8371C4F33EB001E6A67 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2303F8351C4F33EB001E6A67 /* Launch Screen.storyboard */; };
@@ -119,6 +119,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		1BF273B22E9F88EC00577EDF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1BF273AA2E9F88EB00577EDF /* LavaSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 23CE2B7F1C47B5E00031EF97;
+			remoteInfo = LavaSDK;
+		};
+		1BF273B42E9F88EC00577EDF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1BF273AA2E9F88EB00577EDF /* LavaSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 23CE2B891C47B5E00031EF97;
+			remoteInfo = LavaSDKTests;
+		};
 		2303F83E1C4F33EB001E6A67 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2303F8211C4F33EB001E6A67 /* Project object */;
@@ -142,7 +156,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1B25415B2E01176D0003C6CF /* LavaSDK.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,7 +166,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1B2541592E01176A0003C6CF /* LavaSDK.xcframework in Embed Frameworks */,
+				1BF273B72E9F88F100577EDF /* LavaSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -169,7 +182,6 @@
 		1B449C1A28F6710A0040E032 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		1B449C1E28F671A30040E032 /* JSONEncoder+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONEncoder+Date.swift"; sourceTree = "<group>"; };
 		1B449C2028F671B00040E032 /* JSONDecoder+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Date.swift"; sourceTree = "<group>"; };
-		1B5F959D2E9F875900ECAF7E /* InitializeOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitializeOptionsViewController.swift; sourceTree = "<group>"; };
 		1B614FC52AB064F000C87E4F /* AppContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainerViewController.swift; sourceTree = "<group>"; };
 		1B614FC72AB0671500C87E4F /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		1B6344402AAEF72F004DB132 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -186,7 +198,9 @@
 		1BB7CBF22B442721009247D7 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
 		1BB7CBF42B4500B8009247D7 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		1BC4ADB828F594BE0054FA7C /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
-		1BD0E9002DFF0DF400FA54B7 /* LavaSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = LavaSDK.xcframework; sourceTree = "<group>"; };
+		1BF273AA2E9F88EB00577EDF /* LavaSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = LavaSDK.xcodeproj; path = "/Users/restaff/Projects/Lava/SDK-iOS/LavaSDK.xcodeproj"; sourceTree = "<absolute>"; };
+		1BF273B92E9F898800577EDF /* InitializeOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitializeOptionsView.swift; sourceTree = "<group>"; };
+		1BF273BC2E9FE08F00577EDF /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		2303F8291C4F33EB001E6A67 /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2303F82C1C4F33EB001E6A67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2303F8331C4F33EB001E6A67 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -233,7 +247,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B25415A2E01176D0003C6CF /* LavaSDK.xcframework in Frameworks */,
 				1BB7CBFA2B450840009247D7 /* AlertToast in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -242,8 +255,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B2541582E01176A0003C6CF /* LavaSDK.xcframework in Frameworks */,
 				1BB7CBF82B450828009247D7 /* AlertToast in Frameworks */,
+				1BF273B62E9F88F100577EDF /* LavaSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +323,23 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		1BF273AD2E9F88EB00577EDF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1BF273B32E9F88EC00577EDF /* LavaSDK.framework */,
+				1BF273B52E9F88EC00577EDF /* LavaSDKTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1BF273B82E9F897F00577EDF /* InitializeOptions */ = {
+			isa = PBXGroup;
+			children = (
+				1BF273B92E9F898800577EDF /* InitializeOptionsView.swift */,
+			);
+			path = InitializeOptions;
+			sourceTree = "<group>";
+		};
 		2303F8201C4F33EB001E6A67 = {
 			isa = PBXGroup;
 			children = (
@@ -337,7 +367,8 @@
 		2303F82B1C4F33EB001E6A67 /* DemoApp */ = {
 			isa = PBXGroup;
 			children = (
-				1BD0E9002DFF0DF400FA54B7 /* LavaSDK.xcframework */,
+				1BF273B82E9F897F00577EDF /* InitializeOptions */,
+				1BF273AA2E9F88EB00577EDF /* LavaSDK.xcodeproj */,
 				1BB7CBCA2B3A9280009247D7 /* Consent */,
 				1B63443F2AAEF71F004DB132 /* System */,
 				1BC4ADB528F5766A0054FA7C /* Network */,
@@ -414,6 +445,7 @@
 				1B87AF2D2AB84D3C0003077D /* UIViewController+Menu.swift */,
 				1BB7CBCE2B3A9290009247D7 /* ConsentUtils.swift */,
 				1BB7CBF42B4500B8009247D7 /* ButtonStyle.swift */,
+				1BF273BC2E9FE08F00577EDF /* ButtonStyles.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -480,7 +512,6 @@
 		B3BFE4DC1D50B84900CBE060 /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
-				1B5F959D2E9F875900ECAF7E /* InitializeOptionsViewController.swift */,
 				B3BFE4DF1D50B84900CBE060 /* SignInViewController.swift */,
 			);
 			path = SignIn;
@@ -632,6 +663,12 @@
 			);
 			productRefGroup = 2303F82A1C4F33EB001E6A67 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 1BF273AD2E9F88EB00577EDF /* Products */;
+					ProjectRef = 1BF273AA2E9F88EB00577EDF /* LavaSDK.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				2303F8281C4F33EB001E6A67 /* DemoApp */,
@@ -641,6 +678,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		1BF273B32E9F88EC00577EDF /* LavaSDK.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = LavaSDK.framework;
+			remoteRef = 1BF273B22E9F88EC00577EDF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1BF273B52E9F88EC00577EDF /* LavaSDKTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = LavaSDKTests.xctest;
+			remoteRef = 1BF273B42E9F88EC00577EDF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1B046CA0295442DA009AE91E /* Resources */ = {
@@ -729,7 +783,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BC6A3C72BCE531500B9F110 /* ConsentView.swift in Sources */,
-				1B5F959E2E9F876300ECAF7E /* InitializeOptionsViewController.swift in Sources */,
 				1BC6A3C82BCE531500B9F110 /* ConsentUtils.swift in Sources */,
 				1BC6A3C92BCE531500B9F110 /* ButtonStyle.swift in Sources */,
 				1BC6A3CA2BCE531500B9F110 /* AnalyticsView.swift in Sources */,
@@ -742,12 +795,14 @@
 				1B046C7C295442DA009AE91E /* Constants.swift in Sources */,
 				1B046C7D295442DA009AE91E /* RoundedView.swift in Sources */,
 				1B046C7E295442DA009AE91E /* HTTPClient.swift in Sources */,
+				1BF273BE2E9FE08F00577EDF /* ButtonStyles.swift in Sources */,
 				1B046C7F295442DA009AE91E /* Toast.swift in Sources */,
 				1B046C80295442DA009AE91E /* String+JSON.swift in Sources */,
 				1B046C81295442DA009AE91E /* MessagesViewController.swift in Sources */,
 				1B046C82295442DA009AE91E /* Int64Extension.swift in Sources */,
 				1B046C83295442DA009AE91E /* DebugInfoViewController.swift in Sources */,
 				1B046C84295442DA009AE91E /* ProfileViewController.swift in Sources */,
+				1BF273BA2E9F898E00577EDF /* InitializeOptionsView.swift in Sources */,
 				1B046C85295442DA009AE91E /* APIError.swift in Sources */,
 				1B046C86295442DA009AE91E /* GetContentRequestVideoPlayerViewController.swift in Sources */,
 				1B046C87295442DA009AE91E /* ProfileTextFieldCell.swift in Sources */,
@@ -780,7 +835,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3BFE47E1D509BBE00CBE060 /* Constants.swift in Sources */,
-				1B5F959F2E9F876300ECAF7E /* InitializeOptionsViewController.swift in Sources */,
 				8A8DF7672754BA3100DCA11F /* RoundedView.swift in Sources */,
 				1BC4ADB928F594BE0054FA7C /* HTTPClient.swift in Sources */,
 				B3BFE47F1D509BBE00CBE060 /* Toast.swift in Sources */,
@@ -793,12 +847,14 @@
 				B3BFE4E71D50B8D500CBE060 /* ProfileViewController.swift in Sources */,
 				1B449C1B28F6710A0040E032 /* APIError.swift in Sources */,
 				B3BFE4B71D50B7CC00CBE060 /* GetContentRequestVideoPlayerViewController.swift in Sources */,
+				1BF273BD2E9FE08F00577EDF /* ButtonStyles.swift in Sources */,
 				8A420B31274BF00000AC3AEE /* ProfileTextFieldCell.swift in Sources */,
 				8A8DF7692754BB0400DCA11F /* RoundedButton.swift in Sources */,
 				1B87AF2A2AB1698F0003077D /* SideBarViewController.swift in Sources */,
 				8A8DF7652754AF8900DCA11F /* EditableViewController.swift in Sources */,
 				1B87AF2C2AB16A620003077D /* Color.swift in Sources */,
 				B3F5E1451D478C4E002D533B /* ContentRequestViewController.swift in Sources */,
+				1BF273BB2E9F898E00577EDF /* InitializeOptionsView.swift in Sources */,
 				1B6344412AAEF72F004DB132 /* SceneDelegate.swift in Sources */,
 				8A9CD666276062DF00A40EE2 /* DebugInfoTableViewCell.swift in Sources */,
 				1B6E878B2950772200E25496 /* Encodable+JSON.swift in Sources */,
@@ -903,7 +959,7 @@
 				INFOPLIST_FILE = DemoApp/SecureInfo.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "SDK Demo App Secure";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -949,7 +1005,7 @@
 				INFOPLIST_FILE = DemoApp/SecureInfo.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "SDK Demo App Secure";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1107,7 +1163,7 @@
 				INFOPLIST_FILE = DemoApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "SDK Demo App";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1153,7 +1209,7 @@
 				INFOPLIST_FILE = DemoApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "SDK Demo App";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1179,7 +1235,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = DemoAppTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1198,7 +1254,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = DemoAppTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1216,7 +1272,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = DemoAppUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1235,7 +1291,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = DemoAppUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
