@@ -42,6 +42,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         AppSession.current.lavaConfig = lavaConfig
     }
     
+    func initLavaSDKWithInvalidConfig() {
+        
+        Lava.initialize(
+            appKey: "invalid-app-key",
+            clientId: "invalid-client-id"
+        )
+        
+        let customStyle = Style()
+            .setTitleFont(UIFont.systemFont(ofSize: 24))
+            .setContentFont(UIFont.systemFont(ofSize: 14))
+            .setBackgroundColor(UIColor.white)
+            .setTitleTextColor(UIColor.black)
+            .setContentTextColor(UIColor.darkGray)
+        
+        Lava.shared.setCustomStyle(customStyle: customStyle)
+        
+        Lava.shared.start()
+    }
+    
     func initLavaSDKWithDefaultConsent() {
         guard let lavaConfig = ConfigLoader.loadConfig() else {
             fatalError("Error loading lava-services.json")
@@ -121,7 +140,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 
         return true
     }
-
 
 
     func applicationWillResignActive(_ application: UIApplication) {

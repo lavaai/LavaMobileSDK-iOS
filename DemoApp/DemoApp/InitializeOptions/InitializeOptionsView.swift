@@ -66,6 +66,16 @@ struct InitializeOptionsView: View {
                 }
                 .buttonStyle(PrimaryButtonStyle())
                 
+                Button {
+                    AppDelegate.shared?.initLavaSDKWithInvalidConfig()
+                    dismiss?()
+                } label: {
+                    Text("Init with invalid config")
+                        .frame(maxWidth: .infinity)
+                        
+                }
+                .buttonStyle(PrimaryButtonStyle())
+                
             }
             .padding(.horizontal, 16)
             
