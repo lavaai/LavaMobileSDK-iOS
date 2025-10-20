@@ -80,8 +80,6 @@
 		1BB7CBF52B4500B8009247D7 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7CBF42B4500B8009247D7 /* ButtonStyle.swift */; };
 		1BB7CBF82B450828009247D7 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 1BB7CBF72B450828009247D7 /* AlertToast */; };
 		1BB7CBFA2B450840009247D7 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 1BB7CBF92B450840009247D7 /* AlertToast */; };
-		1BC383562EA5521D00B9A78F /* LavaSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BC383552EA5521D00B9A78F /* LavaSDK.xcframework */; };
-		1BC383572EA5521D00B9A78F /* LavaSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BC383552EA5521D00B9A78F /* LavaSDK.xcframework */; };
 		1BC4ADB928F594BE0054FA7C /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC4ADB828F594BE0054FA7C /* HTTPClient.swift */; };
 		1BC6A3C72BCE531500B9F110 /* ConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7CBD02B3A9377009247D7 /* ConsentView.swift */; };
 		1BC6A3C82BCE531500B9F110 /* ConsentUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7CBCE2B3A9290009247D7 /* ConsentUtils.swift */; };
