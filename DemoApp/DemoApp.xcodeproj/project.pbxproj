@@ -68,6 +68,10 @@
 		1B87AF2A2AB1698F0003077D /* SideBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B87AF292AB1698F0003077D /* SideBarViewController.swift */; };
 		1B87AF2C2AB16A620003077D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B87AF2B2AB16A620003077D /* Color.swift */; };
 		1B87AF2E2AB84D3C0003077D /* UIViewController+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B87AF2D2AB84D3C0003077D /* UIViewController+Menu.swift */; };
+		1B8DD5BE2EA5DCDE008D7BEB /* LavaSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BC383552EA5521D00B9A78F /* LavaSDK.xcframework */; };
+		1B8DD5BF2EA5DCDE008D7BEB /* LavaSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1BC383552EA5521D00B9A78F /* LavaSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1B8DD5C02EA5DCE1008D7BEB /* LavaSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BC383552EA5521D00B9A78F /* LavaSDK.xcframework */; };
+		1B8DD5C12EA5DCE1008D7BEB /* LavaSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1BC383552EA5521D00B9A78F /* LavaSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1B9A91E32BCFF0FD002082FE /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 1B9A91E22BCFF097002082FE /* PrivacyInfo.xcprivacy */; };
 		1B9A91E42BCFF106002082FE /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 1B9A91E22BCFF097002082FE /* PrivacyInfo.xcprivacy */; };
 		1BB7CBCF2B3A9290009247D7 /* ConsentUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7CBCE2B3A9290009247D7 /* ConsentUtils.swift */; };
@@ -76,8 +80,6 @@
 		1BB7CBF52B4500B8009247D7 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7CBF42B4500B8009247D7 /* ButtonStyle.swift */; };
 		1BB7CBF82B450828009247D7 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 1BB7CBF72B450828009247D7 /* AlertToast */; };
 		1BB7CBFA2B450840009247D7 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 1BB7CBF92B450840009247D7 /* AlertToast */; };
-		1BC383562EA5521D00B9A78F /* LavaSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BC383552EA5521D00B9A78F /* LavaSDK.xcframework */; };
-		1BC383572EA5521D00B9A78F /* LavaSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BC383552EA5521D00B9A78F /* LavaSDK.xcframework */; };
 		1BC4ADB928F594BE0054FA7C /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC4ADB828F594BE0054FA7C /* HTTPClient.swift */; };
 		1BC6A3C72BCE531500B9F110 /* ConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7CBD02B3A9377009247D7 /* ConsentView.swift */; };
 		1BC6A3C82BCE531500B9F110 /* ConsentUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7CBCE2B3A9290009247D7 /* ConsentUtils.swift */; };
@@ -142,6 +144,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				1B8DD5C12EA5DCE1008D7BEB /* LavaSDK.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -152,6 +155,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				1B8DD5BF2EA5DCDE008D7BEB /* LavaSDK.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -232,7 +236,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1BC383572EA5521D00B9A78F /* LavaSDK.xcframework in Frameworks */,
+				1B8DD5C02EA5DCE1008D7BEB /* LavaSDK.xcframework in Frameworks */,
 				1BB7CBFA2B450840009247D7 /* AlertToast in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -241,7 +245,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1BC383562EA5521D00B9A78F /* LavaSDK.xcframework in Frameworks */,
+				1B8DD5BE2EA5DCDE008D7BEB /* LavaSDK.xcframework in Frameworks */,
 				1BB7CBF82B450828009247D7 /* AlertToast in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -918,7 +922,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.4;
+				MARKETING_VERSION = 5.5;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ai.lava.sdkdemo.ios.secure;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -964,7 +968,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.4;
+				MARKETING_VERSION = 5.5;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ai.lava.sdkdemo.ios.secure;
 				PRODUCT_NAME = "$(TARGET_NAME)";
