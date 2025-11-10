@@ -137,6 +137,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         
         AppDelegate.shared = self
+        
+        if let url = launchOptions?[.url] as? URL {
+            _ = handleDeeplink(url: url)
+        }
                 
         return true
     }
@@ -258,14 +262,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         open url: URL,
         options: [UIApplication.OpenURLOptionsKey : Any] = [:]
     ) -> Bool {
-        if (Lava.shared.canHandleDeepLink(url: url)) {
-            return Lava.shared.handleDeepLink(url: url) { err in
-                print(err.localizedDescription)
-            }
-        } else {
-            // handle other deep links
-            return false
-        }
+        handleDeeplink(url: url)
     }
     
     func application(
@@ -285,6 +282,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         
         return true
+    }
+    
+    func handleDeeplink(url: URL?) -> Bool {
+        guard let url = url else {
+            return false
+        }
+        
+        if (Lava.shared.canHandleDeepLink(url: url)) {
+            return Lava.shared.handleDeepLink(url: url) { err in
+                print(err.localizedDescription)
+            }
+        } else {
+            // handle other deep links
+            return false
+        }
     }
 }
 
