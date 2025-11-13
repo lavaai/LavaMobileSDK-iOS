@@ -105,6 +105,20 @@ class Navigator {
         )
         vc.present(targetVC, animated: true)
     }
+    
+    func openInitializeOptions(_ vc: UIViewController) {
+        let dismissAction = {
+            guard let targetVC = vc.presentedViewController else {
+                return
+            }
+            targetVC.dismiss(animated: true)
+            vc.viewWillAppear(true)
+        }
+        let targetVC = UIHostingController(
+            rootView: InitializeOptionsView(dismiss: dismissAction)
+        )
+        vc.present(targetVC, animated: true)
+    }
 }
 
 

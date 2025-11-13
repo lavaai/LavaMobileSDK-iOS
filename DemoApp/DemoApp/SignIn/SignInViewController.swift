@@ -89,6 +89,16 @@ class SignInViewController: EditableViewController {
         }
     }
     
+    
+    @IBAction func showPass(_ sender: Any) {
+        Lava.shared.showPass()
+    }
+    
+    
+    @IBAction func showInitializeOptions(_ sender: Any) {
+        Navigator.shared.openInitializeOptions(self)
+    }
+    
     @IBAction func showConsentPreferences(_ sender: Any) {
         Navigator.shared.openConsentPreferences(self)
     }

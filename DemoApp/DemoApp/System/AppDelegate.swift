@@ -18,41 +18,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     var window: UIWindow?
     var userInfoToRender: [AnyHashable: Any]? = nil
     
-    func initLavaSdk(
-        useCustomConsentMapping: Bool = false
-    ) {
-        
+    func initLavaSDKWithDefaultConfig() {
         guard let lavaConfig = ConfigLoader.loadConfig() else {
             fatalError("Error loading lava-services.json")
         }
         
-        // Initialise LavaSDK.
-        if useCustomConsentMapping {
-            Lava.initialize(
-                appKey: lavaConfig.appKey,
-                clientId: lavaConfig.clientId,
-                logLevel: .verbose,
-                serverLogLevel: .verbose,
-                customPiConsentMapping: LavaConsent.OneTrustDefaultConsentMapping,
-                customPiConsentFlags: ConsentUtils.getCustomConsentFlags(predefined: lavaConfig.customConsentFlags),
-                piConsentCallback: { err, shouldLogout in
-                    print(err?.localizedDescription ?? "Unknown consent error")
-                }
-            )
-        } else {
-            Lava.initialize(
-                appKey: lavaConfig.appKey,
-                clientId: lavaConfig.clientId,
-                logLevel: .verbose,
-                serverLogLevel: .verbose,
-                piConsentFlags: ConsentUtils.getConsentFlags(predefined: ["Strictly Necessary"]),
-                piConsentCallback: { err, shouldLogout in
-                    print(err?.localizedDescription ?? "Unknown consent error")
-                }
-            )
-        }
-        
-        AppSession.current.useCustomConsent = useCustomConsentMapping
+        Lava.initialize(
+            appKey: lavaConfig.appKey,
+            clientId: lavaConfig.clientId
+        )
         
         let customStyle = Style()
             .setTitleFont(UIFont.systemFont(ofSize: 24))
@@ -65,12 +39,87 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         Lava.shared.start()
         
-        if (lavaConfig.enableSecureMemberToken) {
-            Lava.shared.subscribeSecureMemberTokenExpiry(self)
-        } else {
-            Lava.shared.setSecureMemberToken(nil)
-            Lava.shared.unsubscribeSecureMemberTokenExpiry(self)
+        AppSession.current.lavaConfig = lavaConfig
+    }
+    
+    func initLavaSDKWithInvalidConfig() {
+        
+        Lava.initialize(
+            appKey: "invalid-app-key",
+            clientId: "invalid-client-id"
+        )
+        
+        let customStyle = Style()
+            .setTitleFont(UIFont.systemFont(ofSize: 24))
+            .setContentFont(UIFont.systemFont(ofSize: 14))
+            .setBackgroundColor(UIColor.white)
+            .setTitleTextColor(UIColor.black)
+            .setContentTextColor(UIColor.darkGray)
+        
+        Lava.shared.setCustomStyle(customStyle: customStyle)
+        
+        Lava.shared.start()
+    }
+    
+    func initLavaSDKWithDefaultConsent() {
+        guard let lavaConfig = ConfigLoader.loadConfig() else {
+            fatalError("Error loading lava-services.json")
         }
+        
+        Lava.initialize(
+            appKey: lavaConfig.appKey,
+            clientId: lavaConfig.clientId,
+            logLevel: .verbose,
+            serverLogLevel: .verbose,
+            piConsentFlags: ConsentUtils.getConsentFlags(predefined: ["Strictly Necessary"]),
+            piConsentCallback: { err, shouldLogout in
+                print(err?.localizedDescription ?? "Unknown consent error")
+            }
+        )
+        
+        let customStyle = Style()
+            .setTitleFont(UIFont.systemFont(ofSize: 24))
+            .setContentFont(UIFont.systemFont(ofSize: 14))
+            .setBackgroundColor(UIColor.white)
+            .setTitleTextColor(UIColor.black)
+            .setContentTextColor(UIColor.darkGray)
+        
+        Lava.shared.setCustomStyle(customStyle: customStyle)
+        
+        Lava.shared.start()
+        
+        AppSession.current.lavaConfig = lavaConfig
+    }
+    
+    func initLavaSDKWithCustomConsentMapping() {
+        guard let lavaConfig = ConfigLoader.loadConfig() else {
+            fatalError("Error loading lava-services.json")
+        }
+        
+        Lava.initialize(
+            appKey: lavaConfig.appKey,
+            clientId: lavaConfig.clientId,
+            logLevel: .verbose,
+            serverLogLevel: .verbose,
+            customPiConsentMapping: LavaConsent.OneTrustDefaultConsentMapping,
+            customPiConsentFlags: ConsentUtils.getCustomConsentFlags(predefined: lavaConfig.customConsentFlags),
+            piConsentCallback: { err, shouldLogout in
+                print(err?.localizedDescription ?? "Unknown consent error")
+            }
+        )
+        
+        AppSession.current.useCustomConsent = true
+        
+        let customStyle = Style()
+            .setTitleFont(UIFont.systemFont(ofSize: 24))
+            .setContentFont(UIFont.systemFont(ofSize: 14))
+            .setBackgroundColor(UIColor.white)
+            .setTitleTextColor(UIColor.black)
+            .setContentTextColor(UIColor.darkGray)
+        
+        Lava.shared.setCustomStyle(customStyle: customStyle)
+        
+        Lava.shared.start()
         
         AppSession.current.lavaConfig = lavaConfig
     }
@@ -79,9 +128,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
         //initialise LavaSDK.
-        initLavaSdk(
-            useCustomConsentMapping: AppSession.current.useCustomConsent
-        )
+        initLavaSDKWithDefaultConfig()
         
         registerForPushNotifications()
         
@@ -90,10 +137,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         
         AppDelegate.shared = self
+        
+        if let url = launchOptions?[.url] as? URL {
+            _ = handleDeeplink(url: url)
+        }
                 
         return true
     }
-
 
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -212,14 +262,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         open url: URL,
         options: [UIApplication.OpenURLOptionsKey : Any] = [:]
     ) -> Bool {
-        if (Lava.shared.canHandleDeepLink(url: url)) {
-            return Lava.shared.handleDeepLink(url: url) { err in
-                print(err.localizedDescription)
-            }
-        } else {
-            // handle other deep links
-            return false
-        }
+        handleDeeplink(url: url)
     }
     
     func application(
@@ -239,6 +282,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         
         return true
+    }
+    
+    func handleDeeplink(url: URL?) -> Bool {
+        guard let url = url else {
+            return false
+        }
+        
+        if (Lava.shared.canHandleDeepLink(url: url)) {
+            return Lava.shared.handleDeepLink(url: url) { err in
+                print(err.localizedDescription)
+            }
+        } else {
+            // handle other deep links
+            return false
+        }
     }
 }
 
