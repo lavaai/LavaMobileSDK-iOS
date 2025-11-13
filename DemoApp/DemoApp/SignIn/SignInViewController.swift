@@ -204,7 +204,25 @@ class SignInViewController: EditableViewController {
             self?.goToHome()
         } onError: { [weak self] error in
             self?.view.hideLoading()
-            self?.showAlert(title: "Error", message: "\(error.localizedDescription)")
+            var errorMessage = error.localizedDescription
+            
+            if let nbaIDError = error as? NBAIDError {
+                switch (nbaIDError) {
+                case .NBA_ID_00:
+                    errorMessage = "NBA ID service not configured for this environment"
+                    break
+                case .NBA_ID_01:
+                    errorMessage = "Failed to acquire an NBA service token"
+                    break
+                case .NBA_ID_02:
+                    errorMessage = "NBA account not found"
+                    break
+                case .NBA_ID_03:
+                    errorMessage = "Ticketmaster account not linked"
+                    break
+                }
+            }
+            self?.showAlert(title: "Error", message: "\(errorMessage)")
         }
     }
 
@@ -220,6 +238,7 @@ class SignInViewController: EditableViewController {
     }
     
     func handleError(error: Error) {
+        
         Utility.showAlert(
             self,
             title: "Error",

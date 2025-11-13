@@ -198,6 +198,23 @@
                                                     <action selector="showInitializeOptions:" destination="XP0-ct-XoM" eventType="touchUpInside" id="lMU-Cr-ncQ"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rS7-Iz-7XH" userLabel="initializeOptionsButton" customClass="RoundedButton" customModule="DemoApp" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="346" width="288" height="50"/>
+                                                <color key="backgroundColor" red="0.92549019610000005" green="0.0" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="t9N-c6-MT1"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                                <state key="normal" title="Initialize Options">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <variation key="heightClass=regular-widthClass=compact">
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="showInitializeOptions:" destination="XP0-ct-XoM" eventType="touchUpInside" id="lMU-Cr-ncQ"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
