@@ -23,6 +23,13 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_background" translatesAutoresizingMaskIntoConstraints="NO" id="0cD-u9-NEh">
                                 <rect key="frame" x="0.0" y="367" width="320" height="469"/>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_logo" translatesAutoresizingMaskIntoConstraints="NO" id="arS-Zd-qfl">
+                                <rect key="frame" x="40" y="20" width="240" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Ijf-yp-HpN"/>
+                                    <constraint firstAttribute="width" constant="240" id="XdE-y3-SJE"/>
+                                </constraints>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oji-pZ-QJ4" userLabel="LoginContainer">
                                 <rect key="frame" x="0.0" y="214" width="320" height="608.5"/>
                                 <subviews>
@@ -213,13 +220,6 @@
                                     <constraint firstAttribute="bottom" secondItem="oNH-BF-eIX" secondAttribute="bottom" constant="16" id="qtA-TK-apD"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_logo" translatesAutoresizingMaskIntoConstraints="NO" id="arS-Zd-qfl">
-                                <rect key="frame" x="40" y="20" width="240" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="Ijf-yp-HpN"/>
-                                    <constraint firstAttribute="width" constant="240" id="XdE-y3-SJE"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
