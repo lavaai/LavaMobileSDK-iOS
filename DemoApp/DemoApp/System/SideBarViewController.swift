@@ -14,6 +14,8 @@ enum MenuItem: String {
     case analytics = "Analytics"
     case debugInfo = "Debug Info"
     case membershipCard = "Membership Card"
+    case insetPass = "Inset Pass"
+    case embedPass = "Embed Pass"
     case logOut = "Log Out"
 }
 
@@ -29,6 +31,8 @@ class SideBarViewController: UIViewController {
         .messages,
         .analytics,
         .membershipCard,
+        .insetPass,
+        .embedPass,
         .debugInfo,
         .logOut
     ]
