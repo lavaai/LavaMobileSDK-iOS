@@ -82,6 +82,22 @@ class Navigator {
         vc.present(targetVC, animated: true)
     }
     
+    func openInsetPass(_ nc: UINavigationController) {
+        let targetVC = InsetPassDemoViewController()
+        targetVC.setupMenu()
+        nc.viewControllers = [
+            targetVC
+        ]
+    }
+
+    func openEmbedPass(_ nc: UINavigationController) {
+        let targetVC = EmbedPassDemoViewController()
+        targetVC.setupMenu()
+        nc.viewControllers = [
+            targetVC
+        ]
+    }
+
     func openAnalytics(_ nc: UINavigationController) {
         let targetVC = UIHostingController(
             rootView: AnalyticsView()

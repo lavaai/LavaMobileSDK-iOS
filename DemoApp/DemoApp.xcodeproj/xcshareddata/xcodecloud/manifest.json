@@ -1,0 +1,9 @@
+{
+  "id" : "8b6ddf57-f6be-481e-b26e-35e64dc440ca",
+  "targets" : [
+    {
+      "id" : "B7ED7FFD-1964-496E-B0E8-D8651A1EEDD2",
+      "name" : "LavaSDK"
+    }
+  ]
+}

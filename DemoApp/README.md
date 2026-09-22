@@ -1,6 +1,6 @@
 # DemoApp
 
-This repo is the DemoApp for LavaSDK. It already contains the compatible LavaSDK.xcframework and ready for building and running.
+This repo is the DemoApp for LavaSDK. For local development it links the sibling `SDK-iOS` project instead of a published xcframework.
 
 ## Requirements
 
@@ -9,11 +9,17 @@ This repo is the DemoApp for LavaSDK. It already contains the compatible LavaSDK
 
 ## Working with the LavaSDK source code
 
-To work directly with the LavaSDK source code, we need to add LavaSDK project into DemoApp project as a subproject with following steps:
-1. Remove the LavaSDK.xcframework from the DemoApp project.
-2. Drag and drop the Lava.xcodeproj into the DemoApp project.
-3. Under General tab > Frameworks, Libraries and Embedded Content in targets DemoApp and DemoAppSecure of DemoApp project, we need to add the LavaSDK.framework.
-4. Clean (Cmd + Shift + K) and build the project.
+DemoApp is set up as a subproject of the local `SDK-iOS` checkout when the two repos sit next to each other:
+
+```
+lavaai/
+  SDK-iOS/LavaSDK.xcodeproj
+  LavaMobileSDK-iOS/DemoApp/DemoApp.xcodeproj
+```
+
+`DemoApp.xcodeproj` references `../../SDK-iOS/LavaSDK.xcodeproj` and embeds `LavaSDK.framework` in the DemoApp and DemoAppSecure targets.
+
+To restore the published binary instead, remove the `LavaSDK.xcodeproj` subproject and add `LavaSDK.xcframework` back under Frameworks, Libraries and Embedded Content.
 
 ## Building
 

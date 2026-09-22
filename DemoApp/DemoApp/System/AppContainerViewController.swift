@@ -111,7 +111,12 @@ extension AppContainerViewController: MenuDelegate {
             break
         case .membershipCard:
             Lava.shared.showPass(useVisibleViewController: contentVC)
+        case .insetPass:
+            Navigator.shared.openInsetPass(contentVC)
+        case .embedPass:
+            Navigator.shared.openEmbedPass(contentVC)
         case .logOut:
+            Lava.shared.hidePass(force: true)
             view.showLoading(.center)
             Lava.shared.setEmail(email: nil) { [weak self] in
                 self?.view.hideLoading()
