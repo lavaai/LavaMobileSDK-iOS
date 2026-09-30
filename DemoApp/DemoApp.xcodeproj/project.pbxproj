@@ -121,6 +121,8 @@
 		E1B0E4BED000000000000002 /* EmbedPassDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B0E4BED000000000000003 /* EmbedPassDemoViewController.swift */; };
 		E1B0E4BED000000000000005 /* InsetPassDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B0E4BED000000000000007 /* InsetPassDemoViewController.swift */; };
 		E1B0E4BED000000000000006 /* InsetPassDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B0E4BED000000000000007 /* InsetPassDemoViewController.swift */; };
+		E1B0E4BED000000000000008 /* DeepLinkPassDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B0E4BED00000000000000A /* DeepLinkPassDemoViewController.swift */; };
+		E1B0E4BED000000000000009 /* DeepLinkPassDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B0E4BED00000000000000A /* DeepLinkPassDemoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -233,6 +235,7 @@
 		B3F5E1441D478C4E002D533B /* ContentRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentRequestViewController.swift; sourceTree = "<group>"; };
 		E1B0E4BED000000000000003 /* EmbedPassDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbedPassDemoViewController.swift; sourceTree = "<group>"; };
 		E1B0E4BED000000000000007 /* InsetPassDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetPassDemoViewController.swift; sourceTree = "<group>"; };
+		E1B0E4BED00000000000000A /* DeepLinkPassDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkPassDemoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -517,6 +520,7 @@
 			children = (
 				E1B0E4BED000000000000003 /* EmbedPassDemoViewController.swift */,
 				E1B0E4BED000000000000007 /* InsetPassDemoViewController.swift */,
+				E1B0E4BED00000000000000A /* DeepLinkPassDemoViewController.swift */,
 			);
 			path = Pass;
 			sourceTree = "<group>";
@@ -761,6 +765,7 @@
 				1B65C7872AC5282200DCE124 /* SceneDelegate.swift in Sources */,
 				E1B0E4BED000000000000002 /* EmbedPassDemoViewController.swift in Sources */,
 				E1B0E4BED000000000000006 /* InsetPassDemoViewController.swift in Sources */,
+				E1B0E4BED000000000000009 /* DeepLinkPassDemoViewController.swift in Sources */,
 				1B65C7882AC5282200DCE124 /* AppContainerViewController.swift in Sources */,
 				1B65C7892AC5282200DCE124 /* SideBarViewController.swift in Sources */,
 				1B65C78A2AC5282200DCE124 /* Navigator.swift in Sources */,
@@ -819,6 +824,7 @@
 				8A9CD664276062D900A40EE2 /* DebugInfoViewController.swift in Sources */,
 				E1B0E4BED000000000000001 /* EmbedPassDemoViewController.swift in Sources */,
 				E1B0E4BED000000000000005 /* InsetPassDemoViewController.swift in Sources */,
+				E1B0E4BED000000000000008 /* DeepLinkPassDemoViewController.swift in Sources */,
 				1B614FC62AB064F000C87E4F /* AppContainerViewController.swift in Sources */,
 				B3BFE4E71D50B8D500CBE060 /* ProfileViewController.swift in Sources */,
 				1B449C1B28F6710A0040E032 /* APIError.swift in Sources */,

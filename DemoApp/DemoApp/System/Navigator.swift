@@ -98,6 +98,14 @@ class Navigator {
         ]
     }
 
+    func openDeepLinkPass(_ nc: UINavigationController) {
+        let targetVC = DeepLinkPassDemoViewController()
+        targetVC.setupMenu()
+        nc.viewControllers = [
+            targetVC
+        ]
+    }
+
     func openAnalytics(_ nc: UINavigationController) {
         let targetVC = UIHostingController(
             rootView: AnalyticsView()

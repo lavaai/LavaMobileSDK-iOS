@@ -115,6 +115,8 @@ extension AppContainerViewController: MenuDelegate {
             Navigator.shared.openInsetPass(contentVC)
         case .embedPass:
             Navigator.shared.openEmbedPass(contentVC)
+        case .deepLinkPass:
+            Navigator.shared.openDeepLinkPass(contentVC)
         case .logOut:
             Lava.shared.hidePass(force: true)
             view.showLoading(.center)
