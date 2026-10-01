@@ -94,3 +94,7 @@ iOSInjectionProject/
 
 *.xcframework
 *LavaSDK*
+
+# DemoApp local credentials (copy from lava-services.json.example)
+DemoApp/DemoApp/lava-services.json
+
