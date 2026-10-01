@@ -27,6 +27,13 @@ To restore the published binary instead, remove the `LavaSDK.xcodeproj` subproje
 
 * Run the following commands to install cocaopods and to checkout the dependencies of DemoApp:
 
-## lava-service.json
-This file is located in DemoApp/DemoApp and its content will be either replaced by GitHub workflow or the developer with appropriate values.
+## lava-services.json
+
+Copy the example file and fill in your credentials (the real file is gitignored):
+
+```bash
+cp DemoApp/DemoApp/lava-services.json.example DemoApp/DemoApp/lava-services.json
+```
+
+Locally or in CI/GitHub workflows, replace `clientId` and `appKey` with appropriate values.
 
