@@ -9,6 +9,9 @@
 
 LavaMobileSDK for iOS is the client libary to integrate your mobile apps with Lava Platform.
 
+The full manual is in the [integration guide](docs/README.md) (SDK 2.0.34).
+
+- [Integration guide](docs/README.md)
 - [Features](#features)
 - [Requirements](#requirements)
 - [Installation](#installation)
