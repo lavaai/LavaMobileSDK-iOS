@@ -100,6 +100,28 @@ PassPage.benefits                  // "benefits"
 PassPage(rawValue: "rewards")      // any portal page ID
 ```
 
+Pass the page to `showPass` when you present the pass. `self` is the host view controller.
+
+**Usage**
+
+```swift
+// Open the rewards page full screen
+Lava.shared.showPass(
+    page: PassPage(rawValue: "rewards"),
+    useVisibleViewController: self,
+    presentation: .fullScreen
+)
+
+// Open the challenges page full screen
+Lava.shared.showPass(
+    page: PassPage(rawValue: "challenges"),
+    useVisibleViewController: self,
+    presentation: .fullScreen
+)
+```
+
+The same `PassPage` value works with an inset presentation and with `createPassViewController`. See [Show the pass inset above your chrome](#show-the-pass-inset-above-your-chrome) and [Embed the pass in your own layout](#embed-the-pass-in-your-own-layout).
+
 Deep links such as `…/lava/inapp/pass?page=history` and `…/lava/inapp/pass/benefits` are parsed the same way.
 
 ## Show the pass inset above your chrome
