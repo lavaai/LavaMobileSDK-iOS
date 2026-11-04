@@ -180,7 +180,7 @@ class SignInViewController: EditableViewController {
                 self?.goToHome()
             } onError: { [weak self] error in
                 self?.view.hideLoading()
-                self?.showAlert(title: "Error", message: "\(error)")
+                self?.showAlert(title: "Error", message: self?.loginErrorMessage(for: error) ?? "")
             }
             
             return
@@ -204,26 +204,28 @@ class SignInViewController: EditableViewController {
             self?.goToHome()
         } onError: { [weak self] error in
             self?.view.hideLoading()
-            var errorMessage = error.localizedDescription
-            
-            if let nbaIDError = error as? NBAIDError {
-                switch (nbaIDError) {
-                case .NBA_ID_00:
-                    errorMessage = "NBA ID service not configured for this environment"
-                    break
-                case .NBA_ID_01:
-                    errorMessage = "Failed to acquire an NBA service token"
-                    break
-                case .NBA_ID_02:
-                    errorMessage = "NBA account not found"
-                    break
-                case .NBA_ID_03:
-                    errorMessage = "Ticketmaster account not linked"
-                    break
-                }
-            }
-            self?.showAlert(title: "Error", message: "\(errorMessage)")
+            self?.showAlert(title: "Error", message: self?.loginErrorMessage(for: error) ?? "")
         }
+    }
+
+    func loginErrorMessage(for error: Error) -> String {
+        if let consentError = error as? ConsentError, case .consentRequired(let flags) = consentError {
+            let required = flags?.map { $0.rawValue }.joined(separator: ", ") ?? "Unknown"
+            return "This operation requires \(required) consent to be enabled."
+        }
+        if let nbaIDError = error as? NBAIDError {
+            switch nbaIDError {
+            case .NBA_ID_00:
+                return "NBA ID service not configured for this environment"
+            case .NBA_ID_01:
+                return "Failed to acquire an NBA service token"
+            case .NBA_ID_02:
+                return "NBA account not found"
+            case .NBA_ID_03:
+                return "Ticketmaster account not linked"
+            }
+        }
+        return error.localizedDescription
     }
 
     

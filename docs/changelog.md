@@ -2,6 +2,14 @@
 
 [Integration guide](README.md)
 
+## Unreleased
+
+### Enhancements
+
+- Document `ConsentError.consentRequired` on `setUserId` and `setEmail`, so the host can tell a missing personal-information consent from an `NBAIDError`.
+- Include `showCloseButton=true|false` on the in-app pass URL so the HTML can read close-button chrome before `setPassChrome` runs. Host APIs are unchanged.
+- Report a missing personal-information consent from `createPassViewController` and `handleDeepLinkAsViewController` through `onError`, matching `showPass`.
+
 ## v2.0.34
 
 ### Features

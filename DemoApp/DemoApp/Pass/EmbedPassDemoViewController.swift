@@ -117,7 +117,20 @@ final class EmbedPassDemoViewController: UIViewController {
             return
         }
         clearEmbeddedPass()
-        let child = Lava.shared.createPassViewController(page: .pass)
+        let consent = ConsentFlag()
+        let child = Lava.shared.createPassViewController(page: .pass) { [weak self] error in
+            consent.blocked = true
+            let alert = UIAlertController(
+                title: nil,
+                message: error.localizedDescription,
+                preferredStyle: .alert
+            )
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            self?.present(alert, animated: true)
+        }
+        if consent.blocked {
+            return
+        }
         passVC = child
         addChild(child)
         child.view.translatesAutoresizingMaskIntoConstraints = false
@@ -172,6 +185,10 @@ final class EmbedPassDemoViewController: UIViewController {
             """
         }
     }
+}
+
+private final class ConsentFlag {
+    var blocked = false
 }
 
 extension EmbedPassDemoViewController: UITabBarDelegate {
