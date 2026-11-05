@@ -38,7 +38,7 @@ Lava.shared.setEmail(email: email) {
 
 ### Error handling
 
-If `setEmail` fails, `onError` runs with an `Error`. Use `localizedDescription` in the app.
+If `setEmail` fails, `onError` runs with an `Error`. A missing personal-information consent is a `ConsentError.consentRequired`. An NBA ID failure is an `NBAIDError`. Other failures stay a generic `Error`. Use `localizedDescription` in the app. The [`setUserId` error handling](#error-handling-1) sample shows how to tell these apart. `setEmail` uses that same path.
 
 ## Set user ID
 
@@ -78,7 +78,11 @@ Lava.shared.setUserId(id: id, type: type) {
 
 ### Error handling
 
-As with `setEmail`, failure calls `onError` with an `Error`. This method also supports NBA ID authentication. In those cases the error is an `NBAIDError`, which has `description` and `errorDescription`.
+Failure calls `onError` with an `Error`. Cast it to tell a consent failure from an NBA ID failure.
+
+A missing personal-information consent is `ConsentError.consentRequired`. The associated value is the flags the call needs: `strictlyNecessary`, plus `functional` when `id` is set. The SDK does not call the backend in that case. `localizedDescription` is `This operation requires … consent to be enabled.` `ConsentError` also has `invalidConsentMapping`, which `setUserId` does not produce.
+
+An NBA ID failure is an `NBAIDError`. `description` and `errorDescription` are the code.
 
 | `NBAIDError` case | Meaning |
 | --- | --- |
@@ -86,6 +90,8 @@ As with `setEmail`, failure calls `onError` with an `Error`. This method also su
 | `NBA_ID_01` | Failed to acquire an NBA service token |
 | `NBA_ID_02` | NBA account not found |
 | `NBA_ID_03` | Ticketmaster account not linked |
+
+Any other failure is a generic `Error`. Use `localizedDescription`.
 
 ```swift
 Lava.shared.setUserId(
@@ -96,7 +102,10 @@ Lava.shared.setUserId(
 } onError: { [weak self] error in
     var errorMessage = error.localizedDescription
 
-    if let nbaIDError = error as? NBAIDError {
+    if let consentError = error as? ConsentError, case .consentRequired(let flags) = consentError {
+        let required = flags?.map { $0.rawValue }.joined(separator: ", ") ?? "Unknown"
+        errorMessage = "This operation requires \(required) consent to be enabled."
+    } else if let nbaIDError = error as? NBAIDError {
         switch nbaIDError {
         case .NBA_ID_00:
             errorMessage = "NBA ID service not configured for this environment"
@@ -107,8 +116,6 @@ Lava.shared.setUserId(
         case .NBA_ID_03:
             errorMessage = "Ticketmaster account not linked"
         }
-    } else {
-        // Handle non NBA ID errors
     }
 
     self?.showAlert(title: "Error", message: "\(errorMessage)")

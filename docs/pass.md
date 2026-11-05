@@ -76,6 +76,8 @@ public struct PassInsets {
 
 `showsCloseButton` is forwarded to the pass HTML. `nil` means automatic: show the close button only for full-screen presentation.
 
+The same boolean is available to the pass page as soon as it loads: the SDK requests the pass URL with `?showCloseButton=true` or `?showCloseButton=false`. After load, the SDK also calls `setPassChrome({ showCloseButton })` with that same value so existing templates keep working.
+
 **Usage**
 
 ```swift
@@ -186,17 +188,31 @@ Lava.shared.showPass(
 Use embed when the pass should be a real tab, or sit in a frame the SDK should not know about. The SDK does not present or attach the view controller.
 
 ```swift
-public func createPassViewController(page: PassPage = .pass) -> UIViewController
+public func createPassViewController(
+    page: PassPage = .pass,
+    onError: OnError? = nil
+) -> UIViewController
 ```
 
 - `page`: named portal page to open. Defaults to `pass`.
+- `onError`: called when there is a consent error. The callback runs before the method returns, and only when consent is missing.
 
 Returns a pass `UIViewController` for your container. The portal close button is hidden.
 
+When Strictly Necessary or Functional consent is missing and you pass `onError`, the callback runs and the returned controller is empty. Do not add it. When you omit `onError`, add the controller: the SDK shows the consent dialog once that controller appears.
+
 **Usage**
 
+Show the embedded pass with the consent error callback when you need to ask for Functional consent:
+
 ```swift
-let passVC = Lava.shared.createPassViewController(page: .pass)
+class ConsentFlag { var blocked = false }
+let consent = ConsentFlag()
+let passVC = Lava.shared.createPassViewController(page: .pass) { error in
+    consent.blocked = true
+    showConsentDialog(error.localizedDescription)
+}
+guard !consent.blocked else { return }
 addChild(passVC)
 passContainer.addSubview(passVC.view)
 passVC.view.translatesAutoresizingMaskIntoConstraints = false
@@ -324,13 +340,14 @@ Lava.shared.setPassPageListener { page in
 When the host app owns navigation (`UINavigationController.push`, a modal present, or a custom container), do not call `handleDeepLink`. That API still presents the pass. Use the factory instead. The SDK does not present or attach the view controller.
 
 ```swift
-public func handleDeepLinkAsViewController(_ url: URL) -> UIViewController?
-public func handleDeepLinkAsViewController(deepLinkPath: String) -> UIViewController?
+public func handleDeepLinkAsViewController(_ url: URL, onError: OnError? = nil) -> UIViewController?
+public func handleDeepLinkAsViewController(deepLinkPath: String, onError: OnError? = nil) -> UIViewController?
 ```
 
 - `url` / `deepLinkPath`: the same input as `handleDeepLink`: a full URL, or any string containing `lava/inapp/pass`.
+- `onError`: called when there is a consent error. The callback runs before the method returns, and only when consent is missing.
 
-Returns a pass `UIViewController` configured with the parsed page and the raw string for `linkPass`, or `nil` when this is not a pass UI link.
+Returns a pass `UIViewController` configured with the parsed page and the raw string for `linkPass`, or `nil` when this is not a pass UI link. A pass link also returns `nil` when Strictly Necessary or Functional consent is missing. In that case `onError` is called and the pass is not loaded.
 
 - Trigger links (`lava/trigger/…`) return `nil`. Keep using `handleDeepLink` for those.
 - Unrelated URLs return `nil`.
@@ -348,8 +365,15 @@ The `?page=` query wins over a path segment (`lava/inapp/pass/history`). If no p
 **Usage**
 
 ```swift
-if Lava.shared.canHandleDeepLink(url: url),
-   let passVC = Lava.shared.handleDeepLinkAsViewController(url) {
+class ConsentFlag { var blocked = false }
+let consent = ConsentFlag()
+let passVC = Lava.shared.handleDeepLinkAsViewController(url) { error in
+    consent.blocked = true
+    showConsentDialog(error.localizedDescription)
+}
+if consent.blocked {
+    // showConsentDialog already ran
+} else if let passVC = passVC {
     navigationController?.pushViewController(passVC, animated: true)
 } else {
     // Trigger, unrelated, or the host wants the SDK to present
